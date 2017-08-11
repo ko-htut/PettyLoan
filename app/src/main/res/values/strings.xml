@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">小额贷</string>
+
+    <string name="splash_skip">跳过 %1$ss</string>
+    <string name="guide_skip">跳过</string>
+    <string name="splash_start">开始体验</string>
+
+
+    <string-array name="tab_home_titles">
+        <item>首页</item>
+        <item>投资理财</item>
+        <item>实物理财</item>
+        <item>我的财富</item>
+    </string-array>
+
+    <!--login page-->
+    <string name="text_login_title">使用小额贷即可登录</string>
+    <string name="text_hint_login_name">请输入手机号/邮箱名/用户名</string>
+    <string name="text_hint_login_pwd">请输入登录密码</string>
+    <string name="text_login">登  录</string>
+    <string name="text_sign">注 册</string>
+    <string name="text_forget_pwd">忘记密码?</string>
+
+    <!--sign page-->
+    <string name="text_finish">完　成</string>
+    <string name="text_sign_title">欢迎使用小额贷</string>
+    <string name="text_sign_subtitle">使用手机号注册小额贷帐号</string>
+    <string name="text_sign_get_auth_code">获取验证码</string>
+    <string name="text_sign_get_invite_code">获取邀请码</string>
+    <string name="text_sign_hint_phone">请输入手机号(仅支持中国大陆号码)</string>
+    <string name="text_sign_hint_auth_code">请输入短信验证码</string>
+    <string name="text_sign_hint_pwd">请设置密码</string>
+    <string name="text_sign_hint_invite_code">请输入邀请吗</string>
+    <string name="text_sign_tip">点击"完成",即表示您以阅读并同意《小额贷注册协议》</string>
+    <string name="text_sign_success">注册成功</string>
+    <string name="text_sign_success_tip">赶快登录使用小额贷吧</string>
+
+    <!--home page-->
+    <string name="more">更多</string>
+
+    <!--mine page-->
+    <string name="to_invest">去投资</string>
+    <string name="total_assets">总资产(元)</string>
+    <string name="available_assets">可用资产(元)</string>
+    <string name="withdraw">提现</string>
+    <string name="recharge">充值</string>
+    <string name="my_account_bill">我的账单</string>
+    <string name="record">交易记录</string>
+    <string name="my_invitation">我的邀请</string>
+    <string name="my_credits">我的积分</string>
+    <string name="coupon">优惠券</string>
+
+    <!--invest-->
+    <string name="invest_title">投资理财</string>
+
+    <!-- card -->
+    <string name="card_invest">立即投资</string>
+    <string name="card_toast_left">历史年化收益</string>
+    <string name="card_toast_right">随时可退，满30天免手续费</string>
+    <string name="card_tag_new">新手必投</string>
+    <string name="card_tag_share">季度分红</string>
+    <string name="card_tag_safe">多重保障</string>
+
+     <string name="large_text">
+         习近平对四川九寨沟7.0级地震作出重要指示\n\n
+要求迅速组织力量救灾全力以赴抢救伤员 最大限度减少人员伤亡\n\n
+　李克强就抗震救灾工作作出批示\n\n
+       新华社北京8月8日电 8月8日21时19分，\n\n
+         四川省阿坝州九寨沟县（北纬33.2度，东经103.82度）发生7.0级地震，震源深度20公里。\n\n
+         截至8月8日23时30分，地震已造成5人死亡、70余人受伤。\n\n
+　　地震发生后，中共中央总书记、国家主席、中央军委主席习近平高度重视，立即作出重要指示，要求抓紧了解核实九寨沟7.0级地震灾情，迅速组织力量救灾，全力以赴抢救伤员，疏散安置好游客和受灾群众，最大限度减少人员伤亡。\n\n
+         目前正值主汛期，又处旅游旺季，要进一步加强气象预警和地质监测，密切防范各类灾害，切实做好抗灾救灾工作，尽最大努力保障人民群众生命财产安全。\n\n
+　　中共中央政治局常委、国务院总理李克强作出批示，要求抓紧核实灾情，全力组织抢险救援，最大程度减少人员伤亡，妥善转移安置受灾群众。加强震情监测，防范次生灾害。\n\n
+　　根据习近平指示和李克强要求，国务院已派出由国家减灾委、国务院抗震救灾指挥部组成的工作组赶赴现场指导抗震救灾工作。四川省委、省政府主要负责同志已赶赴现场开展救援工作。\n\n
+         四川省、阿坝州已启动Ⅰ级地震应急响应。目前，抗震救灾各项工作正在紧张有序进行。
+    </string>
+
+    <!-- 共享过度动画 -->
+    <string name="transition_photos">transition_animation_news_photos</string>
+
+</resources>

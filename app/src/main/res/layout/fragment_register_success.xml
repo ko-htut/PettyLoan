@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/text_sign_success"
+        android:textColor="@color/text_blue"
+        android:textSize="@dimen/text_size_18" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/page_margin"
+        android:layout_marginTop="15dp"
+        android:text="@string/text_sign_success_tip"
+        android:textColor="@color/text_gray"
+        android:textSize="@dimen/text_size_13" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/pic_register_success" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/page_margin"
+        android:layout_marginRight="@dimen/page_margin"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_btn_selecter_blue_solid"
+        android:text="@string/text_finish"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_15" />
+</LinearLayout>

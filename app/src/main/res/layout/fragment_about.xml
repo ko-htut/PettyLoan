@@ -1,0 +1,261 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="24dp"
+            app:expandedTitleMarginStart="24dp"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/home_banner_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/bg_graddient_blue"
+                    android:transitionName="@string/transition_photos"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7"
+                    tools:targetApi="lollipop" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_mine_title_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="今日暂无收益，别让你的钱睡大觉"/>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_splash_start"
+                        android:layout_width="120dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@id/tv_mine_title_tip"
+                        android:layout_marginTop="@dimen/small_space"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/bg_btn_selecter_white_stroke"
+                        android:padding="1dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/to_invest"
+                            android:textColor="@color/white"
+                            android:textSize="18sp"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </FrameLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginTop="5dp"
+                app:navigationIcon="@drawable/icon_mine_avatar"
+                app:title="13811703738"
+                android:titleMarginStart="@dimen/small_space"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.yixun.pettyloan.ui.widge.WaveView
+                android:id="@+id/wave_view"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/blue_light"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/large_text"
+                android:textSize="15sp" />
+
+            <!-- 下半部分 -->
+
+            <!--<LinearLayout-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white">-->
+
+                <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="16dp"-->
+                    <!--android:gravity="center_vertical">-->
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvNiuBi"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginRight="16dp"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:text=""-->
+                        <!--/>-->
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvSeed"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:drawableLeft="@drawable/mine_seed"-->
+                        <!--android:layout_marginRight="16dp"-->
+                        <!--android:drawablePadding="10dp"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:text="0"/>-->
+                    <!--<View-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="0dp"-->
+                        <!--android:layout_weight="1"/>-->
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvRecharge"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:clickable="true"-->
+                        <!--android:text="@string/mine_recharge"-->
+                        <!--android:textColor="@color/bg_red_color"-->
+                        <!--android:paddingTop="4dp"-->
+                        <!--android:paddingBottom="4dp"-->
+                        <!--android:layout_marginRight="6dp"-->
+                        <!--android:background="@drawable/follow_login_btn_bg_selector"/>-->
+                <!--</LinearLayout>-->
+                <!--<include layout="@layout/line_h_mine_space"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tvStarLight"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:drawablePadding="6dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:padding="16dp"-->
+                    <!--android:background="?android:attr/selectableItemBackground"-->
+                    <!--android:drawableRight="@drawable/ic_triangle"-->
+                    <!--android:text="@string/mine_starlight"-->
+                    <!--android:drawableLeft="@drawable/mine_starlight"/>-->
+            <!--</LinearLayout>-->
+            <!--<include layout="@layout/line_h_mine"/>-->
+            <!--<LinearLayout-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:layout_marginTop="16dp">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tvContribution"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:drawablePadding="6dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:padding="16dp"-->
+                    <!--android:background="?android:attr/selectableItemBackground"-->
+                    <!--android:drawableRight="@drawable/ic_triangle"-->
+                    <!--android:text="@string/mine_contribution"-->
+                    <!--android:drawableLeft="@drawable/mine_contribution"/>-->
+                <!--<include layout="@layout/line_h_mine_space"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tvWatch"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:drawablePadding="6dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:padding="16dp"-->
+                    <!--android:background="?android:attr/selectableItemBackground"-->
+                    <!--android:drawableRight="@drawable/ic_triangle"-->
+                    <!--android:text="@string/mine_watch"-->
+                    <!--android:drawableLeft="@drawable/mine_watch"/>-->
+                <!--<include layout="@layout/line_h_mine_space"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tvLevel"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:drawablePadding="6dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:padding="16dp"-->
+                    <!--android:background="?android:attr/selectableItemBackground"-->
+                    <!--android:drawableRight="@drawable/ic_triangle"-->
+                    <!--android:text="@string/mine_level"-->
+                    <!--android:drawableLeft="@drawable/mine_level"/>-->
+                <!--<include layout="@layout/line_h_mine_space"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tvTask"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:drawablePadding="6dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:padding="16dp"-->
+                    <!--android:background="?android:attr/selectableItemBackground"-->
+                    <!--android:drawableRight="@drawable/ic_triangle"-->
+                    <!--android:text="@string/mine_task"-->
+                    <!--android:drawableLeft="@drawable/mine_task"/>-->
+            <!--</LinearLayout>-->
+            <!--<include layout="@layout/line_h_mine"/>-->
+            <!--<LinearLayout-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginBottom="16dp">-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tvGame"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:drawablePadding="6dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:padding="16dp"-->
+                    <!--android:background="?android:attr/selectableItemBackground"-->
+                    <!--android:drawableRight="@drawable/ic_triangle"-->
+                    <!--android:text="@string/mine_game"-->
+                    <!--android:drawableLeft="@drawable/mine_game"/>-->
+                <!--<include layout="@layout/line_h_mine_space"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tvSetting"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:drawablePadding="6dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:padding="16dp"-->
+                    <!--android:background="?android:attr/selectableItemBackground"-->
+                    <!--android:drawableRight="@drawable/ic_triangle"-->
+                    <!--android:text="@string/mine_setting"-->
+                    <!--android:drawableLeft="@drawable/mine_setting"/>-->
+
+            <!--</LinearLayout>-->
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>
