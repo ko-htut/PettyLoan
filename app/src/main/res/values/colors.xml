@@ -14,6 +14,8 @@
 
     <color name="btn_normal">#00000000</color>
     <color name="btn_pressed">#0CF76B1E</color>
+    <color name="bg_red_color">#FB5553</color>
+    <color name="bg_red_color_pressed">#FFEEF0</color>
 
     <color name="text_black">#696969</color>
     <color name="text_gray">#A9A9A9</color>

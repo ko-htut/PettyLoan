@@ -68,7 +68,7 @@
             android:background="@drawable/bg_btn_selecter_blue_stroke"
             android:text="@string/text_sign_get_auth_code"
             android:textColor="@color/text_blue"
-            android:textSize="@dimen/text_size_15" />
+            android:textSize="@dimen/text_size_12" />
 
     </LinearLayout>
 
@@ -146,7 +146,7 @@
             android:background="@drawable/bg_btn_selecter_blue_stroke"
             android:text="@string/text_sign_get_invite_code"
             android:textColor="@color/text_blue"
-            android:textSize="@dimen/text_size_15" />
+            android:textSize="@dimen/text_size_12" />
 
     </LinearLayout>
 

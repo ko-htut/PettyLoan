@@ -30,7 +30,7 @@
     <string name="text_sign_hint_phone">请输入手机号(仅支持中国大陆号码)</string>
     <string name="text_sign_hint_auth_code">请输入短信验证码</string>
     <string name="text_sign_hint_pwd">请设置密码</string>
-    <string name="text_sign_hint_invite_code">请输入邀请吗</string>
+    <string name="text_sign_hint_invite_code">请输入邀请码</string>
     <string name="text_sign_tip">点击"完成",即表示您以阅读并同意《小额贷注册协议》</string>
     <string name="text_sign_success">注册成功</string>
     <string name="text_sign_success_tip">赶快登录使用小额贷吧</string>
