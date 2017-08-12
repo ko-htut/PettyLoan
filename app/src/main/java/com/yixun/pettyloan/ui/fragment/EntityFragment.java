@@ -32,4 +32,9 @@ public class EntityFragment extends BaseSupportFragment {
     protected void initView() {
         card_title_tv.setText(mTitle);
     }
+
+    @Override
+    protected void initData() {
+
+    }
 }

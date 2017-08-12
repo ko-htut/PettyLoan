@@ -16,9 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
+            app:collapsedTitleGravity="center"
             app:expandedTitleMarginEnd="24dp"
             app:expandedTitleMarginStart="24dp"
-            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <FrameLayout

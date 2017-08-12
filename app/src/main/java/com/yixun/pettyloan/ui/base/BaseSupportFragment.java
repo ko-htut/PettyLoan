@@ -1,6 +1,7 @@
 package com.yixun.pettyloan.ui.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import com.yixun.pettyloan.rx.RxManager;
 import com.yixun.pettyloan.utils.TUtil;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.yokeyword.fragmentation.ExtraTransaction;
 import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportFragmentDelegate;
@@ -31,6 +33,8 @@ public abstract class BaseSupportFragment<T extends BasePresenter, E extends Bas
     public RxManager mRxManager;
     protected FragmentActivity _mActivity;
     protected View rootView;
+    protected Context context;
+    private Unbinder mUnbinder;
 
     @Override
     public SupportFragmentDelegate getSupportDelegate() {
@@ -62,14 +66,16 @@ public abstract class BaseSupportFragment<T extends BasePresenter, E extends Bas
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (rootView == null)
+        context = getActivity();
+        if (rootView == null) {
             rootView = inflater.inflate(getLayoutResource(), container, false);
-        ButterKnife.bind(this, rootView);
-        mRxManager=new RxManager();
+        }
+        mUnbinder = ButterKnife.bind(this, rootView);
+        mRxManager = new RxManager();
         mPresenter = TUtil.getT(this, 0);
-        mModel= TUtil.getT(this,1);
-        if(mPresenter!=null){
-            mPresenter.mContext=this.getActivity();
+        mModel = TUtil.getT(this, 1);
+        if (mPresenter != null) {
+            mPresenter.mContext = context;
         }
         initPresenter();
         initView();
@@ -79,11 +85,14 @@ public abstract class BaseSupportFragment<T extends BasePresenter, E extends Bas
     //获取布局文件
     protected abstract int getLayoutResource();
 
-    //简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
+    //简单页面无需mvp就不用管此方法即可
     public abstract void initPresenter();
 
     //初始化view
     protected abstract void initView();
+
+    //获取数据
+    protected abstract void initData();
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
@@ -94,6 +103,7 @@ public abstract class BaseSupportFragment<T extends BasePresenter, E extends Bas
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mDelegate.onActivityCreated(savedInstanceState);
+        initData();
     }
 
     @Override
@@ -124,6 +134,9 @@ public abstract class BaseSupportFragment<T extends BasePresenter, E extends Bas
     public void onDestroy() {
         mDelegate.onDestroy();
         super.onDestroy();
+        if (mUnbinder != null) {
+            mUnbinder.unbind();
+        }
     }
 
     @Override

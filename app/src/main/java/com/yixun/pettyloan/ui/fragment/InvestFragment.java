@@ -56,4 +56,9 @@ public class InvestFragment extends BaseSupportFragment {
         typeList.add("投资理财");
         mGoodsController.initTabs(getActivity().getSupportFragmentManager(), typeList);
     }
+
+    @Override
+    protected void initData() {
+
+    }
 }

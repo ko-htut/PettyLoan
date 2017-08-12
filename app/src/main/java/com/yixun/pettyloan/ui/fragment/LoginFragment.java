@@ -108,6 +108,11 @@ public class LoginFragment extends BaseSupportFragment {
     }
 
     @Override
+    protected void initData() {
+
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mOnLoginSuccessListener = null;

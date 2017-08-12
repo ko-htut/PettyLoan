@@ -70,6 +70,10 @@ public class HomeFragment extends BaseSupportFragment {
         TranslucentBarManager translucentBarManager = new TranslucentBarManager(this);
         translucentBarManager.translucent(this, rootView, R.color.text_blue);
         bindBanner();
+    }
+
+    @Override
+    protected void initData() {
         bindFeeds();
     }
 

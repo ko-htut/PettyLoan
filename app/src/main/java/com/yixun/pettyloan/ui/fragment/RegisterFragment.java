@@ -112,6 +112,11 @@ public class RegisterFragment extends BaseSupportFragment {
         showSoftInput(mEtAccount);
     }
 
+    @Override
+    protected void initData() {
+
+    }
+
     private void showCaptchaDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = View.inflate(getActivity(), R.layout.dlg_slide_captcha, null);

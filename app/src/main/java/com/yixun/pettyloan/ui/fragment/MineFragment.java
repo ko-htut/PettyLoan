@@ -33,7 +33,7 @@ public class MineFragment extends BaseSupportFragment {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_about;
+        return R.layout.fragment_mine;
     }
 
     @Override
@@ -49,6 +49,11 @@ public class MineFragment extends BaseSupportFragment {
         initToolbar();
 
         configRefresh();
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     private void initToolbar() {
