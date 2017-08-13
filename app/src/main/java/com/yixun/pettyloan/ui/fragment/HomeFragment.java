@@ -1,8 +1,11 @@
 package com.yixun.pettyloan.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -23,8 +26,10 @@ import com.yixun.pettyloan.entity.Feature;
 import com.yixun.pettyloan.entity.FeatureItemViewBinder;
 import com.yixun.pettyloan.entity.ProductItemViewBinder;
 import com.yixun.pettyloan.mode.GoodsMode;
+import com.yixun.pettyloan.ui.DetailActivity;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoaderInterface;
 
 import java.util.ArrayList;
@@ -119,7 +124,7 @@ public class HomeFragment extends BaseSupportFragment {
     }
 
     private void bindBanner() {
-        List<Object> urlList = new ArrayList<>();
+        final List<Object> urlList = new ArrayList<>();
         urlList.add(R.drawable.pic_banner1);
         urlList.add(R.drawable.pic_banner2);
         mTopBanner.setImageLoader(new ImageLoaderInterface() {
@@ -134,9 +139,21 @@ public class HomeFragment extends BaseSupportFragment {
 
             @Override
             public View createImageView(Context context) {
-                return new ImageView(context);
+                ImageView imageView = new ImageView(context);
+                imageView.setTransitionName(getString(R.string.transition_banner));
+                return imageView;
             }
         });
         mTopBanner.setImages(urlList).start();
+        mTopBanner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra("img", String.valueOf(urlList.get(position)));
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+                        mTopBanner,getString(R.string.transition_banner));
+                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+            }
+        });
     }
 }

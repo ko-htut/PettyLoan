@@ -71,14 +71,14 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onStop() {
-        super.onPause();
+        super.onStop();
         mHandler.removeMessages(UPDATE_COUNTDOWN);
     }
 
     @OnClick(R.id.rl_splash_start)
     public void start() {
 //        if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false))
-        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+        startActivity(new Intent(SplashActivity.this, MainActivity.class));
 //                else
 //                    startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
         finish();

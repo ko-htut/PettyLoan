@@ -35,6 +35,10 @@
         <activity
             android:name=".ui.LoginActivity"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:name=".ui.DetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TranslucentStatusBar"></activity>
 
     </application>
 

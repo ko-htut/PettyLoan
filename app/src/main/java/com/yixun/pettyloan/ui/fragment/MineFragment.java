@@ -1,5 +1,6 @@
 package com.yixun.pettyloan.ui.fragment;
 
+import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import com.kelin.translucentbar.library.TranslucentBarManager;
 import com.yixun.pettyloan.R;
+import com.yixun.pettyloan.ui.LoginActivity;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 
 import butterknife.BindView;
@@ -61,7 +63,7 @@ public class MineFragment extends BaseSupportFragment {
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "功能开发中...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(context, LoginActivity.class));
             }
         });
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {

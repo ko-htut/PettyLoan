@@ -76,6 +76,6 @@
     </string>
 
     <!-- 共享过度动画 -->
-    <string name="transition_photos">transition_animation_news_photos</string>
+    <string name="transition_banner">transition_animation_banner</string>
 
 </resources>

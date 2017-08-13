@@ -19,13 +19,17 @@ import com.yixun.tablayout.listener.OnTabSelectListener;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 /**
  * Created by zongkaili on 2017/3/21.
  */
 public class MainActivity extends BaseSupportActivity {
     private View mDecorView;
-    private ViewPager mViewPager;
-    private CommonTabLayout mTabLayout;
+    @BindView(R.id.home_vp)
+    ViewPager mViewPager;
+    @BindView(R.id.home_tablayout)
+    CommonTabLayout mTabLayout;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private String[] mTitles = new String[4];
@@ -60,10 +64,8 @@ public class MainActivity extends BaseSupportActivity {
 
     public void initWidge() {
         mDecorView = getWindow().getDecorView();
-        mViewPager = ViewFindUtils.find(mDecorView, R.id.home_vp);
         mViewPager.setAdapter(new HomePagerAdapter(getSupportFragmentManager(), mFragments, mTitles));
         mViewPager.setOffscreenPageLimit(4);
-        mTabLayout = ViewFindUtils.find(mDecorView, R.id.home_tablayout);
     }
 
     private void initFragment() {

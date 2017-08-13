@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.yixun.pettyloan.R;
+import com.yixun.pettyloan.ui.LoginActivity;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 
 import butterknife.BindView;
@@ -72,8 +73,8 @@ public class LoginFragment extends BaseSupportFragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((LoginActivity)getActivity()).finish();
                 pop();
-                getActivity().finish();
             }
         });
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
