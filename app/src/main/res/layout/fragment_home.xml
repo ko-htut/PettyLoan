@@ -16,11 +16,11 @@
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
             app:collapsedTitleGravity="center"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="24dp"
             app:expandedTitleMarginStart="24dp"
-            app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Medium"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -39,6 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginTop="5dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
 
@@ -47,13 +49,20 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_home_feed"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:descendantFocusability="blocksDescendants"
-        android:background="@color/bg_gray_light"
-        app:layoutManager="LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_home_feed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray_light"
+            android:descendantFocusability="blocksDescendants"
+            app:layoutManager="LinearLayoutManager" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.design.widget.CoordinatorLayout>

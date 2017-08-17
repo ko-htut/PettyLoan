@@ -3,9 +3,11 @@ package com.yixun.pettyloan.ui.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -22,10 +24,12 @@ import com.yixun.pettyloan.entity.BannerFeed;
 import com.yixun.pettyloan.entity.BannerItemViewBinder;
 import com.yixun.pettyloan.entity.Category;
 import com.yixun.pettyloan.entity.CategoryItemViewBinder;
-import com.yixun.pettyloan.entity.Feature;
-import com.yixun.pettyloan.entity.FeatureItemViewBinder;
+import com.yixun.pettyloan.entity.FeatureOne;
+import com.yixun.pettyloan.entity.FeatureOneItemViewBinder;
+import com.yixun.pettyloan.entity.FeatureTwo;
+import com.yixun.pettyloan.entity.FeatureTwoItemViewBinder;
 import com.yixun.pettyloan.entity.ProductItemViewBinder;
-import com.yixun.pettyloan.mode.GoodsMode;
+import com.yixun.pettyloan.entity.Product;
 import com.yixun.pettyloan.ui.DetailActivity;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.youth.banner.Banner;
@@ -36,6 +40,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public class HomeFragment extends BaseSupportFragment {
     private String mTitle;
@@ -45,6 +54,8 @@ public class HomeFragment extends BaseSupportFragment {
     Banner mTopBanner;
     @BindView(R.id.rv_home_feed)
     RecyclerView mFeedRecycler;
+    @BindView(R.id.srl_refresh)
+    SwipeRefreshLayout mRefresh;
 
     MultiTypeAdapter mFeedAdapter;
     List<Object> items;
@@ -73,8 +84,9 @@ public class HomeFragment extends BaseSupportFragment {
     @Override
     protected void initView() {
         TranslucentBarManager translucentBarManager = new TranslucentBarManager(this);
-        translucentBarManager.translucent(this, rootView, R.color.text_blue);
+        translucentBarManager.translucent(this, rootView, R.color.blue_medium);
         bindBanner();
+        configRefresh();
     }
 
     @Override
@@ -85,28 +97,29 @@ public class HomeFragment extends BaseSupportFragment {
     private void bindFeeds() {
         mFeedAdapter = new MultiTypeAdapter();
         mFeedAdapter.register(Category.class, new CategoryItemViewBinder());
-        mFeedAdapter.register(GoodsMode.class, new ProductItemViewBinder());
-        mFeedAdapter.register(Feature.class, new FeatureItemViewBinder());
+        mFeedAdapter.register(Product.class, new ProductItemViewBinder(this));
+        mFeedAdapter.register(FeatureOne.class, new FeatureOneItemViewBinder());
+        mFeedAdapter.register(FeatureTwo.class, new FeatureTwoItemViewBinder(context));
         mFeedAdapter.register(Advertisement.class, new AdvertisementItemViewBinder());
         mFeedAdapter.register(BannerFeed.class, new BannerItemViewBinder());
         mFeedRecycler.setAdapter(mFeedAdapter);
         items = new ArrayList<>();
         items.add(new Category("投资理财"));
-        items.add(new GoodsMode("产品１", "10", "% + 0.32%"));
-        items.add(new GoodsMode("产品2", "20", "% + 0.32%"));
-        items.add(new GoodsMode("产品3", "20", "% + 0.32%"));
+        items.add(new Product("产品１", "10", "% + 0.32%"));
+        items.add(new Product("产品2", "20", "% + 0.32%"));
+        items.add(new Product("产品3", "20", "% + 0.32%"));
         items.add(new Category("实物理财"));
-        items.add(new GoodsMode("产品１", "30", "% + 0.32%"));
-        items.add(new GoodsMode("产品2", "40", "% + 0.32%"));
-        items.add(new GoodsMode("产品3", "50", "% + 0.32%"));
-        items.add(new Feature("黄金商城", "", R.drawable.icon_gold,
-                "珠宝商城", "", R.drawable.icon_jewelry));
+        items.add(new Product("产品１", "30", "% + 0.32%"));
+        items.add(new Product("产品2", "40", "% + 0.32%"));
+        items.add(new Product("产品3", "50", "% + 0.32%"));
+        items.add(new FeatureOne("黄金商城", R.drawable.icon_gold,
+                "珠宝商城", R.drawable.icon_jewelry));
         items.add(new Advertisement("小额贷并购幻视信贷工厂"));
         List<Object> urlList = new ArrayList<>();
         urlList.add(R.drawable.pic_banner1);
         urlList.add(R.drawable.pic_banner2);
         items.add(new BannerFeed(urlList));
-        items.add(new Feature("关于小额贷", "了解历史及最新动态", R.drawable.icon_loan,
+        items.add(new FeatureTwo("关于小额贷", "了解历史及最新动态", R.drawable.icon_loan,
                 "多重保障", "全方位安全保障", R.drawable.icon_safeguard));
         mFeedAdapter.setItems(items);
         mFeedAdapter.notifyDataSetChanged();
@@ -151,9 +164,37 @@ public class HomeFragment extends BaseSupportFragment {
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
                 intent.putExtra("img", String.valueOf(urlList.get(position)));
                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
-                        mTopBanner,getString(R.string.transition_banner));
+                        mTopBanner, getString(R.string.transition_banner));
                 ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
             }
         });
+    }
+
+    private void configRefresh() {
+        mRefresh.setColorSchemeColors(getResources().getColor(R.color.blue_dark));
+        mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                updateRefreshStatus();
+            }
+        });
+    }
+
+    public void updateRefreshStatus() {
+        Observable.create(new Observable.OnSubscribe<String>() {
+
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                SystemClock.sleep(1000);
+                subscriber.onNext("refresh");
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        mRefresh.setRefreshing(false);
+                    }
+                });
     }
 }

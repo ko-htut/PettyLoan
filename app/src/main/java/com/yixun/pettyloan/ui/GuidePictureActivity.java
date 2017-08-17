@@ -20,7 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
-import com.yixun.pettyloan.MainActivity;
 import com.yixun.pettyloan.R;
 
 import java.util.ArrayList;

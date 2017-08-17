@@ -1,16 +1,14 @@
 package com.yixun.pettyloan.ui;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.yixun.pettyloan.BaseActivity;
-import com.yixun.pettyloan.MainActivity;
 import com.yixun.pettyloan.R;
+import com.yixun.pettyloan.ui.base.BaseSupportActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -18,7 +16,7 @@ import butterknife.OnClick;
 /**
  * Created by zongkaili on 2017/3/21.
  */
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseSupportActivity {
     private static final int UPDATE_COUNTDOWN = 0;
     @BindView(R.id.tv_splash_skip)
     TextView mTvKip;
@@ -38,7 +36,7 @@ public class SplashActivity extends BaseActivity {
                     mTvKip.setText(getResources().getString(R.string.splash_skip, String.valueOf(time)));
                     if (time == 0) {
 //                    if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false))
-//                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+//                        startActivity(new Intent(SplashActivity.this, HomeActivity.class));
 //                else
                         startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
                         finish();
@@ -52,12 +50,19 @@ public class SplashActivity extends BaseActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+    public int getLayoutResource() {
+        return R.layout.activity_splash;
+    }
+
+    @Override
+    public void initPresenter() {
+
+    }
+
+    @Override
+    public void initView() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         initCountDown();
     }
 

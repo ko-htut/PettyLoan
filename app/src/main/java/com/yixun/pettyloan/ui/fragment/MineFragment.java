@@ -7,13 +7,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import com.kelin.translucentbar.library.TranslucentBarManager;
 import com.yixun.pettyloan.R;
+import com.yixun.pettyloan.event.StartBrotherEvent;
 import com.yixun.pettyloan.ui.LoginActivity;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
-
+import org.greenrobot.eventbus.EventBus;
 import butterknife.BindView;
+import butterknife.OnClick;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -46,7 +47,7 @@ public class MineFragment extends BaseSupportFragment {
     @Override
     protected void initView() {
         TranslucentBarManager translucentBarManager = new TranslucentBarManager(this);
-        translucentBarManager.translucent(this, rootView, R.color.text_blue);
+        translucentBarManager.translucent(this, rootView, R.color.blue_medium);
 
         initToolbar();
 
@@ -106,5 +107,19 @@ public class MineFragment extends BaseSupportFragment {
                         mRefresh.setRefreshing(false);
                     }
                 });
+    }
+
+    @OnClick({R.id.ll_total_assets,R.id.tv_recharge})
+    public void onClick(View view){
+         switch (view.getId()){
+             case R.id.ll_total_assets:
+                 EventBus.getDefault().post(new StartBrotherEvent(TotalAssetsFragment.getInstance("总资产")));
+                 break;
+             case R.id.tv_recharge:
+                 Toast.makeText(context,"功能开发中．．．",Toast.LENGTH_SHORT).show();
+                 break;
+             default:
+                 break;
+         }
     }
 }

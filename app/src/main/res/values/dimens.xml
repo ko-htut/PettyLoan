@@ -7,6 +7,14 @@
 
     <dimen name="page_margin">15dp</dimen>
 
+    <dimen name="text_drawable_padding">10dp</dimen>
+    <dimen name="detail_margin_horizontal">15dp</dimen>
+    <dimen name="detail_margin_horizontal_large">20dp</dimen>
+
+    <dimen name="detail_text_size_big">18sp</dimen>
+    <dimen name="detail_text_size_large">13sp</dimen>
+    <dimen name="detail_text_size_small">12sp</dimen>
+
     <dimen name="text_size_20">20sp</dimen>
     <dimen name="text_size_18">18sp</dimen>
     <dimen name="text_size_16">16sp</dimen>

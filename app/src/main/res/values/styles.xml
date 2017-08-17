@@ -25,7 +25,12 @@
     <!-- ToolBar menu style -->
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="actionMenuTextColor">@color/text_blue</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Toolbar_TextAppearance_White">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="BlueTag">

@@ -4,6 +4,8 @@
     <string name="splash_skip">跳过 %1$ss</string>
     <string name="guide_skip">跳过</string>
     <string name="splash_start">开始体验</string>
+    <string name="back">返回</string>
+    <string name="press_again_exit">再按一次退出</string>
 
 
     <string-array name="tab_home_titles">
@@ -11,6 +13,14 @@
         <item>投资理财</item>
         <item>实物理财</item>
         <item>我的财富</item>
+    </string-array>
+
+    <string-array name="tab_about_titles">
+        <item>公司简介</item>
+        <item>管理团队</item>
+        <item>战略合作</item>
+        <item>媒体报道</item>
+        <item>行业动态</item>
     </string-array>
 
     <!--login page-->
@@ -52,6 +62,8 @@
 
     <!--invest-->
     <string name="invest_title">投资理财</string>
+    <!--entity-->
+    <string name="entity_title">实物理财</string>
 
     <!-- card -->
     <string name="card_invest">立即投资</string>
@@ -60,6 +72,45 @@
     <string name="card_tag_new">新手必投</string>
     <string name="card_tag_share">季度分红</string>
     <string name="card_tag_safe">多重保障</string>
+
+    <!--about-->
+    <string name="about_pettyloan">关于小额贷</string>
+
+    <!--product detail-->
+    <string name="detail_tip_middle">历史年化收益率</string>
+    <string name="detail_tip_bottom_1">随时可退</string>
+    <string name="detail_tip_bottom_2">满30天免手续费</string>
+    <string name="detail_item_title_1">开放额度</string>
+    <string name="detail_item_title_２">收益计算</string>
+    <string name="detail_item_title_３">历史年化收益率图</string>
+    <string name="detail_item_title_４">交易规则</string>
+    <string name="detail_item_title_５">投团数据</string>
+    <string name="detail_item_title_６">常见问题</string>
+    <string name="detail_item_title_７">了解详情</string>
+    <string name="detail_service_charge">手续费</string>
+    <string name="detail_service_charge_tip">投资未满30天(含30天)转让债权，手续费为转让金额的2%.</string>
+    <string name="detail_bottom_tip">%1$s张优惠券可使用</string>
+    <string name="detail_invest_earning">投资%1$s天，收益%1$s元</string>
+    <string name="detail_item_tip">投资当日开始计息，次日到帐，每日如此直至完成债权转让退出．\n每日到帐收益会因项目实际还款情况浮动．</string>
+    <string name="detail_title_caculator_title">收益计算器</string>
+    <string name="detail_title_caculator_invest_acounts">投资金额</string>
+    <string name="detail_title_caculator_hold_time">持有时间</string>
+    <string name="detail_title_caculator_hold_time_switch">持有时间</string>
+    <string name="detail_title_caculator_hold_days">持有天数</string>
+    <string name="detail_title_caculator_out_fee">退团手续费</string>
+    <string name="detail_title_caculator_prospective_earning">预期收益</string>
+
+    <!--total assets-->
+    <string name="assets_title_account_overview">账户总览</string>
+    <string name="assets_total_account">月末总资产(元)</string>
+    <string name="assets_month_earning">本月收益(元)</string>
+    <string name="assets_assets_distribution">资产分布(元)</string>
+    <string name="assets_available_balance">可用余额</string>
+    <string name="assets_transit_money">在途资金</string>
+    <string name="assets_hold_money">持有本金</string>
+    <string name="assets_title_hold_money">持有本金(元)</string>
+    <string name="assets_title_month_account_overview">本月交易总览</string>
+
 
      <string name="large_text">
          习近平对四川九寨沟7.0级地震作出重要指示\n\n

@@ -12,7 +12,8 @@ import com.kelin.translucentbar.library.TranslucentBarManager;
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.HomePagerAdapter;
 import com.yixun.pettyloan.ui.base.BaseSupportActivity;
-import com.yixun.pettyloan.ui.fragment.EntityFragment;
+import com.yixun.pettyloan.ui.fragment.MineFragment;
+import com.yixun.pettyloan.ui.fragment.RegisterSuccessFragment;
 import com.yixun.tablayout.listener.CustomTabEntity;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class DetailActivity extends BaseSupportActivity {
     View rootView;
     @BindView(R.id.ivImage)
     ImageView mImg;
-    @BindView(R.id.sliding_tabs)
+    @BindView(R.id.tab_layout)
     TabLayout mTabs;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -85,10 +86,10 @@ public class DetailActivity extends BaseSupportActivity {
 
     private void setupViewPager() {
         mTitles = getResources().getStringArray(R.array.tab_home_titles);
-        mFragments.add(EntityFragment.getInstance("ViewPager " + mTitles[0]));
-        mFragments.add(EntityFragment.getInstance("ViewPager " + mTitles[1]));
-        mFragments.add(EntityFragment.getInstance("ViewPager " + mTitles[2]));
-        mFragments.add(EntityFragment.getInstance("ViewPager " + mTitles[3]));
+        mFragments.add(RegisterSuccessFragment.newInstance());
+        mFragments.add(MineFragment.getInstance("ViewPager " + mTitles[1]));
+        mFragments.add(MineFragment.getInstance("ViewPager " + mTitles[2]));
+        mFragments.add(MineFragment.getInstance("ViewPager " + mTitles[3]));
         HomePagerAdapter adapter = new HomePagerAdapter(getSupportFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
     }

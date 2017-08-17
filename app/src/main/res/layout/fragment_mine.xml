@@ -1,9 +1,9 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                 xmlns:tools="http://schemas.android.com/tools"
-                                                 android:id="@+id/rootView"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -34,10 +34,9 @@
                     android:background="@drawable/bg_graddient_blue"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
-                    android:transitionName="@string/transition_banner"
                     app:layout_collapseMode="parallax"
                     app:layout_collapseParallaxMultiplier="0.7"
-                    tools:targetApi="lollipop"/>
+                    tools:targetApi="lollipop" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -49,7 +48,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:text="今日暂无收益，别让你的钱睡大觉"/>
+                        android:text="今日暂无收益，别让你的钱睡大觉" />
 
                     <RelativeLayout
                         android:id="@+id/rl_splash_start"
@@ -67,7 +66,7 @@
                             android:gravity="center"
                             android:text="@string/to_invest"
                             android:textColor="@color/white"
-                            android:textSize="18sp"/>
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </RelativeLayout>
             </FrameLayout>
@@ -78,10 +77,12 @@
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginTop="5dp"
                 android:titleMarginStart="@dimen/small_space"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/icon_mine_avatar"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:title="13811703738"/>
+                app:title="13811703738" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -105,17 +106,120 @@
                     android:id="@+id/wave_view"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:background="@color/blue_light"/>
-
-                <!--<TextView-->
-                <!--android:id="@+id/textView"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_margin="16dp"-->
-                <!--android:text="@string/large_text"-->
-                <!--android:textSize="15sp"/>-->
+                    android:background="@color/blue_light" />
 
                 <!-- 下半部分 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/ll_total_assets"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="16dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/total_assets"
+                            android:textColor="@color/text_gray"
+                            android:textSize="@dimen/text_size_13" />
+
+                        <TextView
+                            android:id="@+id/tv_total_assets"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="16dp"
+                            android:gravity="center_vertical"
+                            android:text="100.00"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/text_size_13" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_triangle" />
+                    </LinearLayout>
+
+                    <include layout="@layout/line_h_mine_space" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="16dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/available_assets"
+                            android:textColor="@color/text_gray"
+                            android:textSize="@dimen/text_size_13" />
+
+                        <TextView
+                            android:id="@+id/tv_available_assets"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="16dp"
+                            android:gravity="center_vertical"
+                            android:text="100.00"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/text_size_13" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tv_withdraw"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="@string/withdraw"
+                            android:textColor="@color/text_black"
+                            android:textSize="@dimen/text_size_13" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/text_gray" />
+
+                        <TextView
+                            android:id="@+id/tv_recharge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/recharge"
+                            android:textColor="@color/text_blue"
+                            android:textSize="@dimen/text_size_13" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <include layout="@layout/line_h_mine" />
+
+                <include layout="@layout/line_h_mine_separate" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -131,74 +235,33 @@
                         android:padding="16dp">
 
                         <TextView
+                            android:id="@+id/tvContribution"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="16dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:drawableLeft="@drawable/icon_account_bill"
+                            android:drawablePadding="6dp"
                             android:gravity="center_vertical"
-                            android:text="@string/total_assets"/>
-
-                        <TextView
-                            android:id="@+id/tv_total_assets"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="16dp"
-                            android:gravity="center_vertical"
-                            android:text="100.00"/>
+                            android:text="@string/my_account_bill" />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/tvRecharge"
+                            android:id="@+id/tv_account_bill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="6dp"
-                            android:background="@drawable/follow_login_btn_bg_selector"
-                            android:clickable="true"
-                            android:paddingBottom="4dp"
-                            android:paddingTop="4dp"
-                            android:text="@string/to_invest"
-                            android:textColor="@color/bg_red_color"/>
+                            android:drawablePadding="6dp"
+                            android:drawableRight="@drawable/ic_triangle"
+                            android:gravity="center_vertical"
+                            android:text="7月账单"
+                            android:textColor="@color/text_blue"
+                            android:textSize="@dimen/text_size_13" />
                     </LinearLayout>
 
-                    <include layout="@layout/line_h_mine_space"/>
-
-                    <TextView
-                        android:id="@+id/tvStarLight"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawablePadding="6dp"
-                        android:drawableRight="@drawable/ic_triangle"
-                        android:gravity="center_vertical"
-                        android:padding="16dp"
-                        android:text="@string/available_assets"/>
-                </LinearLayout>
-
-                <include layout="@layout/line_h_mine"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/white"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvContribution"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawableLeft="@drawable/icon_account_bill"
-                        android:drawablePadding="6dp"
-                        android:drawableRight="@drawable/ic_triangle"
-                        android:gravity="center_vertical"
-                        android:padding="16dp"
-                        android:text="@string/my_account_bill"/>
-
-                    <include layout="@layout/line_h_mine_space"/>
+                    <include layout="@layout/line_h_mine_space" />
 
                     <TextView
                         android:id="@+id/tvWatch"
@@ -210,76 +273,83 @@
                         android:drawableRight="@drawable/ic_triangle"
                         android:gravity="center_vertical"
                         android:padding="16dp"
-                        android:text="@string/record"/>
+                        android:text="@string/record" />
 
-                    <include layout="@layout/line_h_mine_space"/>
+                    <include layout="@layout/line_h_mine" />
 
-                    <TextView
-                        android:id="@+id/tvLevel"
+                    <include layout="@layout/line_h_mine_separate" />
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawableLeft="@drawable/icon_invite"
-                        android:drawablePadding="6dp"
-                        android:drawableRight="@drawable/ic_triangle"
-                        android:gravity="center_vertical"
-                        android:padding="16dp"
-                        android:text="@string/my_invitation"/>
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical">
 
-                    <include layout="@layout/line_h_mine_space"/>
+                        <TextView
+                            android:id="@+id/tvLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:drawableLeft="@drawable/icon_invite"
+                            android:drawablePadding="6dp"
+                            android:drawableRight="@drawable/ic_triangle"
+                            android:gravity="center_vertical"
+                            android:padding="16dp"
+                            android:text="@string/my_invitation" />
 
-                    <TextView
-                        android:id="@+id/tvTask"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawableLeft="@drawable/icon_credits"
-                        android:drawablePadding="6dp"
-                        android:drawableRight="@drawable/ic_triangle"
-                        android:gravity="center_vertical"
-                        android:padding="16dp"
-                        android:text="@string/my_credits"/>
-                </LinearLayout>
+                        <include layout="@layout/line_h_mine_space" />
 
-                <include layout="@layout/line_h_mine"/>
+                        <TextView
+                            android:id="@+id/tvTask"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:drawableLeft="@drawable/icon_credits"
+                            android:drawablePadding="6dp"
+                            android:drawableRight="@drawable/ic_triangle"
+                            android:gravity="center_vertical"
+                            android:padding="16dp"
+                            android:text="@string/my_credits" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                        <include layout="@layout/line_h_mine_space" />
 
-                    <TextView
-                        android:id="@+id/tvGame"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawableLeft="@drawable/icon_coupon"
-                        android:drawablePadding="6dp"
-                        android:drawableRight="@drawable/ic_triangle"
-                        android:gravity="center_vertical"
-                        android:padding="16dp"
-                        android:text="@string/coupon"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="16dp">
 
-                    <include layout="@layout/line_h_mine_space"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:drawableLeft="@drawable/icon_coupon"
+                                android:drawablePadding="6dp"
+                                android:gravity="center_vertical"
+                                android:text="@string/coupon" />
 
-                    <TextView
-                        android:id="@+id/tvSetting"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:drawableLeft="@drawable/icon_coupon"
-                        android:drawablePadding="6dp"
-                        android:drawableRight="@drawable/ic_triangle"
-                        android:gravity="center_vertical"
-                        android:padding="16dp"
-                        android:text="@string/coupon"/>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tv_coupon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="6dp"
+                                android:drawableRight="@drawable/ic_triangle"
+                                android:gravity="center_vertical"
+                                android:text="1张"
+                                android:textColor="@color/text_red"
+                                android:textSize="@dimen/text_size_13" />
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
-
 </android.support.design.widget.CoordinatorLayout>
