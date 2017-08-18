@@ -1,7 +1,6 @@
 package com.yixun.pettyloan.ui.fragment;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
@@ -19,6 +18,7 @@ import com.yixun.pettyloan.adapter.multitype.MultiTypeAdapter;
 import com.yixun.pettyloan.entity.Product;
 import com.yixun.pettyloan.entity.ProductItemViewBinder;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
+import com.yixun.pettyloan.ui.widge.SpaceDecoration;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoaderInterface;
 
@@ -125,27 +125,6 @@ public class InvestFragment extends BaseSupportFragment {
         items.add(new Product("产品3", "50", "% + 0.32%"));
         mFeedAdapter.setItems(items);
         mFeedAdapter.notifyDataSetChanged();
-    }
-
-    private class SpaceDecoration extends RecyclerView.ItemDecoration {
-        private int mSpace;
-
-        SpaceDecoration(int space) {
-            mSpace = space;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            outRect.left = mSpace;
-            outRect.right = mSpace;
-            outRect.bottom = mSpace;
-
-            if (parent.getChildLayoutPosition(view) == 0) {
-                outRect.top = mSpace;
-            } else {
-                outRect.top = 0;
-            }
-        }
     }
 
     private void configRefresh() {

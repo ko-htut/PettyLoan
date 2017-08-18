@@ -1,4 +1,4 @@
-package com.yixun.pettyloan.ui;
+package com.yixun.pettyloan.ui.fragment;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,8 +9,7 @@ import android.view.View;
 import com.kelin.translucentbar.library.TranslucentBarManager;
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.HomePagerAdapter;
-import com.yixun.pettyloan.ui.base.BaseSupportActivity;
-import com.yixun.pettyloan.ui.fragment.SimpleCardFragment;
+import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.yixun.tablayout.listener.CustomTabEntity;
 
 import java.util.ArrayList;
@@ -18,11 +17,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * Created by zongkaili on 17-8-14.
- */
-
-public class AboutActivity extends BaseSupportActivity {
+public class AboutFragment extends BaseSupportFragment {
     @BindView(R.id.tab_layout)
     TabLayout mTabs;
     @BindView(R.id.toolbar)
@@ -34,8 +29,13 @@ public class AboutActivity extends BaseSupportActivity {
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private String[] mTitles = new String[4];
 
+    public static AboutFragment getInstance() {
+        AboutFragment sf = new AboutFragment();
+        return sf;
+    }
+
     @Override
-    public int getLayoutResource() {
+    protected int getLayoutResource() {
         return R.layout.fragment_about;
     }
 
@@ -45,22 +45,22 @@ public class AboutActivity extends BaseSupportActivity {
     }
 
     @Override
-    public void initView() {
+    protected void initView() {
         TranslucentBarManager translucentBarManager = new TranslucentBarManager(this);
-        translucentBarManager.translucent(this, R.color.colorPrimary);
-        initToolBar();
+        translucentBarManager.translucent(getActivity(), R.color.colorPrimary);
+        initToolbar();
         bindTabVp();
     }
 
-    private void initToolBar() {
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeButtonEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    @Override
+    protected void initData() {
+    }
+
+    private void initToolbar() {
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                pop();
             }
         });
     }
@@ -78,12 +78,13 @@ public class AboutActivity extends BaseSupportActivity {
         for (int i = 0; i < mTitles.length; i++) {
             mFragments.add(SimpleCardFragment.getInstance("ViewPager " + mTitles[i]));
         }
-        HomePagerAdapter adapter = new HomePagerAdapter(getSupportFragmentManager(), mFragments, mTitles);
+        HomePagerAdapter adapter = new HomePagerAdapter(getActivity().getSupportFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
     }
 
     @OnClick(R.id.back)
     public void clickBack(){
-        finish();
+        pop();
     }
+
 }

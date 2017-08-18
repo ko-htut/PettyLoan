@@ -37,7 +37,7 @@ public class ProductDetailFragment extends BaseSupportFragment {
 
         initToolbar();
 
-        loadRootFragment(R.id.fl_container,ProductDetailContentFragment.getInstance());
+        loadRootFragment(R.id.fl_container,ProductDetailContentFragment.getInstance(mTitle));
     }
 
     @Override

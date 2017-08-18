@@ -107,6 +107,7 @@
 
 
             <TextView
+                android:id="@+id/tv_see_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
@@ -125,6 +126,7 @@
             <include layout="@layout/line_h_mine_separate" />
 
             <TextView
+                android:id="@+id/tv_common_problems"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"

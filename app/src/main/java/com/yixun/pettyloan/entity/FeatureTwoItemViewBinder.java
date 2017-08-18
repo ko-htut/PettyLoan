@@ -27,13 +27,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.ItemViewBinder;
-import com.yixun.pettyloan.ui.AboutActivity;
+import com.yixun.pettyloan.event.StartBrotherEvent;
+import com.yixun.pettyloan.ui.fragment.AboutFragment;
 
-import butterknife.OnClick;
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by zongkaili on 17-8-11.
@@ -108,7 +108,8 @@ public class FeatureTwoItemViewBinder extends ItemViewBinder<FeatureTwo, Feature
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.card_feature_one:
-                    context.startActivity(new Intent(context, AboutActivity.class));
+                    EventBus.getDefault().post(new StartBrotherEvent(AboutFragment.getInstance()));
+//                    context.startActivity(new Intent(context, AboutActivity.class));
                     break;
                 case R.id.card_feature_two:
                     break;

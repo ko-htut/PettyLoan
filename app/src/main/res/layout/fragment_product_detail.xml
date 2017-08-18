@@ -16,7 +16,6 @@
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:collapsedTitleGravity="center"
             app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Medium"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginEnd="24dp"

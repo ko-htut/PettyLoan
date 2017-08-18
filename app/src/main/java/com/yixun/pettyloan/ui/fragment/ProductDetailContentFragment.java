@@ -6,7 +6,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yixun.pettyloan.R;
+import com.yixun.pettyloan.event.StartBrotherEvent;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -17,13 +20,15 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public class ProductDetailContentFragment extends BaseSupportFragment {
+    private String mTitle;
     @BindView(R.id.srl_refresh)
     SwipeRefreshLayout mRefresh;
     @BindView(R.id.tv_earning_title)
     TextView mTvCalculator;
 
-    public static ProductDetailContentFragment getInstance() {
+    public static ProductDetailContentFragment getInstance(String title) {
         ProductDetailContentFragment sf = new ProductDetailContentFragment();
+        sf.mTitle = title;
         return sf;
     }
 
@@ -74,11 +79,17 @@ public class ProductDetailContentFragment extends BaseSupportFragment {
                 });
     }
 
-    @OnClick(R.id.tv_earning_title)
+    @OnClick({R.id.tv_earning_title,R.id.tv_see_detail,R.id.tv_common_problems})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.tv_earning_title:
                 start(ProductDetailCalculatorFragment.getInstance());
+                break;
+            case R.id.tv_see_detail:
+                EventBus.getDefault().post(new StartBrotherEvent(ProductIntroduceFragment.getInstance(mTitle)));
+                break;
+            case R.id.tv_common_problems:
+                EventBus.getDefault().post(new StartBrotherEvent(CommonProblemsFragment.getInstance(mTitle)));
                 break;
             default:
                 break;
