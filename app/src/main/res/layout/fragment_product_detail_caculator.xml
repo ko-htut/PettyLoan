@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/detail_margin_horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/icon_calculator_gray"
+            android:drawablePadding="10dp"
+            android:text="@string/detail_title_caculator_title"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/detail_text_size_large" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_close_gray" />
+    </LinearLayout>
+
+    <include layout="@layout/line_h_space_margin_lr" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/detail_margin_horizontal_large"
+        android:layout_marginRight="@dimen/detail_margin_horizontal_large"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_title_caculator_invest_acounts"
+            android:textColor="@color/bg_gray"
+            android:textSize="@dimen/detail_text_size_small" />
+
+        <com.yixun.pettyloan.ui.widge.ClearEditText
+            android:id="@+id/et_invest_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/detail_margin_horizontal_large"
+            android:hint="10000"
+            android:textSize="16sp"
+            app:iconClear="@drawable/icon_close_gray" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/detail_margin_horizontal_large"
+        android:layout_marginRight="@dimen/detail_margin_horizontal_large"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_title_caculator_hold_time"
+            android:textColor="@color/bg_gray"
+            android:textSize="@dimen/detail_text_size_small" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/detail_margin_horizontal_large"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_minus" />
+
+        <com.yixun.pettyloan.ui.widge.ClearEditText
+            android:id="@+id/et_hold_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="10000"
+            android:textSize="16sp"
+            app:iconClear="@drawable/icon_close_gray" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/detail_margin_horizontal_large"
+        android:layout_marginRight="@dimen/detail_margin_horizontal_large"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/detail_title_caculator_hold_time_switch"
+            android:textColor="@color/bg_gray"
+            android:textSize="@dimen/detail_text_size_small" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Switch
+            style="@style/Widget.AppCompat.CompoundButton.Switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:checked="true" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dotted_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_margin="@dimen/detail_margin_horizontal"
+        android:background="@drawable/line_dotted_shape"
+        android:layerType="software" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/detail_margin_horizontal"
+        android:layout_marginRight="@dimen/detail_margin_horizontal"
+        android:layout_marginTop="@dimen/detail_margin_horizontal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1.5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/detail_title_caculator_hold_days"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/detail_text_size_large" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/detail_margin_horizontal"
+            android:gravity="center_vertical"
+            android:maxEms="10"
+            android:maxLines="1"
+            android:text="360天"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/detail_text_size_large" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/detail_margin_horizontal"
+        android:layout_marginRight="@dimen/detail_margin_horizontal"
+        android:layout_marginTop="@dimen/detail_margin_horizontal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1.5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/detail_title_caculator_out_fee"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/detail_text_size_large" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/detail_margin_horizontal"
+            android:gravity="center_vertical"
+            android:maxEms="10"
+            android:maxLines="1"
+            android:text="0.00元"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/detail_text_size_large" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/detail_margin_horizontal"
+        android:layout_marginRight="@dimen/detail_margin_horizontal"
+        android:layout_marginTop="@dimen/detail_margin_horizontal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/detail_title_caculator_prospective_earning"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/detail_text_size_large" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/detail_margin_horizontal"
+            android:gravity="center_vertical"
+            android:maxEms="10"
+            android:maxLines="1"
+            android:text="888.88元"
+            android:textColor="@color/text_orange"
+            android:textSize="@dimen/detail_text_size_big" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/detail_margin_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/assets_month_earning"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/detail_text_size_large" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/detail_margin_horizontal"
+            android:gravity="center_vertical"
+            android:maxEms="10"
+            android:maxLines="1"
+            android:text="175.58元"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/detail_text_size_large" />
+
+    </LinearLayout>
+
+    <include layout="@layout/line_h_mine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_jiejiefa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/detail_margin_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="节节发"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/detail_text_size_large" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/detail_margin_horizontal"
+                android:gravity="center_vertical"
+                android:maxEms="10"
+                android:maxLines="1"
+                android:text="105.12"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/detail_text_size_large" />
+
+            <ProgressBar
+                android:id="@+id/progressbar_jiejiefa"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:progress="55"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_jiejiefa"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginRight="@dimen/detail_margin_horizontal"
+            android:layout_marginLeft="@dimen/detail_margin_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="季季翻"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/detail_text_size_large" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/detail_margin_horizontal"
+                android:gravity="center_vertical"
+                android:maxEms="10"
+                android:maxLines="1"
+                android:text="70.46"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/detail_text_size_large" />
+
+            <ProgressBar
+                android:id="@+id/progressbar_jijifan"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:progress="25"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="@dimen/detail_margin_horizontal"
+        android:layout_marginBottom="@dimen/detail_margin_horizontal"
+        android:layout_gravity="center"
+        android:drawableRight="@drawable/icon_down"
+        android:drawablePadding="5dp"
+        android:text="近半年累计收益"
+        android:textColor="@color/text_gray"
+        android:textSize="@dimen/detail_text_size_large" />
+
+</LinearLayout>

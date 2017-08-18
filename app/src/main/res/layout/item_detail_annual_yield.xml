@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_annual_yield_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/detail_margin_horizontal"
+        android:background="?android:attr/selectableItemBackground"
+        android:drawableRight="@drawable/icon_calculator"
+        android:gravity="center_vertical"
+        android:text="@string/detail_item_title_３"
+        android:textSize="@dimen/detail_text_size_large" />
+
+    <ImageView
+        android:id="@+id/iv_annual_yield"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_below="@id/tv_annual_yield_title"
+        android:scaleType="fitXY"
+        android:src="@drawable/pic_annual_yield" />
+
+    <TextView
+        android:id="@+id/tv_annual_yield_toast_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_annual_yield"
+        android:layout_margin="@dimen/detail_margin_horizontal"
+        android:text="@string/detail_item_tip"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/text_size_12" />
+
+</RelativeLayout>

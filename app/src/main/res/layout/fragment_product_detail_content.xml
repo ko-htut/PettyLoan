@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/srl_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/icon_notification"
+                    android:maxLines="1"
+                    android:text="北京张先生，投资185000.00元"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/detail_text_size_small" />
+
+            </RelativeLayout>
+
+            <include layout="@layout/line_h_separate" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/detail_margin_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/detail_item_title_1"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/detail_text_size_large" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/detail_margin_horizontal"
+                    android:gravity="center_vertical"
+                    android:maxEms="10"
+                    android:maxLines="1"
+                    android:text="8.999.564.48元"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/detail_text_size_large" />
+
+            </LinearLayout>
+
+            <include layout="@layout/line_h_separate" />
+
+            <include layout="@layout/item_detail_earning" />
+
+            <include layout="@layout/line_h_separate" />
+
+            <include layout="@layout/item_detail_annual_yield" />
+
+            <include layout="@layout/line_h_separate" />
+
+            <include layout="@layout/item_detail_rules" />
+
+            <include layout="@layout/line_h_mine_space" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/detail_margin_horizontal"
+                android:layout_marginTop="@dimen/detail_margin_horizontal"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:text="@string/detail_service_charge"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/detail_text_size_small" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="@dimen/detail_margin_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:text="@string/detail_service_charge_tip"
+                android:textSize="@dimen/detail_text_size_small" />
+
+            <include layout="@layout/line_h_mine_space" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/icon_more"
+                android:padding="@dimen/detail_margin_horizontal"
+                android:text="@string/detail_item_title_７"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/detail_text_size_large" />
+
+            <include layout="@layout/line_h_mine_separate" />
+
+            <include layout="@layout/item_detail_rutuan_data" />
+
+            <include layout="@layout/line_h_mine_separate" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/icon_more"
+                android:padding="@dimen/detail_margin_horizontal"
+                android:text="@string/detail_item_title_６"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/detail_text_size_large" />
+
+            <include layout="@layout/line_h_separate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/detail_margin_horizontal"
+                android:text="@string/detail_bottom_tip"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/detail_text_size_small" />
+
+            <TextView
+                android:id="@+id/tv_card_invest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/bg_btn_selecter_blue_solid"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/card_invest"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

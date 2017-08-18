@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:padding="@dimen/detail_margin_horizontal"
+        android:text="@string/detail_item_title_４"
+        android:textSize="@dimen/detail_text_size_large" />
+
+    <include layout="@layout/line_h_mine_space" />
+
+    <ImageView
+        android:id="@+id/iv_transaction_rule"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/tv_annual_yield_title"
+        android:scaleType="center"
+        android:src="@drawable/pic_rule1" />
+
+</LinearLayout>
