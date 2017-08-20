@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/detail_title_caculator_invest_acounts"
-            android:textColor="@color/bg_gray"
+            android:textColor="@color/bg_gray_dark"
             android:textSize="@dimen/detail_text_size_small" />
 
         <com.yixun.pettyloan.ui.widge.ClearEditText
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/detail_title_caculator_hold_time"
-            android:textColor="@color/bg_gray"
+            android:textColor="@color/bg_gray_dark"
             android:textSize="@dimen/detail_text_size_small" />
 
 
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/detail_title_caculator_hold_time_switch"
-            android:textColor="@color/bg_gray"
+            android:textColor="@color/bg_gray_dark"
             android:textSize="@dimen/detail_text_size_small" />
 
         <View

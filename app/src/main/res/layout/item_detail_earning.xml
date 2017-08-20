@@ -57,12 +57,16 @@
         android:padding="1dp">
 
         <TextView
+            android:id="@+id/tv_invest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/to_invest"
             android:textColor="@color/text_blue"
-            android:textSize="@dimen/detail_text_size_small" />
+            android:textSize="@dimen/detail_text_size_small"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
     </RelativeLayout>
 
 </RelativeLayout>

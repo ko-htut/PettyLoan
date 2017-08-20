@@ -6,8 +6,9 @@
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="bg_gray_light">#F5F7F6</color>
-    <color name="bg_gray">#A9A9A9</color>
+    <color name="bg_gray_light">#F6F8F7</color>
+    <color name="bg_gray_medium">#F7F9F8</color>
+    <color name="bg_gray_dark">#A9A9A9</color>
     <color name="transparent">#00000000</color>
     <color name="transparent_half">#0dffffff</color>
     <color name="eighty_per_black">#CD000000</color>

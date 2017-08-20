@@ -46,13 +46,13 @@
                     android:gravity="center_vertical"
                     android:text="@string/detail_item_title_1"
                     android:textColor="@color/text_black"
-                    android:textSize="@dimen/detail_text_size_large" />
+                    android:textSize="@dimen/detail_text_size_large"/>
 
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                     android:maxLines="1"
                     android:text="8.999.564.48元"
                     android:textColor="@color/text_black"
-                    android:textSize="@dimen/detail_text_size_large" />
+                    android:textSize="@dimen/detail_text_size_large"/>
 
             </LinearLayout>
 

@@ -111,6 +111,15 @@
     <string name="assets_title_hold_money">持有本金(元)</string>
     <string name="assets_title_month_account_overview">本月交易总览</string>
 
+    <!--pay page-->
+    <string name="pay_open_amount">开放额度</string>
+    <string name="pay_current_amount">当前额度余额</string>
+    <string name="pay_invest_amount">投资金额</string>
+    <string name="pay_sure">确认支付</string>
+    <string name="pay_sure_tip_check">我已同意以下内容，并同意加盖本人电子签章</string>
+    <string name="pay_sure_tip_detail">用户明确并同意其使用APP，手机APP网络服务所存在的风险将完全由其本人\n
+    承担；因其使用APP手机APP网络服务而产生的一切后果也由其本人承担，\n
+    APP手机APP对此不承担任何责任。</string>
 
      <string name="large_text">
          从供应链业务起家，第一款主打产品便是海尔体系内的供应链金融，\n
