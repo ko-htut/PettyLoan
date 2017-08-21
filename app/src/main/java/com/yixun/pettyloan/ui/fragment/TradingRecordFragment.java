@@ -1,16 +1,16 @@
-package com.yixun.pettyloan.ui;
+package com.yixun.pettyloan.ui.fragment;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.kelin.translucentbar.library.TranslucentBarManager;
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.HomePagerAdapter;
-import com.yixun.pettyloan.ui.base.BaseSupportActivity;
-import com.yixun.pettyloan.ui.fragment.SimpleCardFragment;
+import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.yixun.tablayout.listener.CustomTabEntity;
 
 import java.util.ArrayList;
@@ -18,15 +18,14 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * Created by zongkaili on 17-8-14.
- */
-
-public class AboutActivity extends BaseSupportActivity {
+public class TradingRecordFragment extends BaseSupportFragment {
+    private String mTitle;
     @BindView(R.id.tab_layout)
     TabLayout mTabs;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
+    @BindView(R.id.tv_title)
+    TextView mTvTitle;
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
 
@@ -34,9 +33,15 @@ public class AboutActivity extends BaseSupportActivity {
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private String[] mTitles = new String[4];
 
+    public static TradingRecordFragment getInstance(String title) {
+        TradingRecordFragment sf = new TradingRecordFragment();
+        sf.mTitle = title;
+        return sf;
+    }
+
     @Override
-    public int getLayoutResource() {
-        return R.layout.fragment_about;
+    protected int getLayoutResource() {
+        return R.layout.fragment_trading_record;
     }
 
     @Override
@@ -45,24 +50,19 @@ public class AboutActivity extends BaseSupportActivity {
     }
 
     @Override
-    public void initView() {
+    protected void initView() {
         TranslucentBarManager translucentBarManager = new TranslucentBarManager(this);
-        translucentBarManager.translucent(this, R.color.colorPrimary);
-        initToolBar();
+        translucentBarManager.translucent(getActivity(), R.color.colorPrimary);
+        initToolbar();
         bindTabVp();
     }
 
-    private void initToolBar() {
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setHomeButtonEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+    @Override
+    protected void initData() {
+    }
+
+    private void initToolbar() {
+        mTvTitle.setText(mTitle);
     }
 
     private void bindTabVp() {
@@ -74,16 +74,25 @@ public class AboutActivity extends BaseSupportActivity {
     }
 
     private void setupViewPager() {
-        mTitles = getResources().getStringArray(R.array.tab_about_titles);
+        mTitles = getResources().getStringArray(R.array.tab_trading_record_titles);
         for (int i = 0; i < mTitles.length; i++) {
-            mFragments.add(SimpleCardFragment.getInstance("ViewPager " + mTitles[i]));
+            mFragments.add(TradingRecordChildFragment.getInstance(mTitles[i]));
         }
-        HomePagerAdapter adapter = new HomePagerAdapter(getSupportFragmentManager(), mFragments, mTitles);
+        HomePagerAdapter adapter = new HomePagerAdapter(getActivity().getSupportFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
+        mViewPager.setOffscreenPageLimit(mTitles.length);
+        adapter.notifyDataSetChanged();
     }
 
-    @OnClick(R.id.back)
-    public void clickBack(){
-        finish();
+    @OnClick(R.id.iv_back)
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.iv_back:
+                pop();
+                break;
+            default:
+                break;
+        }
     }
+
 }

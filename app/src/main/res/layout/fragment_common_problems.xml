@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-      <include layout="@layout/common_toolbar_white"/>
+        <include layout="@layout/common_toolbar_white"/>
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/srl_refresh"
@@ -20,12 +20,12 @@
             android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_common_problems"
+                android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/bg_gray_light"
                 android:descendantFocusability="blocksDescendants"
-                app:layoutManager="LinearLayoutManager" />
+                app:layoutManager="LinearLayoutManager"/>
 
         </android.support.v4.widget.SwipeRefreshLayout>
 

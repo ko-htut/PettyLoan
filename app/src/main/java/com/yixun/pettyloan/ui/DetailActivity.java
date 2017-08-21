@@ -92,5 +92,6 @@ public class DetailActivity extends BaseSupportActivity {
         mFragments.add(MineFragment.getInstance("ViewPager " + mTitles[3]));
         HomePagerAdapter adapter = new HomePagerAdapter(getSupportFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }

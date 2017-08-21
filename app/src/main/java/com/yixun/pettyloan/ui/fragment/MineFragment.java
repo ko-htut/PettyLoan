@@ -117,13 +117,13 @@ public class MineFragment extends BaseSupportFragment {
                  EventBus.getDefault().post(new StartBrotherEvent(TotalAssetsFragment.getInstance("总资产")));
                  break;
              case R.id.tv_recharge:
-                 Toast.makeText(context,"功能开发中．．．",Toast.LENGTH_SHORT).show();
+                 EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));
                  break;
              case R.id.ll_account_bill:
-                 EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));
+                 EventBus.getDefault().post(new StartBrotherEvent(TotalAssetsFragment.getInstance("我的账单")));
                  break;
              case R.id.tv_record:
-                 EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));
+                 EventBus.getDefault().post(new StartBrotherEvent(TradingRecordFragment.getInstance("交易记录")));
                  break;
              case R.id.tv_my_invitation:
                  EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));

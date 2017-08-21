@@ -16,6 +16,7 @@
         android:textSize="@dimen/detail_text_size_large"/>
 
     <LinearLayout
+        android:id="@+id/ll_add_bank_card_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -53,15 +54,18 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/iv_add_bank_card_select"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:src="@drawable/icon_selected"/>
+            android:src="@drawable/icon_selected"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_wechat_pay_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -100,11 +104,13 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/iv_wechat_pay_select"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:src="@drawable/icon_selected"/>
+            android:src="@drawable/icon_selected"
+            android:visibility="invisible"/>
     </LinearLayout>
 
 </LinearLayout>

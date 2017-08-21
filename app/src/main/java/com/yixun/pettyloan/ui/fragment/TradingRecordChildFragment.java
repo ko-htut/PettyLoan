@@ -3,34 +3,26 @@ package com.yixun.pettyloan.ui.fragment;
 import android.os.SystemClock;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TextView;
 
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.MultiTypeAdapter;
-import com.yixun.pettyloan.entity.Problem;
-import com.yixun.pettyloan.entity.ProblemItemViewBinder;
+import com.yixun.pettyloan.entity.TradingRecord;
+import com.yixun.pettyloan.entity.TradingRecordItemViewBinder;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
-import com.yixun.pettyloan.ui.widge.SpaceDecoration;
+import com.yixun.pettyloan.ui.widge.LineDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
-public class CommonProblemsFragment extends BaseSupportFragment {
+public class TradingRecordChildFragment extends BaseSupportFragment {
     private String mTitle;
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
-    @BindView(R.id.tv_title)
-    TextView mTvTitle;
     @BindView(R.id.srl_refresh)
     SwipeRefreshLayout mRefresh;
     @BindView(R.id.recycler)
@@ -39,15 +31,15 @@ public class CommonProblemsFragment extends BaseSupportFragment {
     MultiTypeAdapter mFeedAdapter;
     List<Object> items;
 
-    public static CommonProblemsFragment getInstance(String title) {
-        CommonProblemsFragment sf = new CommonProblemsFragment();
+    public static TradingRecordChildFragment getInstance(String title) {
+        TradingRecordChildFragment sf = new TradingRecordChildFragment();
         sf.mTitle = title;
         return sf;
     }
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_common_problems;
+        return R.layout.fragment_trading_record_child;
     }
 
     @Override
@@ -62,19 +54,21 @@ public class CommonProblemsFragment extends BaseSupportFragment {
 
     @Override
     protected void initData() {
-        mTvTitle.setText("常见问题");
         configRefresh();
     }
 
     private void bindContent() {
         mFeedAdapter = new MultiTypeAdapter();
-        mFeedAdapter.register(Problem.class, new ProblemItemViewBinder());
-        mFeedsRecycler.addItemDecoration(new SpaceDecoration((int) getResources().getDimension(R.dimen.goods_margin)));
+        mFeedAdapter.register(TradingRecord.class, new TradingRecordItemViewBinder(context));
+        mFeedsRecycler.addItemDecoration(new LineDecoration((int) getResources().getDimension(R.dimen.line_height)));
         mFeedsRecycler.setAdapter(mFeedAdapter);
         items = new ArrayList<>();
-        items.add(new Problem("1.title", "答：content"));
-        items.add(new Problem("2.title", "答：content"));
-        items.add(new Problem("3.title", "答：content"));
+        items.add(new TradingRecord("团团赚投资", "2016-09-09 15：23：33","-10,000.00"));
+        items.add(new TradingRecord("充值", "2016-09-10 15：29：44","+10,000.00"));
+        items.add(new TradingRecord("团团赚转让", "2016-09-04 16：13：12","-10,000.00"));
+        items.add(new TradingRecord("团团赚投资", "2016-09-09 15：23：33","-10,000.00"));
+        items.add(new TradingRecord("充值", "2016-09-10 15：29：44","+10,000.00"));
+        items.add(new TradingRecord("团团赚转让", "2016-09-04 16：13：12","-10,000.00"));
         mFeedAdapter.setItems(items);
         mFeedAdapter.notifyDataSetChanged();
     }
@@ -105,16 +99,5 @@ public class CommonProblemsFragment extends BaseSupportFragment {
                         mRefresh.setRefreshing(false);
                     }
                 });
-    }
-
-    @OnClick({R.id.iv_back})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.iv_back:
-                pop();
-                break;
-            default:
-                break;
-        }
     }
 }
