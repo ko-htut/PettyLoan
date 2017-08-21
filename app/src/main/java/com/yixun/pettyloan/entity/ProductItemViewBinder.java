@@ -29,9 +29,12 @@ import android.widget.TextView;
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.ItemViewBinder;
 import com.yixun.pettyloan.event.StartBrotherEvent;
+import com.yixun.pettyloan.ui.fragment.PaymentFragment;
 import com.yixun.pettyloan.ui.fragment.ProductDetailFragment;
 
 import org.greenrobot.eventbus.EventBus;
+
+import butterknife.OnClick;
 
 /**
  * Created by zongkaili on 17-8-11.
@@ -86,6 +89,13 @@ public class ProductItemViewBinder extends ItemViewBinder<Product, ProductItemVi
                     EventBus.getDefault().post(new StartBrotherEvent(ProductDetailFragment.getInstance(mode.getProductName())));
                 }
             });
+            investTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EventBus.getDefault().post(new StartBrotherEvent(PaymentFragment.getInstance(mode.getProductName())));
+                }
+            });
         }
+
     }
 }

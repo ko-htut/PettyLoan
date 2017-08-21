@@ -75,7 +75,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginTop="5dp"
-                android:titleMarginStart="@dimen/small_space"
                 app:contentInsetLeft="0dp"
                 app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin"
@@ -211,7 +210,7 @@
                             android:gravity="center_vertical"
                             android:text="@string/recharge"
                             android:textColor="@color/text_blue"
-                            android:textSize="@dimen/text_size_13" />
+                            android:textSize="@dimen/text_size_13"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -227,6 +226,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/ll_account_bill"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -263,7 +263,7 @@
                     <include layout="@layout/line_h_mine_space" />
 
                     <TextView
-                        android:id="@+id/tvWatch"
+                        android:id="@+id/tv_record"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="?android:attr/selectableItemBackground"
@@ -285,7 +285,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvLevel"
+                            android:id="@+id/tv_my_invitation"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="?android:attr/selectableItemBackground"
@@ -299,7 +299,7 @@
                         <include layout="@layout/line_h_mine_space" />
 
                         <TextView
-                            android:id="@+id/tvTask"
+                            android:id="@+id/tv_my_credits"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="?android:attr/selectableItemBackground"
@@ -313,6 +313,7 @@
                         <include layout="@layout/line_h_mine_space" />
 
                         <LinearLayout
+                            android:id="@+id/ll_coupon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"

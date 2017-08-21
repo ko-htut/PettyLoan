@@ -109,7 +109,8 @@ public class MineFragment extends BaseSupportFragment {
                 });
     }
 
-    @OnClick({R.id.ll_total_assets,R.id.tv_recharge})
+    @OnClick({R.id.ll_total_assets,R.id.tv_recharge,R.id.ll_account_bill,R.id.tv_record,R.id.tv_my_invitation,R.id.tv_my_credits,
+    R.id.ll_coupon})
     public void onClick(View view){
          switch (view.getId()){
              case R.id.ll_total_assets:
@@ -117,6 +118,21 @@ public class MineFragment extends BaseSupportFragment {
                  break;
              case R.id.tv_recharge:
                  Toast.makeText(context,"功能开发中．．．",Toast.LENGTH_SHORT).show();
+                 break;
+             case R.id.ll_account_bill:
+                 EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));
+                 break;
+             case R.id.tv_record:
+                 EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));
+                 break;
+             case R.id.tv_my_invitation:
+                 EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));
+                 break;
+             case R.id.tv_my_credits:
+                 EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));
+                 break;
+             case R.id.ll_coupon:
+                 EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));
                  break;
              default:
                  break;
