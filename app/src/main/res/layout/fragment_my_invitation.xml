@@ -13,7 +13,20 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <include layout="@layout/common_toolbar_white"/>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="5dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_collapseMode="pin"
+            app:navigationIcon="@drawable/icon_back_gray"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/my_invitation"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat"
+            app:titleTextColor="@color/text_black"
+            app:theme="@style/ToolbarTheme"/>
 
         <include layout="@layout/fragment_my_invitation_header"/>
 
