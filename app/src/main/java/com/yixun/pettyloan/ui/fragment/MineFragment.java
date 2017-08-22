@@ -126,7 +126,7 @@ public class MineFragment extends BaseSupportFragment {
                  EventBus.getDefault().post(new StartBrotherEvent(TradingRecordFragment.getInstance("交易记录")));
                  break;
              case R.id.tv_my_invitation:
-                 EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));
+                 EventBus.getDefault().post(new StartBrotherEvent(MyInvitationFragment.getInstance("我的邀请")));
                  break;
              case R.id.tv_my_credits:
                  EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.getInstance("充值")));

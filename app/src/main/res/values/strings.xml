@@ -140,6 +140,14 @@
     <string name="recharge_wechat_pay_tip">进入微信完成支付</string>
     <string name="recharge_sure">确认充值</string>
 
+    <!--my invitation page-->
+    <string name="invite_record">邀请记录</string>
+    <string name="invite_rightnow">立即邀请</string>
+    <string name="invite_history">邀请历史</string>
+    <string name="invite_bonus_pre_tax">税前奖金(元)</string>
+    <string name="invite_coupons">优惠券(张)</string>
+    <string name="invite_investment_friends">投资好友(人)</string>
+
      <string name="large_text">
          从供应链业务起家，第一款主打产品便是海尔体系内的供应链金融，\n
          当然不可避免会涉及到海尔系统内部供应商及经销商，由于和海尔成员企业的密切合作，\n

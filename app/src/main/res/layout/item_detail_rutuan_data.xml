@@ -5,13 +5,14 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
         android:padding="@dimen/detail_margin_horizontal"
         android:text="@string/detail_item_title_５"
-        android:textSize="@dimen/detail_text_size_large" />
+        android:textSize="@dimen/detail_text_size_large"/>
 
     <include layout="@layout/line_h_mine_space" />
 

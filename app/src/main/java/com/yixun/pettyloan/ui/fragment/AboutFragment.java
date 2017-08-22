@@ -22,7 +22,7 @@ public class AboutFragment extends BaseSupportFragment {
     TabLayout mTabs;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.viewpager)
+    @BindView(R.id.viewpager_about)
     ViewPager mViewPager;
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
@@ -80,6 +80,8 @@ public class AboutFragment extends BaseSupportFragment {
         }
         HomePagerAdapter adapter = new HomePagerAdapter(getActivity().getSupportFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
+        mViewPager.setOffscreenPageLimit(mTitles.length);
+        adapter.notifyDataSetChanged();
     }
 
     @OnClick(R.id.back)

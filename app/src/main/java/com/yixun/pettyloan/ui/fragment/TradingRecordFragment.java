@@ -26,7 +26,7 @@ public class TradingRecordFragment extends BaseSupportFragment {
     Toolbar mToolbar;
     @BindView(R.id.tv_title)
     TextView mTvTitle;
-    @BindView(R.id.viewpager)
+    @BindView(R.id.viewpager_record)
     ViewPager mViewPager;
 
     private ArrayList<Fragment> mFragments = new ArrayList<>();
