@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_medium"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pic_credits_flag"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="@dimen/drawable_padding"
+            android:drawableRight="@drawable/ic_triangle"
+            android:text="@string/credits_pettyloan_credits"
+            android:textColor="@color/white"
+            android:textSize="@dimen/detail_text_size_small"/>
+
+        <TextView
+            android:id="@+id/tv_card_invest"
+            android:layout_width="180dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_btn_selecter_orange_solid"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/credits_to_exchange"
+            android:textColor="@color/white"
+            android:textSize="@dimen/detail_text_size_small"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_gray_light"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/credits_list_title_tip"
+        android:textColor="@color/text_gray"
+        android:textSize="@dimen/detail_text_size_small"/>
+</LinearLayout>

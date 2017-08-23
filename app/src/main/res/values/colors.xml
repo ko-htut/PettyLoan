@@ -16,6 +16,7 @@
     <color name="blue_medium">#3CA3FE</color>
     <color name="blue_dark">#3484FD</color>
     <color name="orange">#FD8441</color>
+    <color name="orange_light">#F6C164</color>
 
     <color name="btn_normal">#00000000</color>
     <color name="btn_pressed">#0CF76B1E</color>

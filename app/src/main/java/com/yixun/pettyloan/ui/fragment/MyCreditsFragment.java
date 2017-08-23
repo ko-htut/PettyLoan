@@ -3,26 +3,34 @@ package com.yixun.pettyloan.ui.fragment;
 import android.os.SystemClock;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.TextView;
 
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.MultiTypeAdapter;
-import com.yixun.pettyloan.entity.TradingRecord;
-import com.yixun.pettyloan.entity.TradingRecordItemViewBinder;
+import com.yixun.pettyloan.entity.Commodity;
+import com.yixun.pettyloan.entity.CommodityItemViewBinder;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
-import com.yixun.pettyloan.ui.widge.LineDecoration;
+import com.yixun.pettyloan.ui.widge.SpaceDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
-public class TradingRecordChildFragment extends BaseSupportFragment {
+public class MyCreditsFragment extends BaseSupportFragment {
     private String mTitle;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.tv_title)
+    TextView mTvTitle;
     @BindView(R.id.srl_refresh)
     SwipeRefreshLayout mRefresh;
     @BindView(R.id.recycler)
@@ -31,15 +39,15 @@ public class TradingRecordChildFragment extends BaseSupportFragment {
     MultiTypeAdapter mFeedAdapter;
     List<Object> items;
 
-    public static TradingRecordChildFragment getInstance(String title) {
-        TradingRecordChildFragment sf = new TradingRecordChildFragment();
+    public static MyCreditsFragment getInstance(String title) {
+        MyCreditsFragment sf = new MyCreditsFragment();
         sf.mTitle = title;
         return sf;
     }
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_child_recycler;
+        return R.layout.fragment_my_credits;
     }
 
     @Override
@@ -49,6 +57,7 @@ public class TradingRecordChildFragment extends BaseSupportFragment {
 
     @Override
     protected void initView() {
+        initToolbar();
         bindContent();
     }
 
@@ -57,18 +66,25 @@ public class TradingRecordChildFragment extends BaseSupportFragment {
         configRefresh();
     }
 
+    private void initToolbar() {
+        mTvTitle.setText(mTitle);
+    }
+
     private void bindContent() {
         mFeedAdapter = new MultiTypeAdapter();
-        mFeedAdapter.register(TradingRecord.class, new TradingRecordItemViewBinder(context));
-        mFeedsRecycler.addItemDecoration(new LineDecoration((int) getResources().getDimension(R.dimen.line_height)));
+        mFeedAdapter.register(Commodity.class, new CommodityItemViewBinder(context));
+        mFeedsRecycler.addItemDecoration(new SpaceDecoration((int) getResources().getDimension(R.dimen.goods_margin)));
         mFeedsRecycler.setAdapter(mFeedAdapter);
         items = new ArrayList<>();
-        items.add(new TradingRecord("团团赚投资", "2016-09-09 15：23：33","-10,000.00"));
-        items.add(new TradingRecord("充值", "2016-09-10 15：29：44","+10,000.00"));
-        items.add(new TradingRecord("团团赚转让", "2016-09-04 16：13：12","-10,000.00"));
-        items.add(new TradingRecord("团团赚投资", "2016-09-09 15：23：33","-10,000.00"));
-        items.add(new TradingRecord("充值", "2016-09-10 15：29：44","+10,000.00"));
-        items.add(new TradingRecord("团团赚转让", "2016-09-04 16：13：12","-10,000.00"));
+        items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "大容量静音家用空气加湿器"));
+        items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "家用台式易安装小空间洗碗机"));
+        items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "家用小电器保湿壶"));
+        items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "大容量静音家用空气加湿器"));
+        items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "家用台式易安装小空间洗碗机"));
+        items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "家用小电器保湿壶"));
+        items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "大容量静音家用空气加湿器"));
+        items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "家用台式易安装小空间洗碗机"));
+        items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "家用小电器保湿壶"));
         mFeedAdapter.setItems(items);
         mFeedAdapter.notifyDataSetChanged();
     }
@@ -99,5 +115,16 @@ public class TradingRecordChildFragment extends BaseSupportFragment {
                         mRefresh.setRefreshing(false);
                     }
                 });
+    }
+
+    @OnClick({R.id.iv_back})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_back:
+                pop();
+                break;
+            default:
+                break;
+        }
     }
 }

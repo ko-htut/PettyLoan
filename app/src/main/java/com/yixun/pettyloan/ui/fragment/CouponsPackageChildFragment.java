@@ -21,7 +21,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
-public class TradingRecordChildFragment extends BaseSupportFragment {
+public class CouponsPackageChildFragment extends BaseSupportFragment {
     private String mTitle;
     @BindView(R.id.srl_refresh)
     SwipeRefreshLayout mRefresh;
@@ -31,8 +31,8 @@ public class TradingRecordChildFragment extends BaseSupportFragment {
     MultiTypeAdapter mFeedAdapter;
     List<Object> items;
 
-    public static TradingRecordChildFragment getInstance(String title) {
-        TradingRecordChildFragment sf = new TradingRecordChildFragment();
+    public static CouponsPackageChildFragment getInstance(String title) {
+        CouponsPackageChildFragment sf = new CouponsPackageChildFragment();
         sf.mTitle = title;
         return sf;
     }

@@ -31,6 +31,12 @@
         <item>提现</item>
     </string-array>
 
+    <string-array name="tab_coupons_package_titles">
+        <item>可使用</item>
+        <item>已使用</item>
+        <item>已过期</item>
+    </string-array>
+
     <!--login page-->
     <string name="text_login_title">使用小额贷即可登录</string>
     <string name="text_hint_login_name">请输入手机号/邮箱名/用户名</string>
@@ -147,6 +153,16 @@
     <string name="invite_bonus_pre_tax">税前奖金(元)</string>
     <string name="invite_coupons">优惠券(张)</string>
     <string name="invite_investment_friends">投资好友(人)</string>
+
+    <!--coupons package page-->
+    <string name="coupon_directions_for_use">使用说明</string>
+
+    <!--my credits page-->
+    <string name="credits_title">我的积分</string>
+    <string name="credits_pettyloan_credits">我的小额贷积分:%1$s</string>
+    <string name="credits_to_exchange">去兑换</string>
+    <string name="credits_list_title_tip">赚点积分，机会多多</string>
+    <string name="credits_exchange_rightnow">立即兑换</string>
 
      <string name="large_text">
          从供应链业务起家，第一款主打产品便是海尔体系内的供应链金融，\n
