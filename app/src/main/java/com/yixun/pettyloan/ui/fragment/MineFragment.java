@@ -64,7 +64,8 @@ public class MineFragment extends BaseSupportFragment {
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context, LoginActivity.class));
+//                startActivity(new Intent(context, LoginActivity.class));
+                EventBus.getDefault().post(new StartBrotherEvent(MySettingFragment.getInstance("我的设置")));
             }
         });
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {

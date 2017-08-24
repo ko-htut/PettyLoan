@@ -28,6 +28,8 @@
             app:titleTextColor="@color/text_black"
             app:theme="@style/ToolbarTheme"/>
 
+        <include layout="@layout/line_h_separate"/>
+
         <include layout="@layout/fragment_my_invitation_header"/>
 
         <include layout="@layout/line_h_separate"/>

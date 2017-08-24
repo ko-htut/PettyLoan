@@ -32,4 +32,7 @@
 
     <dimen name="goods_margin">6dp</dimen>
     <dimen name="line_height">1dp</dimen>
+
+    <dimen name="padding_mine">15dp</dimen>
+    <dimen name="padding_my_setting">10dp</dimen>
 </resources>

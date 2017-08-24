@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/common_toolbar_white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="@dimen/padding_my_setting"
+                android:paddingRight="@dimen/padding_my_setting"
+                android:paddingTop="5dp"
+                android:background="?android:attr/selectableItemBackground">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_avatar"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/detail_text_size_large"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_avatar_blue"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_triangle"/>
+            </LinearLayout>
+
+            <include layout="@layout/line_h_mine_space"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="@dimen/padding_my_setting">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_use_id"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/detail_text_size_large"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tv_withdraw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="2222635891"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/detail_text_size_large"/>
+
+            </LinearLayout>
+
+            <include layout="@layout/line_h_separate"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="@dimen/padding_my_setting">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_realname_authentication"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/detail_text_size_large"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="6dp"
+                    android:drawableRight="@drawable/ic_triangle"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_authentication_no"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/detail_text_size_large"/>
+            </LinearLayout>
+
+            <include layout="@layout/line_h_mine_space"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="@dimen/padding_my_setting">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_bank_card"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/detail_text_size_large"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="6dp"
+                    android:drawableRight="@drawable/ic_triangle"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_bank_card_no"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/detail_text_size_large"/>
+            </LinearLayout>
+
+            <include layout="@layout/line_h_mine_space"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="@dimen/padding_my_setting">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_phone_number"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/detail_text_size_large"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="6dp"
+                    android:drawableRight="@drawable/ic_triangle"
+                    android:gravity="center_vertical"
+                    android:text="13555557890"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/detail_text_size_large"/>
+            </LinearLayout>
+
+            <include layout="@layout/line_h_separate"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableRight="@drawable/ic_triangle"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_my_setting"
+                android:text="@string/setting_change_login_pwd"/>
+
+            <include layout="@layout/line_h_mine_space"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableRight="@drawable/ic_triangle"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_my_setting"
+                android:text="@string/setting_set_trading_pwd"/>
+
+            <include layout="@layout/line_h_separate"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableRight="@drawable/ic_triangle"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_my_setting"
+                android:text="@string/setting_text_size"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/detail_text_size_large"/>
+
+            <include layout="@layout/line_h_separate"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_my_setting">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_risk_assessment"
+                    android:textColor="@color/text_black"
+                    android:textSize="@dimen/detail_text_size_large"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="6dp"
+                    android:drawableRight="@drawable/ic_triangle"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_risk_assessment_go"
+                    android:textColor="@color/text_gray"
+                    android:textSize="@dimen/detail_text_size_large"/>
+            </LinearLayout>
+
+            <include layout="@layout/line_h_separate"/>
+
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableRight="@drawable/ic_triangle"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_my_setting"
+                android:text="@string/about_pettyloan"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/detail_text_size_large"/>
+
+            <include layout="@layout/line_h_separate"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="@dimen/padding_my_setting">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/setting_exit_safely"
+                    android:textColor="@color/text_red"
+                    android:textSize="@dimen/detail_text_size_large"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

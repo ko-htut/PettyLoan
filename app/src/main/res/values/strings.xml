@@ -164,6 +164,25 @@
     <string name="credits_list_title_tip">赚点积分，机会多多</string>
     <string name="credits_exchange_rightnow">立即兑换</string>
 
+    <!--my setting page-->
+    <string name="setting_title">我的设置</string>
+    <string name="setting_avatar">头像</string>
+    <string name="setting_use_id">用户ID</string>
+    <string name="setting_realname_authentication">实名认证</string>
+    <string name="setting_authentication_no">未认证</string>
+    <string name="setting_authentication_yes">已认证</string>
+    <string name="setting_bank_card">银行卡</string>
+    <string name="setting_bank_card_no">未绑定</string>
+    <string name="setting_bank_card_yes">已绑定</string>
+    <string name="setting_phone_number">手机号码</string>
+    <string name="setting_change_login_pwd">修改登录密码</string>
+    <string name="setting_set_trading_pwd">设置交易密码</string>
+    <string name="setting_text_size">字体大小</string>
+    <string name="setting_risk_assessment">风险评测</string>
+    <string name="setting_risk_assessment_go">去测试</string>
+    <string name="setting_about_pettyloan">关于小额贷</string>
+    <string name="setting_exit_safely">安全退出</string>
+
      <string name="large_text">
          从供应链业务起家，第一款主打产品便是海尔体系内的供应链金融，\n
          当然不可避免会涉及到海尔系统内部供应商及经销商，由于和海尔成员企业的密切合作，\n
