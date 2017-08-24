@@ -7,6 +7,7 @@ import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import butterknife.OnClick;
 
 public class ProductDetailCalculatorFragment extends BaseSupportFragment {
+
     public static ProductDetailCalculatorFragment getInstance() {
         ProductDetailCalculatorFragment sf = new ProductDetailCalculatorFragment();
         return sf;

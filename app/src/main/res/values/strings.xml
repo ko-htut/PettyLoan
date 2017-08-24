@@ -90,6 +90,11 @@
 
     <!--about-->
     <string name="about_pettyloan">关于小额贷</string>
+    <string name="about_established_in">成立于</string>
+    <string name="about_headquarters_location">总部位于</string>
+    <string name="about_petty_loan">小额贷</string>
+    <string name="about_chronicle_of_events">小额贷大事记</string>
+    <string name="about_company_registration_information">公司注册信息</string>
 
     <!--product detail-->
     <string name="detail_tip_middle">历史年化收益率</string>

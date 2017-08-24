@@ -76,7 +76,11 @@ public class AboutFragment extends BaseSupportFragment {
     private void setupViewPager() {
         mTitles = getResources().getStringArray(R.array.tab_about_titles);
         for (int i = 0; i < mTitles.length; i++) {
-            mFragments.add(SimpleCardFragment.getInstance("ViewPager " + mTitles[i]));
+            if (i == 0) {
+                mFragments.add(CompanyProfileFragment.getInstance("ViewPager " + mTitles[i]));
+            } else {
+                mFragments.add(SimpleCardFragment.getInstance("ViewPager " + mTitles[i]));
+            }
         }
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getChildFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
@@ -85,7 +89,7 @@ public class AboutFragment extends BaseSupportFragment {
     }
 
     @OnClick(R.id.back)
-    public void clickBack(){
+    public void clickBack() {
         pop();
     }
 
