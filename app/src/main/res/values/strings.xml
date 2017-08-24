@@ -183,6 +183,13 @@
     <string name="setting_about_pettyloan">关于小额贷</string>
     <string name="setting_exit_safely">安全退出</string>
 
+    <!--my message page-->
+    <string name="msg_title">我的消息</string>
+    <string name="msg_notice">公告中心</string>
+    <string name="msg_notice_item_title">新消息提醒</string>
+    <string name="msg_notice_item_content">感觉身体被掏空？打开"发现"进入活动，掏空满载奖品等你来拿，体验金等你来拿，
+    快来看看！【小额贷】</string>
+
      <string name="large_text">
          从供应链业务起家，第一款主打产品便是海尔体系内的供应链金融，\n
          当然不可避免会涉及到海尔系统内部供应商及经销商，由于和海尔成员企业的密切合作，\n

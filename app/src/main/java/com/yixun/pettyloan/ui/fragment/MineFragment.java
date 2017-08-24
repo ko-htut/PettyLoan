@@ -73,7 +73,7 @@ public class MineFragment extends BaseSupportFragment {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.sign:
-                        Toast.makeText(getContext(), "功能开发中...", Toast.LENGTH_SHORT).show();
+                        EventBus.getDefault().post(new StartBrotherEvent(MyMessageFragment.getInstance("我的消息")));
                         break;
                 }
                 return false;
