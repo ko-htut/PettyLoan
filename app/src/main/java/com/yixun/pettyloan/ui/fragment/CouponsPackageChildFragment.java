@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.MultiTypeAdapter;
+import com.yixun.pettyloan.entity.Commodity;
+import com.yixun.pettyloan.entity.CommodityItemViewBinder;
 import com.yixun.pettyloan.entity.TradingRecord;
 import com.yixun.pettyloan.entity.TradingRecordItemViewBinder;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
@@ -59,16 +61,12 @@ public class CouponsPackageChildFragment extends BaseSupportFragment {
 
     private void bindContent() {
         mFeedAdapter = new MultiTypeAdapter();
-        mFeedAdapter.register(TradingRecord.class, new TradingRecordItemViewBinder(context));
+        mFeedAdapter.register(Commodity.class, new CommodityItemViewBinder(context));
         mFeedsRecycler.addItemDecoration(new LineDecoration((int) getResources().getDimension(R.dimen.line_height)));
         mFeedsRecycler.setAdapter(mFeedAdapter);
-        items = new ArrayList<>();
-        items.add(new TradingRecord("团团赚投资", "2016-09-09 15：23：33","-10,000.00"));
-        items.add(new TradingRecord("充值", "2016-09-10 15：29：44","+10,000.00"));
-        items.add(new TradingRecord("团团赚转让", "2016-09-04 16：13：12","-10,000.00"));
-        items.add(new TradingRecord("团团赚投资", "2016-09-09 15：23：33","-10,000.00"));
-        items.add(new TradingRecord("充值", "2016-09-10 15：29：44","+10,000.00"));
-        items.add(new TradingRecord("团团赚转让", "2016-09-04 16：13：12","-10,000.00"));
+        items = new ArrayList<>(); items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "大容量静音家用空气加湿器"));
+        items = new ArrayList<>(); items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "大容量静音家用空气加湿器"));
+        items = new ArrayList<>(); items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "大容量静音家用空气加湿器"));
         mFeedAdapter.setItems(items);
         mFeedAdapter.notifyDataSetChanged();
     }

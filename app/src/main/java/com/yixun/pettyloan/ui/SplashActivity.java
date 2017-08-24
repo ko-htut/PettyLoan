@@ -7,8 +7,10 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.yixun.pettyloan.AppConfig;
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.ui.base.BaseSupportActivity;
+import com.yixun.pettyloan.utils.PreferenceUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -34,15 +36,18 @@ public class SplashActivity extends BaseSupportActivity {
                 case UPDATE_COUNTDOWN:
                     time--;
                     mTvKip.setText(getResources().getString(R.string.splash_skip, String.valueOf(time)));
-                    if (time == 0) {
-//                    if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false))
-//                        startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-//                else
-                        startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
-                        finish();
+                    if (time > 0) {
+                        mHandler.sendEmptyMessageDelayed(UPDATE_COUNTDOWN, 1000);
+                        break;
                     }
-                    mHandler.sendEmptyMessageDelayed(UPDATE_COUNTDOWN, 1000);
-                    break;
+                    if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false)) {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    }
+                    else {
+                        startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
+                    }
+                    mHandler.removeMessages(UPDATE_COUNTDOWN);
+                    finish();
                 default:
                     break;
             }
@@ -82,16 +87,20 @@ public class SplashActivity extends BaseSupportActivity {
 
     @OnClick(R.id.rl_splash_start)
     public void start() {
-//        if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false))
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-//                else
-//                    startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
+        if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false)) {
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        }
+        else {
+            startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
+        }
+        mHandler.removeMessages(UPDATE_COUNTDOWN);
         finish();
     }
 
     @OnClick(R.id.tv_splash_skip)
     public void skip() {
         startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        mHandler.removeMessages(UPDATE_COUNTDOWN);
         finish();
     }
 }

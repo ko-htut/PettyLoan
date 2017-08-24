@@ -64,7 +64,6 @@ public class MineFragment extends BaseSupportFragment {
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(context, LoginActivity.class));
                 EventBus.getDefault().post(new StartBrotherEvent(MySettingFragment.getInstance("我的设置")));
             }
         });
@@ -110,10 +109,13 @@ public class MineFragment extends BaseSupportFragment {
                 });
     }
 
-    @OnClick({R.id.ll_total_assets,R.id.tv_recharge,R.id.ll_account_bill,R.id.tv_record,R.id.tv_my_invitation,R.id.tv_my_credits,
+    @OnClick({R.id.rl_member_center,R.id.ll_total_assets,R.id.tv_recharge,R.id.ll_account_bill,R.id.tv_record,R.id.tv_my_invitation,R.id.tv_my_credits,
     R.id.ll_coupon})
     public void onClick(View view){
          switch (view.getId()){
+             case R.id.rl_member_center:
+                 startActivity(new Intent(context, LoginActivity.class));
+                 break;
              case R.id.ll_total_assets:
                  EventBus.getDefault().post(new StartBrotherEvent(TotalAssetsFragment.getInstance("总资产")));
                  break;

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import com.yixun.pettyloan.R;
-import com.yixun.pettyloan.adapter.HomePagerAdapter;
+import com.yixun.pettyloan.adapter.MyFragmentPagerAdapter;
 import com.yixun.pettyloan.entity.TabEntity;
 import com.yixun.pettyloan.event.StartBrotherEvent;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
@@ -81,7 +81,7 @@ public class MainFragment extends BaseSupportFragment {
     }
 
     public void initWidge() {
-        mViewPager.setAdapter(new HomePagerAdapter(getActivity().getSupportFragmentManager(), mFragments, mTitles));
+        mViewPager.setAdapter(new MyFragmentPagerAdapter(getChildFragmentManager(), mFragments, mTitles));
         mViewPager.setOffscreenPageLimit(4);
     }
 

@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.kelin.translucentbar.library.TranslucentBarManager;
 import com.yixun.pettyloan.R;
-import com.yixun.pettyloan.adapter.HomePagerAdapter;
+import com.yixun.pettyloan.adapter.MyFragmentPagerAdapter;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.yixun.tablayout.listener.CustomTabEntity;
 
@@ -78,7 +78,7 @@ public class AboutFragment extends BaseSupportFragment {
         for (int i = 0; i < mTitles.length; i++) {
             mFragments.add(SimpleCardFragment.getInstance("ViewPager " + mTitles[i]));
         }
-        HomePagerAdapter adapter = new HomePagerAdapter(getActivity().getSupportFragmentManager(), mFragments, mTitles);
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getChildFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
         mViewPager.setOffscreenPageLimit(mTitles.length);
         adapter.notifyDataSetChanged();

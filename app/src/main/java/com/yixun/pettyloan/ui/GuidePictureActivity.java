@@ -20,7 +20,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
+import com.yixun.pettyloan.AppConfig;
 import com.yixun.pettyloan.R;
+import com.yixun.pettyloan.utils.PreferenceUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +46,7 @@ public class GuidePictureActivity extends FragmentActivity implements OnPageChan
         super.onCreate(args);
 //        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE);
         setContentView(R.layout.act_guide_picture);
-//        PreferenceUtil.put(AppConfig.PREFERENCE_SHOW_SPLASH,true);
+        PreferenceUtil.put(AppConfig.PREFERENCE_SHOW_SPLASH,true);
         mViewPager = (ViewPager) findViewById(R.id.vp_weather_splash);
         mIndicator = (LinearLayout) findViewById(R.id.ll_weather_indicator);
         mBackTv = (TextView) findViewById(R.id.tv_weather_guide_back);

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">小额贷</string>
 
-    <string name="splash_skip">跳过 %1$ss</string>
+    <string name="splash_skip">%1$s 跳过</string>
     <string name="guide_skip">跳过</string>
     <string name="splash_start">开始体验</string>
     <string name="back">返回</string>
@@ -63,6 +63,7 @@
     <string name="more">更多</string>
 
     <!--mine page-->
+    <string name="member_center">会员中心</string>
     <string name="to_invest">去投资</string>
     <string name="total_assets">总资产(元)</string>
     <string name="available_assets">可用资产(元)</string>

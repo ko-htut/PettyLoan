@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.kelin.translucentbar.library.TranslucentBarManager;
 import com.yixun.pettyloan.R;
-import com.yixun.pettyloan.adapter.HomePagerAdapter;
+import com.yixun.pettyloan.adapter.MyFragmentPagerAdapter;
 import com.yixun.pettyloan.ui.base.BaseSupportActivity;
 import com.yixun.pettyloan.ui.fragment.MineFragment;
 import com.yixun.pettyloan.ui.fragment.RegisterSuccessFragment;
@@ -90,7 +90,7 @@ public class DetailActivity extends BaseSupportActivity {
         mFragments.add(MineFragment.getInstance("ViewPager " + mTitles[1]));
         mFragments.add(MineFragment.getInstance("ViewPager " + mTitles[2]));
         mFragments.add(MineFragment.getInstance("ViewPager " + mTitles[3]));
-        HomePagerAdapter adapter = new HomePagerAdapter(getSupportFragmentManager(), mFragments, mTitles);
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

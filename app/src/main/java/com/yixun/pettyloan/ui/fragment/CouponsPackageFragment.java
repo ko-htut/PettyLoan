@@ -6,19 +6,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kelin.translucentbar.library.TranslucentBarManager;
 import com.yixun.pettyloan.R;
-import com.yixun.pettyloan.adapter.HomePagerAdapter;
+import com.yixun.pettyloan.adapter.MyFragmentPagerAdapter;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.yixun.tablayout.listener.CustomTabEntity;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 public class CouponsPackageFragment extends BaseSupportFragment {
     private String mTitle;
@@ -92,9 +89,9 @@ public class CouponsPackageFragment extends BaseSupportFragment {
     private void setupViewPager() {
         mTitles = getResources().getStringArray(R.array.tab_coupons_package_titles);
         for (int i = 0; i < mTitles.length; i++) {
-            mFragments.add(CouponsPackageChildFragment.getInstance(mTitles[i]));
+            mFragments.add(SimpleCardFragment.getInstance(mTitles[i]));
         }
-        HomePagerAdapter adapter = new HomePagerAdapter(getActivity().getSupportFragmentManager(), mFragments, mTitles);
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getChildFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
         mViewPager.setOffscreenPageLimit(mTitles.length);
         adapter.notifyDataSetChanged();

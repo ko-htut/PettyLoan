@@ -69,6 +69,12 @@ public abstract class BaseSupportFragment<T extends BasePresenter, E extends Bas
         context = getActivity();
         if (rootView == null) {
             rootView = inflater.inflate(getLayoutResource(), container, false);
+        } else {
+            ViewGroup parent = (ViewGroup) rootView.getParent();
+            if (parent != null) {
+                parent.removeView(rootView);
+            }
+            return rootView;
         }
         mUnbinder = ButterKnife.bind(this, rootView);
         mRxManager = new RxManager();
