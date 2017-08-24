@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/iv_credits_flag"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
@@ -21,6 +22,7 @@
             android:src="@drawable/pic_credits_flag"/>
 
         <TextView
+            android:id="@+id/tv_my_credits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -32,7 +34,7 @@
             android:textSize="@dimen/detail_text_size_small"/>
 
         <TextView
-            android:id="@+id/tv_card_invest"
+            android:id="@+id/tv_exchange"
             android:layout_width="180dp"
             android:layout_height="33dp"
             android:layout_gravity="center_horizontal"

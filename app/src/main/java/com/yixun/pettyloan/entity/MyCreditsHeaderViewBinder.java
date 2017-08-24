@@ -6,17 +6,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.ItemViewBinder;
 
 /**
  * Created by zongkaili on 17-8-11.
  */
-public class InviteHistoryItemViewBinder extends ItemViewBinder<InviteHistory, InviteHistoryItemViewBinder.ViewHolder> {
+public class MyCreditsHeaderViewBinder extends ItemViewBinder<MyCreditsHeader, MyCreditsHeaderViewBinder.ViewHolder> {
     private Context mContext;
-    public InviteHistoryItemViewBinder(Context context){
+    public MyCreditsHeaderViewBinder(Context context){
         mContext = context;
     }
 
@@ -24,13 +26,13 @@ public class InviteHistoryItemViewBinder extends ItemViewBinder<InviteHistory, I
     @Override
     protected ViewHolder onCreateViewHolder(
             @NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View view = inflater.inflate(R.layout.item_invite_history, parent, false);
+        View view = inflater.inflate(R.layout.fragment_my_credits_header, parent, false);
         return new ViewHolder(mContext,view);
     }
 
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull InviteHistory mode) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull MyCreditsHeader mode) {
         holder.setData(mode);
     }
 
@@ -39,32 +41,29 @@ public class InviteHistoryItemViewBinder extends ItemViewBinder<InviteHistory, I
         private Context context;
         private
         @NonNull
-        final TextView time;
+        final ImageView imageView;
         private
         @NonNull
-        final TextView bouns;
+        final TextView credits;
         private
         @NonNull
-        final TextView coupon;
-        private
-        @NonNull
-        final TextView peopleNum;
-
+        final TextView exchange;
 
         ViewHolder(Context context,@NonNull View itemView) {
             super(itemView);
             this.context = context;
-            time = (TextView) itemView.findViewById(R.id.time);
-            bouns = (TextView) itemView.findViewById(R.id.tv_bouns_pre_tax);
-            coupon = (TextView) itemView.findViewById(R.id.tv_coupon);
-            peopleNum = (TextView) itemView.findViewById(R.id.tv_friends);
+            imageView = (ImageView) itemView.findViewById(R.id.iv_credits_flag);
+            credits = (TextView) itemView.findViewById(R.id.tv_my_credits);
+            exchange = (TextView) itemView.findViewById(R.id.tv_exchange);
         }
 
-        public void setData(InviteHistory mode) {
-            time.setText(mode.time);
-            bouns.setText(mode.bouns);
-            coupon.setText(String.valueOf(mode.coupon));
-            peopleNum.setText(String.valueOf(mode.peopleNum));
+        public void setData(MyCreditsHeader mode) {
+            credits.setText(mode.credits);
+//            Glide.with(context.getApplicationContext())
+//                    .load(Integer.valueOf(mode.url))
+//                    .crossFade()
+//                    .fitCenter()
+//                    .into(imageView);
         }
     }
 }

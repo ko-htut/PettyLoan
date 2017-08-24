@@ -11,8 +11,10 @@ import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.MultiTypeAdapter;
 import com.yixun.pettyloan.entity.Commodity;
 import com.yixun.pettyloan.entity.CommodityItemViewBinder;
+import com.yixun.pettyloan.entity.MyCreditsHeader;
+import com.yixun.pettyloan.entity.MyCreditsHeaderViewBinder;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
-import com.yixun.pettyloan.ui.widge.SpaceDecoration;
+import com.yixun.pettyloan.ui.widge.SpaceDecorationExceptFirst;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,10 +74,12 @@ public class MyCreditsFragment extends BaseSupportFragment {
 
     private void bindContent() {
         mFeedAdapter = new MultiTypeAdapter();
+        mFeedAdapter.register(MyCreditsHeader.class, new MyCreditsHeaderViewBinder(context));
         mFeedAdapter.register(Commodity.class, new CommodityItemViewBinder(context));
-        mFeedsRecycler.addItemDecoration(new SpaceDecoration((int) getResources().getDimension(R.dimen.goods_margin)));
+        mFeedsRecycler.addItemDecoration(new SpaceDecorationExceptFirst((int) getResources().getDimension(R.dimen.goods_margin)));
         mFeedsRecycler.setAdapter(mFeedAdapter);
         items = new ArrayList<>();
+        items.add(new MyCreditsHeader(getResources().getString(R.string.credits_pettyloan_credits)));
         items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "大容量静音家用空气加湿器"));
         items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "家用台式易安装小空间洗碗机"));
         items.add(new Commodity(String.valueOf(R.drawable.pic_credits_flag), "家用小电器保湿壶"));
