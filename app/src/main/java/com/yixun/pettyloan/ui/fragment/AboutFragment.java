@@ -78,6 +78,8 @@ public class AboutFragment extends BaseSupportFragment {
         for (int i = 0; i < mTitles.length; i++) {
             if (i == 0) {
                 mFragments.add(CompanyProfileFragment.getInstance("ViewPager " + mTitles[i]));
+            } else if (i == 1) {
+                mFragments.add(ManagementTeamFragment.getInstance("ViewPager " + mTitles[i]));
             } else {
                 mFragments.add(SimpleCardFragment.getInstance("ViewPager " + mTitles[i]));
             }

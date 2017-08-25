@@ -31,6 +31,7 @@ dependencies {
     compile project(':captcha_lib')
     compile project(':translucentbar_lib')
     compile project(':expandable_lib')
+    compile project(':expandablelayout_lib')
     compile "com.android.support:appcompat-v7:$rootProject.libSupport"
     compile "com.android.support:design:$rootProject.libSupport"
     compile "com.android.support:recyclerview-v7:$rootProject.libSupport"

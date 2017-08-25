@@ -216,6 +216,12 @@
          未来专注的领域可能在大消费，智能家居、金融科技和文化等产业。\n\n
     </string>
 
+    <string-array name="test_company_chronicle_of_events">
+        <item>2014年10月，新鸿基战略投资小额贷，之后新鸿基旗下亚洲联合财务与小额贷达成战略合作</item>
+        <item>2015年8月20日，新鸿基战略投资小额贷，之后新鸿基旗下亚洲联合财务与小额贷达成战略合作</item>
+        <item>2016年8月20日，新鸿基战略投资小额贷，之后新鸿基旗下亚洲联合财务与小额贷达成战略合作</item>
+    </string-array>
+
     <!-- 共享过度动画 -->
     <string name="transition_banner">transition_animation_banner</string>
 

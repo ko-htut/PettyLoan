@@ -1,6 +1,7 @@
 package com.yixun.pettyloan.ui.fragment;
 
 import android.content.Context;
+import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -77,7 +78,7 @@ public class CompanyProfileFragment extends BaseSupportFragment {
         });
 
         sectionLinearLayout.addSection(getSection());
-        sectionLinearLayout.addSection(getSection());
+        sectionLinearLayout.addSection(getSection1());
 
         sectionLinearLayout.setExpandListener(new ExpandCollapseListener.ExpandListener<ELParent>() {
             @Override
@@ -111,7 +112,9 @@ public class CompanyProfileFragment extends BaseSupportFragment {
             @Override
             public View createImageView(Context context) {
                 ImageView imageView = new ImageView(context);
-                imageView.setTransitionName(getString(R.string.transition_banner));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    imageView.setTransitionName(getString(R.string.transition_banner));
+                }
                 return imageView;
             }
         });
@@ -119,27 +122,27 @@ public class CompanyProfileFragment extends BaseSupportFragment {
         mTopBanner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                Toast.makeText(context,"Why do you click me? " + position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"Why did you click me? " + position,Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public Section<ELParent, ELChild> getSection() {
         Section<ELParent, ELChild> section = new Section<>();
-        ELParent elParent = new ELParent("ELChilds");
-        ELChild fruit1 = new ELChild("Apple");
-        ELChild fruit2 = new ELChild("Orange");
-        ELChild fruit3 = new ELChild("Banana");
-        ELChild fruit4 = new ELChild("Grape");
-        ELChild fruit5 = new ELChild("Strawberry");
-        ELChild fruit6 = new ELChild("Cherry");
-
-        section.parent = elParent;
-        section.children.add(fruit1);
-        section.children.add(fruit2);
-        section.children.add(fruit3);
-        section.children.add(fruit4);
-        section.children.add(fruit5);
+        String[] elChilds = getResources().getStringArray(R.array.test_company_chronicle_of_events);
+        section.parent = new ELParent(getResources().getString(R.string.about_chronicle_of_events));
+        for (int i = 0; i < elChilds.length; i++) {
+            section.children.add(new ELChild(elChilds[i]));
+        }
+        return section;
+    }
+    public Section<ELParent, ELChild> getSection1() {
+        Section<ELParent, ELChild> section = new Section<>();
+        String[] elChilds = getResources().getStringArray(R.array.test_company_chronicle_of_events);
+        section.parent = new ELParent(getResources().getString(R.string.about_company_registration_information));
+        for (int i = 0; i < elChilds.length; i++) {
+            section.children.add(new ELChild(elChilds[i]));
+        }
         return section;
     }
 

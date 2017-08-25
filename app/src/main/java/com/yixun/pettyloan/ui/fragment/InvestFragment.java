@@ -36,7 +36,7 @@ public class InvestFragment extends BaseSupportFragment {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.rv_invest_content)
-    RecyclerView mRecycleView;
+    RecyclerView mRecyclerView;
     @BindView(R.id.banner_invest)
     Banner mBanner;
     @BindView(R.id.srl_refresh)
@@ -117,8 +117,8 @@ public class InvestFragment extends BaseSupportFragment {
     private void bindFeeds() {
         mFeedAdapter = new MultiTypeAdapter();
         mFeedAdapter.register(Product.class, new ProductItemViewBinder(this));
-        mRecycleView.addItemDecoration(new SpaceDecoration((int) getResources().getDimension(R.dimen.goods_margin)));
-        mRecycleView.setAdapter(mFeedAdapter);
+        mRecyclerView.addItemDecoration(new SpaceDecoration((int) getResources().getDimension(R.dimen.goods_margin)));
+        mRecyclerView.setAdapter(mFeedAdapter);
         items = new ArrayList<>();
         items.add(new Product("产品１", "30", "% + 0.32%"));
         items.add(new Product("产品2", "40", "% + 0.32%"));
