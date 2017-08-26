@@ -21,39 +21,45 @@
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <com.youth.banner.Banner
-                android:id="@+id/banner_entity"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:fitsSystemWindows="true" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize"
-                app:contentInsetLeft="0dp"
-                app:contentInsetStart="0dp"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
-
-                <RelativeLayout
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:minHeight="?attr/actionBarSize"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
 
-                    <TextView
-                        android:id="@+id/tv_entity_title"
-                        style="@style/ToolbarTheme"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:drawableLeft="@mipmap/invest_icon"
-                        android:drawablePadding="10dp"
-                        android:text="@string/entity_title"
-                        android:textColor="@color/text_gray" />
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-            </android.support.v7.widget.Toolbar>
+                        <TextView
+                            android:id="@+id/tv_entity_title"
+                            style="@style/ToolbarTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:drawableLeft="@drawable/icon_invest"
+                            android:drawablePadding="10dp"
+                            android:text="@string/entity_title"
+                            android:textColor="@color/text_gray"/>
+                    </RelativeLayout>
+
+                </android.support.v7.widget.Toolbar>
+
+                <com.youth.banner.Banner
+                    android:id="@+id/banner_entity"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:fitsSystemWindows="true" />
+            </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
