@@ -78,10 +78,18 @@ public class AboutFragment extends BaseSupportFragment {
         for (int i = 0; i < mTitles.length; i++) {
             if (i == 0) {
                 mFragments.add(CompanyProfileFragment.getInstance("ViewPager " + mTitles[i]));
-            } else if (i == 1) {
+            }
+            else if (i == 1) {
                 mFragments.add(ManagementTeamFragment.getInstance("ViewPager " + mTitles[i]));
-            } else {
-                mFragments.add(SimpleCardFragment.getInstance("ViewPager " + mTitles[i]));
+            }
+            else if (i == 2) {
+                mFragments.add(StrategicCooperationFragment.getInstance("ViewPager " + mTitles[i]));
+            }
+            else if (i == 3) {
+                mFragments.add(MediaReportFragment.getInstance("ViewPager " + mTitles[i]));
+            }
+            else {
+                mFragments.add(MediaReportFragment.getInstance("ViewPager " + mTitles[i]));
             }
         }
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getChildFragmentManager(), mFragments, mTitles);

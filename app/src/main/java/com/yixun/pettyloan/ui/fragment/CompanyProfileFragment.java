@@ -98,7 +98,6 @@ public class CompanyProfileFragment extends BaseSupportFragment {
     private void bindBanner() {
         final List<Object> urlList = new ArrayList<>();
         urlList.add(R.drawable.pic_banner_company);
-        urlList.add(R.drawable.pic_banner2);
         mTopBanner.setImageLoader(new ImageLoaderInterface() {
             @Override
             public void displayImage(Context context, Object path, View imageView) {

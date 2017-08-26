@@ -3,8 +3,11 @@ package com.yixun.pettyloan.ui.fragment;
 import android.os.SystemClock;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.MultiTypeAdapter;
+import com.yixun.pettyloan.entity.CooperateComItemViewBinder;
+import com.yixun.pettyloan.entity.CooperateCompany;
 import com.yixun.pettyloan.entity.ManageTeam;
 import com.yixun.pettyloan.entity.ManageTeamItemViewBinder;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
@@ -20,7 +23,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
-public class ManagementTeamFragment extends BaseSupportFragment {
+public class StrategicCooperationFragment extends BaseSupportFragment {
     private String mTitle;
     @BindView(R.id.srl_refresh)
     SwipeRefreshLayout mRefresh;
@@ -29,8 +32,8 @@ public class ManagementTeamFragment extends BaseSupportFragment {
     MultiTypeAdapter mFeedAdapter;
     List<Object> items;
 
-    public static ManagementTeamFragment getInstance(String title) {
-        ManagementTeamFragment sf = new ManagementTeamFragment();
+    public static StrategicCooperationFragment getInstance(String title) {
+        StrategicCooperationFragment sf = new StrategicCooperationFragment();
         sf.mTitle = title;
         return sf;
     }
@@ -62,14 +65,12 @@ public class ManagementTeamFragment extends BaseSupportFragment {
 
     private void bindFeeds() {
         mFeedAdapter = new MultiTypeAdapter();
-        ManageTeamItemViewBinder binder = new ManageTeamItemViewBinder(context);
-        mFeedAdapter.register(ManageTeam.class, binder);
+        mFeedAdapter.register(CooperateCompany.class, new CooperateComItemViewBinder(context));
         mRecyclerView.addItemDecoration(new LineDecoration((int) getResources().getDimension(R.dimen.line_height)));
         mRecyclerView.setAdapter(mFeedAdapter);
         items = new ArrayList<>();
-        items.add(new ManageTeam("任开国", "联合首席执行官，共同创始人", getString(R.string.large_text)));
-        items.add(new ManageTeam("郭宇航", "首席业务官", "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"));
-        items.add(new ManageTeam("邝旭霞", "首席运营和财务官", "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"));
+        items.add(new CooperateCompany(String.valueOf(R.drawable.pic_spd_bank),getString(R.string.large_text)));
+        items.add(new CooperateCompany(String.valueOf(R.drawable.pic_hf_bank),getString(R.string.large_text)));
         mFeedAdapter.setItems(items);
         mFeedAdapter.notifyDataSetChanged();
     }
