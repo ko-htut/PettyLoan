@@ -1,10 +1,6 @@
-package iammert.com.expandablelib;
+package com.yixun.pettyloan.ui.widge.expandable;
 
 import android.view.View;
-
-/**
- * Created by mertsimsek on 28/07/2017.
- */
 
 public interface ExpandCollapseListener<P> {
 

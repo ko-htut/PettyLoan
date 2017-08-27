@@ -100,6 +100,7 @@
             <include layout="@layout/line_h_separate"/>
 
             <LinearLayout
+                android:id="@+id/ll_realname_authentication"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -134,6 +135,7 @@
             <include layout="@layout/line_h_mine_space"/>
 
             <LinearLayout
+                android:id="@+id/ll_bank_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -168,6 +170,7 @@
             <include layout="@layout/line_h_mine_space"/>
 
             <LinearLayout
+                android:id="@+id/ll_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -202,6 +205,7 @@
             <include layout="@layout/line_h_separate"/>
 
             <TextView
+                android:id="@+id/tv_change_login_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
@@ -213,6 +217,7 @@
             <include layout="@layout/line_h_mine_space"/>
 
             <TextView
+                android:id="@+id/tv_set_trading_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
@@ -224,6 +229,7 @@
             <include layout="@layout/line_h_separate"/>
 
             <TextView
+                android:id="@+id/tv_text_size"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground"
@@ -237,6 +243,7 @@
             <include layout="@layout/line_h_separate"/>
 
             <LinearLayout
+                android:id="@+id/ll_risk_assessment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
@@ -285,6 +292,7 @@
             <include layout="@layout/line_h_separate"/>
 
             <RelativeLayout
+                android:id="@+id/rl_exit_safely"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"

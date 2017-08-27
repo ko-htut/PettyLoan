@@ -18,8 +18,6 @@ import com.yixun.pettyloan.ui.fragment.ProductDetailFragment;
 
 import org.greenrobot.eventbus.EventBus;
 
-import butterknife.OnClick;
-
 /**
  * Created by zongkaili on 17-8-11.
  */
@@ -59,7 +57,7 @@ public class ProductItemViewBinder extends ItemViewBinder<Product, ProductItemVi
             goodsNameTv = (TextView) itemView.findViewById(R.id.tv_card_goods_name);
             bigRateTv = (TextView) itemView.findViewById(R.id.tv_card_big_rate);
             littleRateTv = (TextView) itemView.findViewById(R.id.tv_card_little_rate);
-            investTv = (TextView) itemView.findViewById(R.id.tv_card_invest);
+            investTv = (TextView) itemView.findViewById(R.id.tv_bottom_invest);
         }
 
 

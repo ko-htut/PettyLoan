@@ -1,4 +1,4 @@
-package iammert.com.expandablelib;
+package com.yixun.pettyloan.ui.widge.expandable;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -13,12 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.yixun.pettyloan.R;
+
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by mertsimsek on 28/07/2017.
- */
 
 public class ExpandableLayout extends LinearLayout {
 

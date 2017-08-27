@@ -47,19 +47,23 @@ public class MySettingFragment extends BaseSupportFragment {
         mTvTitle.setText(mTitle);
     }
 
-    @OnClick({R.id.iv_back,R.id.iv_avatar,R.id.tv_about})
+    @OnClick({R.id.iv_back,R.id.ll_avatar,R.id.ll_realname_authentication,
+            R.id.ll_bank_card,R.id.ll_phone_number,R.id.tv_change_login_pwd,
+            R.id.tv_set_trading_pwd,R.id.tv_text_size,R.id.ll_risk_assessment,
+            R.id.tv_about,R.id.rl_exit_safely})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.iv_back:
                 pop();
                 break;
-            case R.id.iv_avatar:
+            case R.id.ll_avatar:
                 Toast.makeText(context,"功能开发中...",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_about:
                 Toast.makeText(context,"功能开发中...",Toast.LENGTH_SHORT).show();
                 break;
             default:
+                Toast.makeText(context,"功能开发中...",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

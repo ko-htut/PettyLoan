@@ -161,11 +161,11 @@ public class HomeFragment extends BaseSupportFragment {
         mTopBanner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                Intent intent = new Intent(getActivity(), DetailActivity.class);
-                intent.putExtra("img", String.valueOf(urlList.get(position)));
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
-                        mTopBanner, getString(R.string.transition_banner));
-                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+//                Intent intent = new Intent(getActivity(), DetailActivity.class);
+//                intent.putExtra("img", String.valueOf(urlList.get(position)));
+//                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+//                        mTopBanner, getString(R.string.transition_banner));
+//                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
             }
         });
     }

@@ -16,7 +16,7 @@
         android:layout_gravity="center_horizontal"/>
 
     <TextView
-        android:id="@+id/tv_card_invest"
+        android:id="@+id/tv_bottom_invest"
         android:layout_width="180dp"
         android:layout_height="33dp"
         android:background="@drawable/bg_btn_selecter_blue_solid"

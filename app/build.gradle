@@ -30,7 +30,6 @@ dependencies {
     compile project(':fragmentation_core')
     compile project(':captcha_lib')
     compile project(':translucentbar_lib')
-    compile project(':expandable_lib')
     compile project(':expandablelayout_lib')
     compile "com.android.support:appcompat-v7:$rootProject.libSupport"
     compile "com.android.support:design:$rootProject.libSupport"
@@ -45,6 +44,8 @@ dependencies {
     //retrofit和rxjava
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'io.reactivex:rxandroid:1.2.1'
+//    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
+//    compile 'io.reactivex.rxjava2:r、xandroid:2.0.1'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'

@@ -62,7 +62,7 @@
             android:textSize="@dimen/text_size_13"/>
 
         <TextView
-            android:id="@+id/tv_card_invest"
+            android:id="@+id/tv_bottom_invest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -94,7 +94,7 @@
             android:id="@+id/tv_card_toast_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@id/tv_card_invest"
+            android:layout_alignRight="@id/tv_bottom_invest"
             android:layout_alignTop="@id/tv_card_toast_left"
             android:text="@string/card_toast_right"
             android:textColor="@color/text_gray"

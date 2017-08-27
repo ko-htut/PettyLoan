@@ -1,11 +1,7 @@
-package iammert.com.expandablelib;
+package com.yixun.pettyloan.ui.widge.expandable;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by mertsimsek on 28/07/2017.
- */
 
 public class Section<P, C> {
     public boolean expanded;

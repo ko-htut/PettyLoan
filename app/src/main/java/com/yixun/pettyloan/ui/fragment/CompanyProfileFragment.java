@@ -12,6 +12,9 @@ import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.entity.ELChild;
 import com.yixun.pettyloan.entity.ELParent;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
+import com.yixun.pettyloan.ui.widge.expandable.ExpandCollapseListener;
+import com.yixun.pettyloan.ui.widge.expandable.ExpandableLayout;
+import com.yixun.pettyloan.ui.widge.expandable.Section;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoaderInterface;
@@ -20,9 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import iammert.com.expandablelib.ExpandCollapseListener;
-import iammert.com.expandablelib.ExpandableLayout;
-import iammert.com.expandablelib.Section;
 
 public class CompanyProfileFragment extends BaseSupportFragment {
     private String mTitle;

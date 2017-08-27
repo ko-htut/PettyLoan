@@ -87,7 +87,7 @@ public class ProductsListFactory {
             mGoodsNameTv = (TextView) itemView.findViewById(R.id.tv_card_goods_name);
             mBigRateTv = (TextView) itemView.findViewById(R.id.tv_card_big_rate);
             mLittleRateTv = (TextView) itemView.findViewById(R.id.tv_card_little_rate);
-            mInvestTv = (TextView) itemView.findViewById(R.id.tv_card_invest);
+            mInvestTv = (TextView) itemView.findViewById(R.id.tv_bottom_invest);
         }
     }
 

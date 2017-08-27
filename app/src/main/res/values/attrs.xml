@@ -4,4 +4,9 @@
         <!-- 清除按钮的图标 -->
         <attr name="iconClear" format="reference"/>
     </declare-styleable>
+
+    <declare-styleable name="ExpandableLayout">
+        <attr name="parentLayout" format="integer" />
+        <attr name="childLayout" format="integer" />
+    </declare-styleable>
 </resources>

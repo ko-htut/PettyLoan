@@ -79,7 +79,7 @@ public class ProductDetailContentFragment extends BaseSupportFragment {
                 });
     }
 
-    @OnClick({R.id.tv_earning_title,R.id.tv_see_detail,R.id.tv_common_problems,R.id.tv_invest})
+    @OnClick({R.id.tv_earning_title,R.id.tv_see_detail,R.id.tv_common_problems,R.id.tv_invest,R.id.tv_bottom_invest})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.tv_earning_title:
@@ -92,6 +92,9 @@ public class ProductDetailContentFragment extends BaseSupportFragment {
                 EventBus.getDefault().post(new StartBrotherEvent(CommonProblemsFragment.getInstance(mTitle)));
                 break;
             case R.id.tv_invest:
+                EventBus.getDefault().post(new StartBrotherEvent(PaymentFragment.getInstance(mTitle)));
+                break;
+            case R.id.tv_bottom_invest:
                 EventBus.getDefault().post(new StartBrotherEvent(PaymentFragment.getInstance(mTitle)));
                 break;
             default:

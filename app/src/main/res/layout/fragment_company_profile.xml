@@ -155,7 +155,7 @@
 
         <include layout="@layout/line_h_separate"/>
 
-        <iammert.com.expandablelib.ExpandableLayout
+        <com.yixun.pettyloan.ui.widge.expandable.ExpandableLayout
             android:id="@+id/el"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
