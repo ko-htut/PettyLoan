@@ -121,15 +121,19 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="0.5"/>
+
+            <include layout="@layout/item_recharge_select_way"/>
+
 
             <TextView
                 android:id="@+id/tv_sure_pay"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_btn_selecter_gray_solid"
+                android:background="@drawable/bg_btn_selecter_brown_solid"
                 android:gravity="center"
+                android:layout_marginTop="20dp"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
                 android:text="@string/pay_sure"
@@ -157,7 +161,7 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="0.3"/>
+                android:layout_weight="1"/>
         </LinearLayout>
 
     </LinearLayout>

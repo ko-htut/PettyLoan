@@ -6,7 +6,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yixun.pettyloan.R;
+import com.yixun.pettyloan.event.StartBrotherEvent;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -60,7 +63,7 @@ public class MySettingFragment extends BaseSupportFragment {
                 Toast.makeText(context,"功能开发中...",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_about:
-                Toast.makeText(context,"功能开发中...",Toast.LENGTH_SHORT).show();
+                EventBus.getDefault().post(new StartBrotherEvent(AboutPettyloanFragment.getInstance("关于小额贷")));
                 break;
             default:
                 Toast.makeText(context,"功能开发中...",Toast.LENGTH_SHORT).show();

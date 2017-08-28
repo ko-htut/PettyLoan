@@ -135,6 +135,7 @@
     <string name="pay_open_amount">开放额度</string>
     <string name="pay_current_amount">当前额度余额</string>
     <string name="pay_invest_amount">投资金额</string>
+    <string name="pay_select_way">选择支付方式</string>
     <string name="pay_sure">确认支付</string>
     <string name="pay_sure_tip_check">我已同意以下内容，并同意加盖本人电子签章</string>
     <string name="pay_sure_tip_detail">用户明确并同意其使用APP，手机APP网络服务所存在的风险将完全由其本人\n
@@ -188,6 +189,10 @@
     <string name="setting_risk_assessment_go">去测试</string>
     <string name="setting_about_pettyloan">关于小额贷</string>
     <string name="setting_exit_safely">安全退出</string>
+    <string name="setting_current_version">当前版本 %1$s</string>
+    <string name="setting_share_to_friends">分享小额贷给好友</string>
+    <string name="setting_go_grade">去评分</string>
+
 
     <!--my message page-->
     <string name="msg_title">我的消息</string>

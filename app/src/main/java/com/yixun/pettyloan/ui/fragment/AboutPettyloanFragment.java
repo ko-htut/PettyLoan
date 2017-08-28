@@ -2,8 +2,8 @@ package com.yixun.pettyloan.ui.fragment;
 
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
@@ -11,28 +11,22 @@ import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class PaymentFragment extends BaseSupportFragment {
+public class AboutPettyloanFragment extends BaseSupportFragment {
     private String mTitle;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.tv_title)
     TextView mTvTitle;
-    @BindView(R.id.tv_select_way)
-    TextView mTvSelectWay;
-    @BindView(R.id.iv_add_bank_card_select)
-    ImageView mABCSelectIv;
-    @BindView(R.id.iv_wechat_pay_select)
-    ImageView mWPSelectIv;
 
-    public static PaymentFragment getInstance(String title) {
-        PaymentFragment sf = new PaymentFragment();
+    public static AboutPettyloanFragment getInstance(String title) {
+        AboutPettyloanFragment sf = new AboutPettyloanFragment();
         sf.mTitle = title;
         return sf;
     }
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_pay;
+        return R.layout.fragment_about_pettyloan;
     }
 
     @Override
@@ -43,7 +37,6 @@ public class PaymentFragment extends BaseSupportFragment {
     @Override
     protected void initView() {
         initToolbar();
-        mTvSelectWay.setText(getString(R.string.pay_select_way));
     }
 
     @Override
@@ -54,19 +47,17 @@ public class PaymentFragment extends BaseSupportFragment {
         mTvTitle.setText(mTitle);
     }
 
-    @OnClick({R.id.iv_back, R.id.ll_add_bank_card_root, R.id.ll_wechat_pay_root})
+    @OnClick({R.id.iv_back, R.id.tv_share_to_friends, R.id.ll_go_grade})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
                 pop();
                 break;
-            case R.id.ll_add_bank_card_root:
-                mABCSelectIv.setVisibility(View.VISIBLE);
-                mWPSelectIv.setVisibility(View.INVISIBLE);
+            case R.id.tv_share_to_friends:
+                Toast.makeText(context, "功能开发中...", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.ll_wechat_pay_root:
-                mWPSelectIv.setVisibility(View.VISIBLE);
-                mABCSelectIv.setVisibility(View.INVISIBLE);
+            case R.id.ll_go_grade:
+                Toast.makeText(context, "功能开发中...", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
