@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 
-import com.yixun.pettyloan.rx.RxManager;
+import com.yixun.pettyloan.rx.base.BasePresenter;
 import com.yixun.pettyloan.utils.TUtil;
 
 import butterknife.ButterKnife;
@@ -26,11 +26,10 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 /**
  * 展示自定制的MySupportFragment，不继承SupportFragment
  */
-public abstract class BaseSupportFragment<T extends BasePresenter, E extends BaseModel> extends Fragment implements ISupportFragment {
+public abstract class BaseSupportFragment<T extends BasePresenter, E> extends Fragment implements ISupportFragment {
     final SupportFragmentDelegate mDelegate = new SupportFragmentDelegate(this);
     public T mPresenter;
     public E mModel;
-    public RxManager mRxManager;
     protected FragmentActivity _mActivity;
     protected View rootView;
     protected Context context;
@@ -77,12 +76,8 @@ public abstract class BaseSupportFragment<T extends BasePresenter, E extends Bas
             return rootView;
         }
         mUnbinder = ButterKnife.bind(this, rootView);
-        mRxManager = new RxManager();
         mPresenter = TUtil.getT(this, 0);
         mModel = TUtil.getT(this, 1);
-        if (mPresenter != null) {
-            mPresenter.mContext = context;
-        }
         initPresenter();
         initView();
         return rootView;
@@ -94,7 +89,7 @@ public abstract class BaseSupportFragment<T extends BasePresenter, E extends Bas
     //简单页面无需mvp就不用管此方法即可
     public abstract void initPresenter();
 
-    //初始化view
+    //初始化view和数据
     protected abstract void initView();
 
     //获取数据

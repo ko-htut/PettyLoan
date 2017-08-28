@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
-import com.yixun.pettyloan.rx.RxManager;
+import com.yixun.pettyloan.rx.base.BasePresenter;
 import com.yixun.pettyloan.utils.TUtil;
 
 import butterknife.ButterKnife;
@@ -22,12 +22,11 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 /**
  * 展示自定制的MySupportActivity，不继承SupportActivity
  */
-public abstract class BaseSupportActivity<T extends BasePresenter, E extends BaseModel> extends AppCompatActivity implements ISupportActivity {
+public abstract class BaseSupportActivity<T extends BasePresenter, E> extends AppCompatActivity implements ISupportActivity {
     final SupportActivityDelegate mDelegate = new SupportActivityDelegate(this);
     public T mPresenter;
     public E mModel;
     public Context mContext;
-    public RxManager mRxManager;
 
     @Override
     public SupportActivityDelegate getSupportDelegate() {
@@ -47,15 +46,11 @@ public abstract class BaseSupportActivity<T extends BasePresenter, E extends Bas
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDelegate.onCreate(savedInstanceState);
-        mRxManager=new RxManager();
         setContentView(getLayoutResource());
         ButterKnife.bind(this);
         mContext = this;
         mPresenter = TUtil.getT(this, 0);
         mModel=TUtil.getT(this,1);
-        if(mPresenter!=null){
-            mPresenter.mContext=this;
-        }
         initPresenter();
         initView();
     }

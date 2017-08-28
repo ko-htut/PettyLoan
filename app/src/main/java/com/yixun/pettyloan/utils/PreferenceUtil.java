@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 
-import com.yixun.pettyloan.YXApplication;
+import com.yixun.pettyloan.App;
 
 /**
  * Created by zongkaili on 17-4-14.
@@ -24,21 +24,21 @@ public final class PreferenceUtil {
 
     public static String getString(String key, String defValue) {
 
-        return PreferenceManager.getDefaultSharedPreferences(YXApplication.getInstance())
+        return PreferenceManager.getDefaultSharedPreferences(App.getInstance())
                 .getString(key, defValue);
     }
 
 
     public static long getLong(String key, long defValue) {
 
-        return PreferenceManager.getDefaultSharedPreferences(YXApplication.getInstance())
+        return PreferenceManager.getDefaultSharedPreferences(App.getInstance())
                 .getLong(key, defValue);
     }
 
 
     public static float getFloat(String key, float defValue) {
 
-        return PreferenceManager.getDefaultSharedPreferences(YXApplication.getInstance())
+        return PreferenceManager.getDefaultSharedPreferences(App.getInstance())
                 .getFloat(key, defValue);
     }
 
@@ -70,7 +70,7 @@ public final class PreferenceUtil {
     private static void putFloat(String key, float value) {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(
-                YXApplication.getInstance());
+                App.getInstance());
         Editor editor = sharedPreferences.edit();
         editor.putFloat(key, value);
         editor.apply();
@@ -79,27 +79,27 @@ public final class PreferenceUtil {
 
     public static SharedPreferences getPreferences() {
 
-        return PreferenceManager.getDefaultSharedPreferences(YXApplication.getInstance());
+        return PreferenceManager.getDefaultSharedPreferences(App.getInstance());
     }
 
 
     public static int getInt(String key, int defValue) {
 
-        return PreferenceManager.getDefaultSharedPreferences(YXApplication.getInstance())
+        return PreferenceManager.getDefaultSharedPreferences(App.getInstance())
                 .getInt(key, defValue);
     }
 
 
     public static boolean getBoolean(String key, boolean defValue) {
 
-        return PreferenceManager.getDefaultSharedPreferences(YXApplication.getInstance())
+        return PreferenceManager.getDefaultSharedPreferences(App.getInstance())
                 .getBoolean(key, defValue);
     }
 
 
     public static void putStringProcess(String key, String value) {
 
-        SharedPreferences sharedPreferences = YXApplication.getInstance()
+        SharedPreferences sharedPreferences = App.getInstance()
                 .getSharedPreferences("preference_mu", Context.MODE_MULTI_PROCESS);
         Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
@@ -109,7 +109,7 @@ public final class PreferenceUtil {
 
     public static String getStringProcess(String key, String defValue) {
 
-        SharedPreferences sharedPreferences = YXApplication.getInstance()
+        SharedPreferences sharedPreferences = App.getInstance()
                 .getSharedPreferences("preference_mu", Context.MODE_MULTI_PROCESS);
         return sharedPreferences.getString(key, defValue);
     }
@@ -118,7 +118,7 @@ public final class PreferenceUtil {
     public static boolean hasString(String key) {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(
-                YXApplication.getInstance());
+                App.getInstance());
         return sharedPreferences.contains(key);
     }
 
@@ -126,7 +126,7 @@ public final class PreferenceUtil {
     private static void putString(String key, String value) {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(
-                YXApplication.getInstance());
+                App.getInstance());
         Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.apply();
@@ -136,7 +136,7 @@ public final class PreferenceUtil {
     public static void putLong(String key, long value) {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(
-                YXApplication.getInstance());
+                App.getInstance());
         Editor editor = sharedPreferences.edit();
         editor.putLong(key, value);
         editor.apply();
@@ -146,7 +146,7 @@ public final class PreferenceUtil {
     public static void putBoolean(String key, boolean value) {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(
-                YXApplication.getInstance());
+                App.getInstance());
         Editor editor = sharedPreferences.edit();
         editor.putBoolean(key, value);
         editor.apply();
@@ -156,7 +156,7 @@ public final class PreferenceUtil {
     private static void putInt(String key, int value) {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(
-                YXApplication.getInstance());
+                App.getInstance());
         Editor editor = sharedPreferences.edit();
         editor.putInt(key, value);
         editor.apply();
@@ -167,7 +167,7 @@ public final class PreferenceUtil {
 
         if (keys != null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(
-                    YXApplication.getInstance());
+                    App.getInstance());
             Editor editor = sharedPreferences.edit();
             for (String key : keys) {
                 editor.remove(key);

@@ -16,10 +16,15 @@ import android.app.Application;
 import android.content.Context;
 import android.os.PowerManager;
 
-public class YXApplication extends Application {
+import com.yixun.pettyloan.rx.di.component.AppComponent;
+import com.yixun.pettyloan.rx.di.module.AppModule;
+import com.yixun.pettyloan.rx.di.module.HttpModule;
+
+public class App extends Application {
     public static Context applicationContext;
-    private static YXApplication mInstance = null;
+    private static App mInstance = null;
     private PowerManager.WakeLock mWakeLock;
+    public static AppComponent appComponent;
 
     @Override
     public void onCreate() {
@@ -28,6 +33,7 @@ public class YXApplication extends Application {
         applicationContext = getApplicationContext();
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Idealsee_AR");
+
     }
 
     @Override
@@ -44,8 +50,17 @@ public class YXApplication extends Application {
         super.onTerminate();
     }
 
-    public static YXApplication getInstance() {
+    public static App getInstance() {
         return mInstance;
     }
 
+    public static AppComponent getAppComponent(){
+        if (appComponent == null) {
+            appComponent = DaggerAppComponent.builder()
+                    .appModule(new AppModule(mInstance))
+                    .httpModule(new HttpModule())
+                    .build();
+        }
+        return appComponent;
+    }
 }

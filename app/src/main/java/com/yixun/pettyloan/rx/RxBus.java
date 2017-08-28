@@ -1,130 +1,42 @@
 package com.yixun.pettyloan.rx;
 
-import android.support.annotation.NonNull;
+import io.reactivex.Flowable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.processors.FlowableProcessor;
+import io.reactivex.processors.PublishProcessor;
 
-import com.yixun.pettyloan.utils.LogUtils;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.subjects.PublishSubject;
-import rx.subjects.Subject;
-
-/**
- * 用RxJava实现的EventBus
- */
 public class RxBus {
-    private static RxBus instance;
-
-    public static synchronized RxBus getInstance() {
-        if (null == instance) {
-            instance = new RxBus();
-        }
-        return instance;
-    }
-
+    // 主题
+    private final FlowableProcessor<Object> bus;
+    // PublishSubject只会把在订阅发生的时间点之后来自原始Flowable的数据发射给观察者
     private RxBus() {
+        bus = PublishProcessor.create().toSerialized();
     }
 
-    @SuppressWarnings("rawtypes")
-    private ConcurrentHashMap<Object, List<Subject>> subjectMapper = new ConcurrentHashMap<Object, List<Subject>>();
-
-    /**
-     * 订阅事件源
-     *
-     * @param mObservable
-     * @param mAction1
-     * @return
-     */
-    public RxBus OnEvent(Observable<?> mObservable, Action1<Object> mAction1) {
-        mObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(mAction1, new Action1<Throwable>() {
-            @Override
-            public void call(Throwable throwable) {
-                throwable.printStackTrace();
-            }
-        });
-        return getInstance();
+    public static RxBus getDefault() {
+        return RxBusHolder.sInstance;
     }
 
-    /**
-     * 注册事件源
-     *
-     * @param tag
-     * @return
-     */
-    @SuppressWarnings({"rawtypes"})
-    public <T> Observable<T> register(@NonNull Object tag) {
-        List<Subject> subjectList = subjectMapper.get(tag);
-        if (null == subjectList) {
-            subjectList = new ArrayList<Subject>();
-            subjectMapper.put(tag, subjectList);
-        }
-        Subject<T, T> subject;
-        subjectList.add(subject = PublishSubject.create());
-        LogUtils.logd("register"+tag + "  size:" + subjectList.size());
-        return subject;
+    private static class RxBusHolder {
+        private static final RxBus sInstance = new RxBus();
     }
 
-    @SuppressWarnings("rawtypes")
-    public void unregister(@NonNull Object tag) {
-        List<Subject> subjects = subjectMapper.get(tag);
-        if (null != subjects) {
-            subjectMapper.remove(tag);
-        }
+
+    // 提供了一个新的事件
+    public void post(Object o) {
+        bus.onNext(o);
     }
 
-    /**
-     * 取消监听
-     *
-     * @param tag
-     * @param observable
-     * @return
-     */
-    @SuppressWarnings("rawtypes")
-    public RxBus unregister(@NonNull Object tag,
-                            @NonNull Observable<?> observable) {
-        if (null == observable)
-            return getInstance();
-        List<Subject> subjects = subjectMapper.get(tag);
-        if (null != subjects) {
-            subjects.remove((Subject<?, ?>) observable);
-            if (isEmpty(subjects)) {
-                subjectMapper.remove(tag);
-                LogUtils.logd("unregister"+ tag + "  size:" + subjects.size());
-            }
-        }
-        return getInstance();
+    // 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
+    public <T> Flowable<T> toFlowable(Class<T> eventType) {
+        return bus.ofType(eventType);
     }
 
-    public void post(@NonNull Object content) {
-        post(content.getClass().getName(), content);
+    // 封装默认订阅
+    public <T> Disposable toDefaultFlowable(Class<T> eventType, Consumer<T> act) {
+        return bus.ofType(eventType).compose(RxUtil.<T>rxSchedulerHelper()).subscribe(act);
     }
-
-    /**
-     * 触发事件
-     *
-     * @param content
-     */
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public void post(@NonNull Object tag, @NonNull Object content) {
-        LogUtils.logd("post"+ "eventName: " + tag);
-        List<Subject> subjectList = subjectMapper.get(tag);
-        if (!isEmpty(subjectList)) {
-            for (Subject subject : subjectList) {
-                subject.onNext(content);
-                LogUtils.logd("onEvent"+ "eventName: " + tag);
-            }
-        }
-    }
-
-    @SuppressWarnings("rawtypes")
-    public static boolean isEmpty(Collection<Subject> collection) {
-        return null == collection || collection.isEmpty();
-    }
-
 }
