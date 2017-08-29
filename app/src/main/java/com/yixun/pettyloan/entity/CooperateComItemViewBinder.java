@@ -66,8 +66,6 @@ public class CooperateComItemViewBinder extends ItemViewBinder<CooperateCompany,
             tvIntro.setText(mode.introduction);
             Glide.with(context)
                     .load(Integer.valueOf(mode.url))
-                    .crossFade()
-                    .fitCenter()
                     .into(ivLogo);
         }
     }

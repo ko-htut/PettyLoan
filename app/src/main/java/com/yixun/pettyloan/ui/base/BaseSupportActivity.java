@@ -8,7 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
-import com.yixun.pettyloan.rx.base.BasePresenter;
+import com.jess.arms.base.BaseActivity;
+import com.jess.arms.mvp.BasePresenter;
 import com.yixun.pettyloan.utils.TUtil;
 
 import butterknife.ButterKnife;

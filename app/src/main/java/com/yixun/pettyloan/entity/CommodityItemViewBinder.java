@@ -61,8 +61,6 @@ public class CommodityItemViewBinder extends ItemViewBinder<Commodity, Commodity
             name.setText(mode.name);
             Glide.with(context.getApplicationContext())
                     .load(Integer.valueOf(mode.url))
-                    .crossFade()
-                    .fitCenter()
                     .into(imageView);
         }
     }

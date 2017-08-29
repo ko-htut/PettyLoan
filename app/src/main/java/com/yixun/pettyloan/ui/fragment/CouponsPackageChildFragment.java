@@ -1,6 +1,5 @@
 package com.yixun.pettyloan.ui.fragment;
 
-import android.os.SystemClock;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 
@@ -8,8 +7,6 @@ import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.MultiTypeAdapter;
 import com.yixun.pettyloan.entity.Commodity;
 import com.yixun.pettyloan.entity.CommodityItemViewBinder;
-import com.yixun.pettyloan.entity.TradingRecord;
-import com.yixun.pettyloan.entity.TradingRecordItemViewBinder;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.yixun.pettyloan.ui.widge.LineDecoration;
 
@@ -17,11 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 public class CouponsPackageChildFragment extends BaseSupportFragment {
     private String mTitle;
@@ -82,20 +74,20 @@ public class CouponsPackageChildFragment extends BaseSupportFragment {
     }
 
     public void updateRefreshStatus() {
-        Observable.create(new Observable.OnSubscribe<String>() {
-
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                SystemClock.sleep(1000);
-                subscriber.onNext("refresh");
-            }
-        }).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        mRefresh.setRefreshing(false);
-                    }
-                });
+//        Observable.create(new Observable.OnSubscribe<String>() {
+//
+//            @Override
+//            public void call(Subscriber<? super String> subscriber) {
+//                SystemClock.sleep(1000);
+//                subscriber.onNext("refresh");
+//            }
+//        }).subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<String>() {
+//                    @Override
+//                    public void call(String s) {
+//                        mRefresh.setRefreshing(false);
+//                    }
+//                });
     }
 }

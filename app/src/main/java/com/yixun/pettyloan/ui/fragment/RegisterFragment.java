@@ -3,7 +3,9 @@ package com.yixun.pettyloan.ui.fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
@@ -22,8 +24,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.SizeReadyCallback;
+import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.transition.Transition;
 import com.kelly.captcha.SwipeCaptchaView;
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
@@ -172,17 +177,10 @@ public class RegisterFragment extends BaseSupportFragment {
             }
         });
 
-        //测试从网络加载图片是否ok
         Glide.with(this)
                 .load(R.drawable.bg_slide_captcha)
-                .asBitmap()
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        mSwipeCaptchaView.setImageBitmap(resource);
-                        mSwipeCaptchaView.createCaptcha();
-                    }
-                });
+                .into(mSwipeCaptchaView);
+        mSwipeCaptchaView.createCaptcha();
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.yixun.pettyloan.rx.di.component;
 
 import android.app.Activity;
 
+import com.jess.arms.di.component.AppComponent;
+import com.yixun.pettyloan.rx.di.module.ActivityModule;
 import com.yixun.pettyloan.rx.di.scope.ActivityScope;
 import com.yixun.pettyloan.ui.GuidePictureActivity;
 import com.yixun.pettyloan.ui.LoginActivity;

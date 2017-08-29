@@ -19,11 +19,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 public class CommonProblemsFragment extends BaseSupportFragment {
     private String mTitle;
@@ -90,21 +85,21 @@ public class CommonProblemsFragment extends BaseSupportFragment {
     }
 
     public void updateRefreshStatus() {
-        Observable.create(new Observable.OnSubscribe<String>() {
-
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                SystemClock.sleep(1000);
-                subscriber.onNext("refresh");
-            }
-        }).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        mRefresh.setRefreshing(false);
-                    }
-                });
+//        Observable.create(new Observable.OnSubscribe<String>() {
+//
+//            @Override
+//            public void call(Subscriber<? super String> subscriber) {
+//                SystemClock.sleep(1000);
+//                subscriber.onNext("refresh");
+//            }
+//        }).subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<String>() {
+//                    @Override
+//                    public void call(String s) {
+//                        mRefresh.setRefreshing(false);
+//                    }
+//                });
     }
 
     @OnClick({R.id.iv_back})

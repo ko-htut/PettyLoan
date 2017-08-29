@@ -1,12 +1,8 @@
 package com.yixun.pettyloan.ui.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -30,7 +26,6 @@ import com.yixun.pettyloan.entity.FeatureTwo;
 import com.yixun.pettyloan.entity.FeatureTwoItemViewBinder;
 import com.yixun.pettyloan.entity.ProductItemViewBinder;
 import com.yixun.pettyloan.entity.Product;
-import com.yixun.pettyloan.ui.DetailActivity;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
@@ -40,11 +35,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 public class HomeFragment extends BaseSupportFragment {
     private String mTitle;
@@ -145,8 +135,6 @@ public class HomeFragment extends BaseSupportFragment {
             public void displayImage(Context context, Object path, View imageView) {
                 Glide.with(context.getApplicationContext())
                         .load(path)
-                        .crossFade()
-                        .centerCrop()
                         .into((ImageView) imageView);
             }
 
@@ -172,29 +160,24 @@ public class HomeFragment extends BaseSupportFragment {
 
     private void configRefresh() {
         mRefresh.setColorSchemeColors(getResources().getColor(R.color.blue_dark));
-        mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                updateRefreshStatus();
-            }
-        });
+        mRefresh.setOnRefreshListener(() -> updateRefreshStatus());
     }
 
     public void updateRefreshStatus() {
-        Observable.create(new Observable.OnSubscribe<String>() {
-
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                SystemClock.sleep(1000);
-                subscriber.onNext("refresh");
-            }
-        }).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        mRefresh.setRefreshing(false);
-                    }
-                });
+//        Observable.create(new Observable.OnSubscribe<String>() {
+//
+//            @Override
+//            public void call(Subscriber<? super String> subscriber) {
+//                SystemClock.sleep(1000);
+//                subscriber.onNext("refresh");
+//            }
+//        }).subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<String>() {
+//                    @Override
+//                    public void call(String s) {
+//                        mRefresh.setRefreshing(false);
+//                    }
+//                });
     }
 }

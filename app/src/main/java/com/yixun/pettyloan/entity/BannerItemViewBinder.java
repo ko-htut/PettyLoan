@@ -52,8 +52,6 @@ public class BannerItemViewBinder extends ItemViewBinder<BannerFeed, BannerItemV
                 public void displayImage(Context context, Object path, View imageView) {
                     Glide.with(context.getApplicationContext())
                             .load(path)
-                            .crossFade()
-                            .centerCrop()
                             .into((ImageView) imageView);
                 }
 

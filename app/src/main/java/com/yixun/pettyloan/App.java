@@ -12,19 +12,15 @@
  */
 package com.yixun.pettyloan;
 
-import android.app.Application;
 import android.content.Context;
 import android.os.PowerManager;
 
-import com.yixun.pettyloan.rx.di.component.AppComponent;
-import com.yixun.pettyloan.rx.di.module.AppModule;
-import com.yixun.pettyloan.rx.di.module.HttpModule;
+import com.jess.arms.base.BaseApplication;
 
-public class App extends Application {
+public class App extends BaseApplication {
     public static Context applicationContext;
     private static App mInstance = null;
     private PowerManager.WakeLock mWakeLock;
-    public static AppComponent appComponent;
 
     @Override
     public void onCreate() {
@@ -33,7 +29,6 @@ public class App extends Application {
         applicationContext = getApplicationContext();
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Idealsee_AR");
-
     }
 
     @Override
@@ -54,13 +49,4 @@ public class App extends Application {
         return mInstance;
     }
 
-    public static AppComponent getAppComponent(){
-        if (appComponent == null) {
-            appComponent = DaggerAppComponent.builder()
-                    .appModule(new AppModule(mInstance))
-                    .httpModule(new HttpModule())
-                    .build();
-        }
-        return appComponent;
-    }
 }
