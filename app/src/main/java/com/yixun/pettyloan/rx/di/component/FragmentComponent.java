@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.jess.arms.di.component.AppComponent;
 import com.yixun.pettyloan.rx.di.module.FragmentModule;
+import com.yixun.pettyloan.rx.di.module.UserModule;
 import com.yixun.pettyloan.rx.di.scope.FragmentScope;
 import com.yixun.pettyloan.ui.fragment.MediaReportFragment;
 

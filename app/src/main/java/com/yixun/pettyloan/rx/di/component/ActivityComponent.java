@@ -9,6 +9,7 @@ import com.yixun.pettyloan.ui.GuidePictureActivity;
 import com.yixun.pettyloan.ui.LoginActivity;
 import com.yixun.pettyloan.ui.MainActivity;
 import com.yixun.pettyloan.ui.SplashActivity;
+import com.yixun.pettyloan.ui.UserActivity;
 
 import dagger.Component;
 
@@ -28,4 +29,6 @@ public interface ActivityComponent {
     void inject(GuidePictureActivity zhihuDetailActivity);
 
     void inject(LoginActivity themeActivity);
+
+    void inject(UserActivity userActivity);
 }

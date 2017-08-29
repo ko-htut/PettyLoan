@@ -19,6 +19,7 @@ import com.yixun.pettyloan.entity.Commodity;
 import com.yixun.pettyloan.entity.NewsItemViewBinder;
 import com.yixun.pettyloan.mvp.contract.UserContract;
 import com.yixun.pettyloan.presenter.UserPresenter;
+import com.yixun.pettyloan.rx.di.component.DaggerActivityComponent;
 import com.yixun.pettyloan.rx.di.module.UserModule;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.yixun.pettyloan.ui.base.BaseSupportFragmentTest;
@@ -100,12 +101,12 @@ public class MediaReportFragment extends BaseSupportFragmentTest<UserPresenter> 
 
     @Override
     public void setupFragmentComponent(AppComponent appComponent) {
-//        DaggerFragmentComponent
-//                .builder()
-//                .appComponent(appComponent)
-//                .userModule(new UserModule(this))
-//                .build()
-//                .inject(this);
+        DaggerFragmentComponent
+                .builder()
+                .appComponent(appComponent)
+                .userModule(new UserModule(this))
+                .build()
+                .inject(this);
     }
 
     @Override

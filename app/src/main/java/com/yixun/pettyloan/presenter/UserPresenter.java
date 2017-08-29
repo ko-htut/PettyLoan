@@ -9,6 +9,7 @@ import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.PermissionUtil;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.yixun.pettyloan.mvp.contract.UserContract;
+import com.yixun.pettyloan.mvp.test.UserAdapter;
 import com.yixun.pettyloan.rx.di.module.entity.User;
 
 import java.util.ArrayList;
@@ -47,10 +48,10 @@ public class UserPresenter extends BasePresenter<UserContract.Model, UserContrac
     }
 
     public void requestUsers(final boolean pullToRefresh) {
-//        if (mAdapter == null) {
-//            mAdapter = new UserAdapter(mUsers);
-//            mRootView.setAdapter(mAdapter);//设置Adapter
-//        }
+        if (mAdapter == null) {
+            mAdapter = new UserAdapter(mUsers);
+            mRootView.setAdapter(mAdapter);//设置Adapter
+        }
 
         //请求外部存储权限用于适配android6.0的权限管理机制
         PermissionUtil.externalStorage(new PermissionUtil.RequestPermission() {

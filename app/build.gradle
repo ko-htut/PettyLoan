@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
+//apply plugin: 'android-apt'
 apply plugin: 'realm-android'
 apply plugin: 'me.tatarka.retrolambda'
 
@@ -55,7 +55,7 @@ dependencies {
     compile "com.youth.banner:banner:1.4.9"
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.jakewharton:butterknife:8.5.1'
-    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+//    apt 'com.jakewharton:butterknife-compiler:8.5.1'
     compile 'com.orhanobut:logger:1.15'
 
     //test
