@@ -116,7 +116,6 @@ public class MediaReportFragment extends MvpBaseFragment<HotPresenter> implement
             mRefresh.setRefreshing(false);
         }
         stateMain();
-        items.clear();
         List<HotListBean.RecentBean> datas = hotListBean.getRecent();
         for (int i = 0; i < datas.size(); i++) {
             items.add(new Commodity(datas.get(i).getThumbnail(),datas.get(i).getTitle()));
