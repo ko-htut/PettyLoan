@@ -101,7 +101,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/detail_margin_horizontal"
-                android:text="@string/detail_item_title_４"
+                android:text="@string/detail_title_caculator_invest_acounts"
                 android:textSize="@dimen/detail_text_size_large"/>
 
 
