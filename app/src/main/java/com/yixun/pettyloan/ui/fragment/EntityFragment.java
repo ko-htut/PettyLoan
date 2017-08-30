@@ -3,6 +3,7 @@ package com.yixun.pettyloan.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -24,10 +25,15 @@ import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoaderInterface;
 
+import org.reactivestreams.Subscriber;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class EntityFragment extends BaseSupportFragment {
     @BindView(R.id.toolbar)
@@ -157,6 +163,7 @@ public class EntityFragment extends BaseSupportFragment {
         public void displayImage(Context context, Object path, View imageView) {
             Glide.with(context.getApplicationContext())
                     .load(path)
+                    .crossFade()
                     .into((ImageView) imageView);
         }
 

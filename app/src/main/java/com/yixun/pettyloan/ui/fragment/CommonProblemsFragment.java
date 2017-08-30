@@ -1,6 +1,5 @@
 package com.yixun.pettyloan.ui.fragment;
 
-import android.os.SystemClock;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;

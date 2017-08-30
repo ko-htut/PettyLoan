@@ -69,7 +69,12 @@ public class TradingRecordChildFragment extends BaseSupportFragment {
 
     private void configRefresh() {
         mRefresh.setColorSchemeColors(getResources().getColor(R.color.blue_dark));
-        mRefresh.setOnRefreshListener(() -> updateRefreshStatus());
+        mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                updateRefreshStatus();
+            }
+        });
     }
 
     public void updateRefreshStatus() {

@@ -55,6 +55,7 @@ public class DetailActivity extends BaseSupportActivity {
         String img = getIntent().getStringExtra("img");
         Glide.with(this)
                 .load(R.drawable.pic_banner1)
+                .centerCrop()
                 .into(mImg);
         TranslucentBarManager translucentBarManager = new TranslucentBarManager(this);
         translucentBarManager.translucent(this, R.color.text_blue);

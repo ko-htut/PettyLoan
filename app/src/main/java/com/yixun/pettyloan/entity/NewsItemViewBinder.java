@@ -56,7 +56,9 @@ public class NewsItemViewBinder extends ItemViewBinder<Commodity, NewsItemViewBi
         public void setData(Commodity mode) {
             name.setText(mode.name);
             Glide.with(context.getApplicationContext())
-                    .load(Integer.valueOf(mode.url))
+                    .load(mode.url)
+                    .crossFade()
+                    .fitCenter()
                     .into(imageView);
         }
     }

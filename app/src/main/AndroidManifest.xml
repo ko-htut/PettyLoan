@@ -3,12 +3,13 @@
           package="com.yixun.pettyloan">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
 
     <application
         android:name=".App"
@@ -44,22 +45,7 @@
             android:name=".ui.DetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.TranslucentStatusBar"></activity>
-        <activity
-            android:name=".ui.UserActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.TranslucentStatusBar"></activity>
 
-        <meta-data
-            android:name="design_width"
-            android:value="1080"/>
-        <meta-data
-            android:name="design_height"
-            android:value="1920"/>
-
-        <!-- arms配置 -->
-        <meta-data
-            android:name="com.yixun.pettyloan.GlobalConfiguration"
-            android:value="ConfigModule"/>
     </application>
 
 </manifest>

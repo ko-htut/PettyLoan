@@ -12,9 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 
-import com.jess.arms.base.BaseFragment;
-import com.jess.arms.mvp.BasePresenter;
+import com.yixun.pettyloan.rx.base.BasePresenter;
 import com.yixun.pettyloan.utils.TUtil;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -27,9 +28,10 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 /**
  * 展示自定制的MySupportFragment，不继承SupportFragment
  */
-public abstract class BaseSupportFragment<T extends BasePresenter> extends Fragment implements ISupportFragment {
+public abstract class BaseSupportFragment extends Fragment implements ISupportFragment {
     final SupportFragmentDelegate mDelegate = new SupportFragmentDelegate(this);
-    public T mPresenter;
+//    public T mPresenter;
+//    public E mModel;
     protected FragmentActivity _mActivity;
     protected View rootView;
     protected Context context;
@@ -76,7 +78,8 @@ public abstract class BaseSupportFragment<T extends BasePresenter> extends Fragm
             return rootView;
         }
         mUnbinder = ButterKnife.bind(this, rootView);
-        mPresenter = TUtil.getT(this, 0);
+//        mPresenter = TUtil.getT(this, 0);
+//        mModel = TUtil.getT(this, 1);
         initPresenter();
         initView();
         return rootView;

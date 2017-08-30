@@ -8,8 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
-import com.jess.arms.base.BaseActivity;
-import com.jess.arms.mvp.BasePresenter;
+import com.yixun.pettyloan.rx.base.BasePresenter;
 import com.yixun.pettyloan.utils.TUtil;
 
 import butterknife.ButterKnife;
@@ -23,10 +22,10 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 /**
  * 展示自定制的MySupportActivity，不继承SupportActivity
  */
-public abstract class BaseSupportActivity<T extends BasePresenter, E> extends AppCompatActivity implements ISupportActivity {
+public abstract class BaseSupportActivity extends AppCompatActivity implements ISupportActivity {
     final SupportActivityDelegate mDelegate = new SupportActivityDelegate(this);
-    public T mPresenter;
-    public E mModel;
+//    public T mPresenter;
+//    public E mModel;
     public Context mContext;
 
     @Override
@@ -50,12 +49,15 @@ public abstract class BaseSupportActivity<T extends BasePresenter, E> extends Ap
         setContentView(getLayoutResource());
         ButterKnife.bind(this);
         mContext = this;
-        mPresenter = TUtil.getT(this, 0);
-        mModel=TUtil.getT(this,1);
+        onViewCreated();
+//        mPresenter = TUtil.getT(this, 0);
+//        mModel=TUtil.getT(this,1);
         initPresenter();
         initView();
     }
+    protected void onViewCreated() {
 
+    }
     //获取布局文件
     public abstract int getLayoutResource();
     //简单页面无需mvp就不用管此方法即可

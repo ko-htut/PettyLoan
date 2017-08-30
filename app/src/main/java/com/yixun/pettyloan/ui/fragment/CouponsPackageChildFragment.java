@@ -1,5 +1,4 @@
 package com.yixun.pettyloan.ui.fragment;
-
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 
