@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/transparent"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/toolbar_margintop"
         app:navigationIcon="@drawable/icon_close"
         app:theme="@style/ToolbarTheme" />
 

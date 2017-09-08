@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/toolbar_margintop"
             android:background="@color/colorPrimary"
             app:contentInsetLeft="0.0dp"
             app:contentInsetStart="0.0dp"

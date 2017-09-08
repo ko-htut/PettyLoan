@@ -30,7 +30,8 @@ dependencies {
     compile project(':tabLayout_lib')
     compile project(':fragmentation_core')
     compile project(':captcha_lib')
-    compile project(':translucentbar_lib')
+//    compile project(':translucentbar_lib')
+    compile 'com.kelin.translucentbar:library:0.8.0'
     compile project(':expandablelayout_lib')
 //    compile project(':okhttp3-persistent-cookiejar')
     compile "com.android.support:appcompat-v7:$rootProject.libSupport"

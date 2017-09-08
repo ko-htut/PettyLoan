@@ -82,9 +82,9 @@ public class HomeFragment extends MvpBaseFragment<ProductsPresenter> implements 
 
     @Override
     protected void initView() {
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         TranslucentBarManager translucentBarManager = new TranslucentBarManager(this);
         translucentBarManager.translucent(this, rootView, R.color.blue_medium);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         initBanner();
         configRefresh();
     }
@@ -237,7 +237,7 @@ public class HomeFragment extends MvpBaseFragment<ProductsPresenter> implements 
         }
         if (products == null)
             return;
-        items.add(products.size() + 4, new BannerFeed(feedBannerList));
+        items.add(products.size() + 3, new BannerFeed(feedBannerList));
         mFeedAdapter.notifyDataSetChanged();
     }
 }

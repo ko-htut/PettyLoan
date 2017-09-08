@@ -7,6 +7,7 @@
 
     <dimen name="page_margin">15dp</dimen>
     <dimen name="drawable_padding">10dp</dimen>
+    <dimen name="toolbar_margintop">16dp</dimen>
 
     <dimen name="text_drawable_padding">10dp</dimen>
     <dimen name="detail_margin_horizontal">15dp</dimen>
