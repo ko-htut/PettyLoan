@@ -10,7 +10,7 @@ public interface BaseView {
     void useNightMode(boolean isNight);
 
     //=======  State  =======
-    void stateError();
+    void stateError(Throwable e);
 
     void stateEmpty();
 

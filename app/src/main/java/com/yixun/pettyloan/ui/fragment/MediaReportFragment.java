@@ -1,5 +1,6 @@
 package com.yixun.pettyloan.ui.fragment;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -89,7 +90,7 @@ public class MediaReportFragment extends MvpBaseFragment<HotPresenter> implement
     }
 
     private void configRefresh() {
-        mRefresh.setColorSchemeColors(getResources().getColor(R.color.blue_dark));
+        mRefresh.setColorSchemeColors(ContextCompat.getColor(context, R.color.blue_dark));
         mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -103,8 +104,8 @@ public class MediaReportFragment extends MvpBaseFragment<HotPresenter> implement
     }
 
     @Override
-    public void stateError() {
-        super.stateError();
+    public void stateError(Throwable e) {
+        super.stateError(e);
         if(mRefresh.isRefreshing()) {
             mRefresh.setRefreshing(false);
         }

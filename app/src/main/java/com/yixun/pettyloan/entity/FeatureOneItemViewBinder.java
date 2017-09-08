@@ -9,8 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.yixun.pettyloan.AppConfig;
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.ItemViewBinder;
+import com.yixun.pettyloan.ui.webview.WebViewActivity;
+
+import butterknife.OnClick;
 
 /**
  * Created by zongkaili on 17-8-11.
@@ -32,7 +36,7 @@ public class FeatureOneItemViewBinder extends ItemViewBinder<FeatureOne, Feature
     }
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private
         @NonNull
@@ -60,6 +64,22 @@ public class FeatureOneItemViewBinder extends ItemViewBinder<FeatureOne, Feature
             imgOne.setImageResource(feature.imgOne);
             twoTitle.setText(feature.titleTwo);
             imgTwo.setImageResource(feature.imgTwo);
+            cardOne.setOnClickListener(this);
+            cardTwo.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.card_feature_one:
+                    WebViewActivity.loadUrl(v.getContext(), AppConfig.URL_WEBVIEW_TEST, "加载中...");
+                    break;
+                case R.id.card_feature_two:
+                    WebViewActivity.loadUrl(v.getContext(), AppConfig.URL_WEBVIEW_TEST, "加载中...");
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

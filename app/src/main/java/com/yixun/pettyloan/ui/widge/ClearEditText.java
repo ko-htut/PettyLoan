@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -49,7 +50,7 @@ public class ClearEditText extends EditText {
         // 获取清除按钮图标资源
         int iconClear =
                 typedArray.getResourceId(R.styleable.ClearEditText_iconClear, ICON_CLEAR_DEFAULT);
-        drawableClear = getResources().getDrawable(iconClear);
+        drawableClear = ContextCompat.getDrawable(context, iconClear);
         updateIconClear();
         typedArray.recycle();
 
@@ -109,7 +110,7 @@ public class ClearEditText extends EditText {
      * @param resId 图标资源id
      */
     public void setIconClear(@DrawableRes int resId) {
-        drawableClear = getResources().getDrawable(resId);
+        drawableClear = ContextCompat.getDrawable(getContext(), resId);
         updateIconClear();
     }
 }

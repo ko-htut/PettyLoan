@@ -63,7 +63,7 @@ public class App extends Application {
             appComponent = DaggerAppComponent
                     .builder()
                     .appModule(new AppModule(mInstance))
-                    .httpModule(new HttpModule())
+                    .httpModule(new HttpModule(mInstance))
                     .build();
         }
         return appComponent;

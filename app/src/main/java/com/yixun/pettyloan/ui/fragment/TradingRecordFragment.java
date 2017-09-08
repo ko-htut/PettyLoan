@@ -75,8 +75,28 @@ public class TradingRecordFragment extends BaseSupportFragment {
 
     private void setupViewPager() {
         mTitles = getResources().getStringArray(R.array.tab_trading_record_titles);
+        int type = -1;
         for (int i = 0; i < mTitles.length; i++) {
-            mFragments.add(TradingRecordChildFragment.getInstance(mTitles[i]));
+            switch (i) {
+                case 0:
+                    type = 4;
+                    break;
+                case 1:
+                    type = 2;
+                    break;
+                case 2:
+                    type = 3;
+                    break;
+                case 3:
+                    type = 0;
+                    break;
+                case 4:
+                    type = 1;
+                    break;
+                default:
+                    break;
+            }
+            mFragments.add(TradingRecordChildFragment.getInstance(mTitles[i], type));
         }
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getChildFragmentManager(), mFragments, mTitles);
         mViewPager.setAdapter(adapter);
@@ -85,8 +105,8 @@ public class TradingRecordFragment extends BaseSupportFragment {
     }
 
     @OnClick(R.id.iv_back)
-    public void onClick(View view){
-        switch (view.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.iv_back:
                 pop();
                 break;

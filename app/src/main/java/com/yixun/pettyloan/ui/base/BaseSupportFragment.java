@@ -78,8 +78,6 @@ public abstract class BaseSupportFragment extends Fragment implements ISupportFr
             return rootView;
         }
         mUnbinder = ButterKnife.bind(this, rootView);
-//        mPresenter = TUtil.getT(this, 0);
-//        mModel = TUtil.getT(this, 1);
         initPresenter();
         initView();
         return rootView;

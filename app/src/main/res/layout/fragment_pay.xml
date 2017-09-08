@@ -4,8 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,6 +44,7 @@
                     android:layout_weight="1"/>
 
                 <TextView
+                    android:id="@+id/tv_total_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/detail_margin_horizontal"
@@ -82,6 +82,7 @@
                     android:layout_weight="1"/>
 
                 <TextView
+                    android:id="@+id/tv_current_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/detail_margin_horizontal"
@@ -95,28 +96,7 @@
 
             <include layout="@layout/line_h_separate"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/detail_margin_horizontal"
-                android:text="@string/detail_title_caculator_invest_acounts"
-                android:textSize="@dimen/detail_text_size_large"/>
-
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/text_input"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:drawableLeft="@drawable/icon_money"
-                android:drawablePadding="10dp"
-                android:hint="10,000元起投"
-                android:inputType="number"
-                android:textColor="@color/text_gray"
-                android:textSize="@dimen/text_size_13"/>
+            <include layout="@layout/item_recharge_amount"/>
 
             <View
                 android:layout_width="0dp"
@@ -131,7 +111,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/bg_btn_selecter_brown_solid"
+                android:background="@drawable/bg_btn_selecter_gray_solid"
                 android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="10dp"

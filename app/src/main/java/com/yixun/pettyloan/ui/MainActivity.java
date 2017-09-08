@@ -1,12 +1,10 @@
 package com.yixun.pettyloan.ui;
 
-import android.os.Bundle;
 import android.widget.Toast;
 
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.presenter.MainPresenter;
 import com.yixun.pettyloan.rx.base.contract.MainContract;
-import com.yixun.pettyloan.ui.base.BaseSupportActivity;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.yixun.pettyloan.ui.base.MvpBaseActivity;
 import com.yixun.pettyloan.ui.fragment.LoginFragment;

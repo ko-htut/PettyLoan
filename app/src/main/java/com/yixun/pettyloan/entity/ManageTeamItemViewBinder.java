@@ -3,6 +3,7 @@ package com.yixun.pettyloan.entity;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -82,7 +83,7 @@ public class ManageTeamItemViewBinder extends ItemViewBinder<ManageTeam, ManageT
             tvDuty.setText(mode.duty);
             tvIntro.setText(mode.introduction);
             expandableLayout.setInRecyclerView(true);
-            Log.d(" setData() : ", " isExpanded : " + expandState.get(getAdapterPosition()));
+            Log.d(" setTradeRecords() : ", " isExpanded : " + expandState.get(getAdapterPosition()));
             expandableLayout.setInterpolator(mode.interpolator);
             expandableLayout.setExpanded(expandState.get(getAdapterPosition()));
             expandableLayout.setListener(new ExpandableLayoutListenerAdapter() {
@@ -90,14 +91,14 @@ public class ManageTeamItemViewBinder extends ItemViewBinder<ManageTeam, ManageT
                 public void onPreOpen() {
                     createRotateAnimator(ivSwitcher, 0f, 180f).start();
                     expandState.put(getAdapterPosition(), true);
-                    ivSwitcher.setImageDrawable(context.getResources().getDrawable(R.drawable.icon_circle_minus));
+                    ivSwitcher.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_circle_minus));
                 }
 
                 @Override
                 public void onPreClose() {
                     createRotateAnimator(ivSwitcher, 180f, 0f).start();
                     expandState.put(getAdapterPosition(), false);
-                    ivSwitcher.setImageDrawable(context.getResources().getDrawable(R.drawable.icon_circle_plus));
+                    ivSwitcher.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.icon_circle_plus));
                 }
             });
 

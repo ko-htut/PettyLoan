@@ -1,10 +1,23 @@
 package com.yixun.pettyloan.model;
 
 
+import com.yixun.pettyloan.model.bean.BannerBean;
+import com.yixun.pettyloan.model.bean.BaseJson;
 import com.yixun.pettyloan.model.bean.HotListBean;
+import com.yixun.pettyloan.model.bean.CustomerBean;
+import com.yixun.pettyloan.model.bean.Notice;
+import com.yixun.pettyloan.model.bean.NoticesListBean;
+import com.yixun.pettyloan.model.bean.PayBean;
+import com.yixun.pettyloan.model.bean.ProductDetailBean;
+import com.yixun.pettyloan.model.bean.ProductsListBean;
+import com.yixun.pettyloan.model.bean.RechargeBean;
+import com.yixun.pettyloan.model.bean.RegisterBean;
+import com.yixun.pettyloan.model.bean.TradeRecordBean;
 import com.yixun.pettyloan.model.db.DBHelper;
 import com.yixun.pettyloan.model.http.HttpHelper;
 import com.yixun.pettyloan.model.prefs.PreferencesHelper;
+
+import java.util.Map;
 
 import io.reactivex.Flowable;
 
@@ -99,164 +112,86 @@ public class DataManager implements HttpHelper, DBHelper, PreferencesHelper {
     public boolean queryNewsId(int id) {
         return mDbHelper.queryNewsId(id);
     }
-//
-//    @Override
-//    public void insertLikeBean(RealmLikeBean bean) {
-//        mDbHelper.insertLikeBean(bean);
-//    }
-//
-//    @Override
-//    public void deleteLikeBean(String id) {
-//        mDbHelper.deleteLikeBean(id);
-//    }
-//
-//    @Override
-//    public boolean queryLikeId(String id) {
-//        return mDbHelper.queryLikeId(id);
-//    }
-//
-//    @Override
-//    public List<RealmLikeBean> getLikeList() {
-//        return mDbHelper.getLikeList();
-//    }
-//
-//    @Override
-//    public void changeLikeTime(String id, long time, boolean isPlus) {
-//        mDbHelper.changeLikeTime(id, time, isPlus);
-//    }
-//
-//    @Override
-//    public void updateGoldManagerList(GoldManagerBean bean) {
-//        mDbHelper.updateGoldManagerList(bean);
-//    }
-//
-//    @Override
-//    public GoldManagerBean getGoldManagerList() {
-//        return mDbHelper.getGoldManagerList();
-//    }
-//
-//    @Override
-//    public Flowable<DailyListBean> fetchDailyListInfo() {
-//        return mHttpHelper.fetchDailyListInfo();
-//    }
-//
-//    @Override
-//    public Flowable<DailyBeforeListBean> fetchDailyBeforeListInfo(String date) {
-//        return mHttpHelper.fetchDailyBeforeListInfo(date);
-//    }
-//
-//    @Override
-//    public Flowable<ThemeListBean> fetchDailyThemeListInfo() {
-//        return mHttpHelper.fetchDailyThemeListInfo();
-//    }
-//
-//    @Override
-//    public Flowable<ThemeChildListBean> fetchThemeChildListInfo(int id) {
-//        return mHttpHelper.fetchThemeChildListInfo(id);
-//    }
-//
-//    @Override
-//    public Flowable<SectionListBean> fetchSectionListInfo() {
-//        return mHttpHelper.fetchSectionListInfo();
-//    }
-//
-//    @Override
-//    public Flowable<SectionChildListBean> fetchSectionChildListInfo(int id) {
-//        return mHttpHelper.fetchSectionChildListInfo(id);
-//    }
-//
-//    @Override
-//    public Flowable<ZhihuDetailBean> fetchDetailInfo(int id) {
-//        return mHttpHelper.fetchDetailInfo(id);
-//    }
-//
-//    @Override
-//    public Flowable<DetailExtraBean> fetchDetailExtraInfo(int id) {
-//        return mHttpHelper.fetchDetailExtraInfo(id);
-//    }
-//
-//    @Override
-//    public Flowable<WelcomeBean> fetchWelcomeInfo(String res) {
-//        return mHttpHelper.fetchWelcomeInfo(res);
-//    }
-//
-//    @Override
-//    public Flowable<CommentBean> fetchLongCommentInfo(int id) {
-//        return mHttpHelper.fetchLongCommentInfo(id);
-//    }
-//
-//    @Override
-//    public Flowable<CommentBean> fetchShortCommentInfo(int id) {
-//        return mHttpHelper.fetchShortCommentInfo(id);
-//    }
 
     @Override
     public Flowable<HotListBean> fetchHotListInfo() {
         return mHttpHelper.fetchHotListInfo();
     }
 
-//    @Override
-//    public Flowable<GankHttpResponse<List<GankItemBean>>> fetchTechList(String tech, int num, int page) {
-//        return mHttpHelper.fetchTechList(tech, num, page);
-//    }
-//
-//    @Override
-//    public Flowable<GankHttpResponse<List<GankItemBean>>> fetchGirlList(int num, int page) {
-//        return mHttpHelper.fetchGirlList(num, page);
-//    }
-//
-//    @Override
-//    public Flowable<GankHttpResponse<List<GankItemBean>>> fetchRandomGirl(int num) {
-//        return mHttpHelper.fetchRandomGirl(num);
-//    }
-//
-//    @Override
-//    public Flowable<GankHttpResponse<List<GankSearchItemBean>>> fetchGankSearchList(String query, String type, int num, int page) {
-//        return mHttpHelper.fetchGankSearchList(query, type, num, page);
-//    }
-//
-//    @Override
-//    public Flowable<WXHttpResponse<List<WXItemBean>>> fetchWechatListInfo(int num, int page) {
-//        return mHttpHelper.fetchWechatListInfo(num, page);
-//    }
-//
-//    @Override
-//    public Flowable<WXHttpResponse<List<WXItemBean>>> fetchWechatSearchListInfo(int num, int page, String word) {
-//        return mHttpHelper.fetchWechatSearchListInfo(num, page, word);
-//    }
-//
-//    @Override
-//    public Flowable<MyHttpResponse<VersionBean>> fetchVersionInfo() {
-//        return mHttpHelper.fetchVersionInfo();
-//    }
-//
-//    @Override
-//    public Flowable<GoldHttpResponse<List<GoldListBean>>> fetchGoldList(String type, int num, int page) {
-//        return mHttpHelper.fetchGoldList(type, num, page);
-//    }
-//
-//    @Override
-//    public Flowable<GoldHttpResponse<List<GoldListBean>>> fetchGoldHotList(String type, String dataTime, int limit) {
-//        return mHttpHelper.fetchGoldHotList(type, dataTime, limit);
-//    }
-//
-//    @Override
-//    public Flowable<NodeBean> fetchNodeInfo(String name) {
-//        return mHttpHelper.fetchNodeInfo(name);
-//    }
-//
-//    @Override
-//    public Flowable<List<NodeListBean>> fetchTopicList(String name) {
-//        return mHttpHelper.fetchTopicList(name);
-//    }
-//
-//    @Override
-//    public Flowable<List<NodeListBean>> fetchTopicInfo(String id) {
-//        return mHttpHelper.fetchTopicInfo(id);
-//    }
-//
-//    @Override
-//    public Flowable<List<RepliesListBean>> fetchRepliesList(String id) {
-//        return mHttpHelper.fetchRepliesList(id);
-//    }
+    //-----------------------------------
+    @Override
+    public Flowable<ProductsListBean> fetchProductsListInfo(Map<String, Integer> map) {
+        return mHttpHelper.fetchProductsListInfo(map);
+    }
+
+    @Override
+    public Flowable<BannerBean> fetchBannerInfo(int channel) {
+        return mHttpHelper.fetchBannerInfo(channel);
+    }
+
+    @Override
+    public Flowable<BaseJson<String>> fetchRegisterAuthCode(String phone) {
+        return mHttpHelper.fetchRegisterAuthCode(phone);
+    }
+
+    @Override
+    public Flowable<RegisterBean> postRegister(Map<String, Object> map) {
+        return mHttpHelper.postRegister(map);
+    }
+
+    @Override
+    public Flowable<CustomerBean> postLogin(Map<String, Object> map) {
+        return mHttpHelper.postLogin(map);
+    }
+
+    @Override
+    public Flowable<BaseJson<String>> deleteExit() {
+        return mHttpHelper.deleteExit();
+    }
+
+    @Override
+    public Flowable<PayBean> postBuy(Map<String, Object> map) {
+        return mHttpHelper.postBuy(map);
+    }
+
+    @Override
+    public Flowable<PayBean> putPay(String url, Map<String, Object> map) {
+        return mHttpHelper.putPay(url, map);
+    }
+
+    @Override
+    public Flowable<CustomerBean> putAuth(Map<String, Object> map) {
+        return  mHttpHelper.putAuth(map);
+    }
+
+    @Override
+    public Flowable<TradeRecordBean> getTradeRecord(Map<String, Object> map) {
+        return mHttpHelper.getTradeRecord(map);
+    }
+
+    @Override
+    public Flowable<RechargeBean> postRechargeOrWithdraw(Map<String, Object> map) {
+        return mHttpHelper.postRechargeOrWithdraw(map);
+    }
+
+    @Override
+    public Flowable<ProductDetailBean> getProductDetail(String url) {
+        return mHttpHelper.getProductDetail(url);
+    }
+
+    @Override
+    public Flowable<NoticesListBean> getNoticesList(Map<String, Object> map) {
+        return mHttpHelper.getNoticesList(map);
+    }
+
+    @Override
+    public Flowable<Notice> getNoticeDetail(String url) {
+        return mHttpHelper.getNoticeDetail(url);
+    }
+
+    @Override
+    public Flowable<CustomerBean> getCustomerInfo() {
+        return mHttpHelper.getCustomerInfo();
+    }
+
 }

@@ -12,10 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.yixun.pettyloan.AppConfig;
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.ItemViewBinder;
 import com.yixun.pettyloan.event.StartBrotherEvent;
 import com.yixun.pettyloan.ui.fragment.AboutFragment;
+import com.yixun.pettyloan.ui.webview.WebViewActivity;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -86,6 +88,7 @@ public class FeatureTwoItemViewBinder extends ItemViewBinder<FeatureTwo, Feature
             }
             imgTwo.setImageResource(feature.imgTwo);
             cardOne.setOnClickListener(this);
+            cardTwo.setOnClickListener(this);
         }
 
         @Override
@@ -93,9 +96,9 @@ public class FeatureTwoItemViewBinder extends ItemViewBinder<FeatureTwo, Feature
             switch (v.getId()) {
                 case R.id.card_feature_one:
                     EventBus.getDefault().post(new StartBrotherEvent(AboutFragment.getInstance()));
-//                    context.startActivity(new Intent(context, AboutActivity.class));
                     break;
                 case R.id.card_feature_two:
+                    WebViewActivity.loadUrl(context, AppConfig.URL_WEBVIEW_TEST, "加载中...");
                     break;
                 default:
                     break;

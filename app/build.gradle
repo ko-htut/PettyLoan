@@ -32,6 +32,7 @@ dependencies {
     compile project(':captcha_lib')
     compile project(':translucentbar_lib')
     compile project(':expandablelayout_lib')
+//    compile project(':okhttp3-persistent-cookiejar')
     compile "com.android.support:appcompat-v7:$rootProject.libSupport"
     compile "com.android.support:design:$rootProject.libSupport"
     compile "com.android.support:recyclerview-v7:$rootProject.libSupport"
@@ -41,6 +42,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
     compile 'com.orhanobut:logger:1.15'
+    compile 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
     //retrofit和rxjava
 //    compile 'io.reactivex:rxjava:1.1.6'

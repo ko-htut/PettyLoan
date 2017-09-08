@@ -10,6 +10,7 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 /**
@@ -25,6 +26,4 @@ public interface ZhihuApis {
     @GET("news/hot")
     Flowable<HotListBean> getHotList();
 
-    @POST()
-    Observable<ResponseBody> post(@Url() String url, @FieldMap Map<String, String> maps);
 }

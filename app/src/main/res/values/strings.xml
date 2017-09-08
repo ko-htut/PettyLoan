@@ -5,6 +5,7 @@
     <string name="guide_skip">跳过</string>
     <string name="splash_start">开始体验</string>
     <string name="back">返回</string>
+    <string name="not_login">未登录</string>
     <string name="press_again_exit">再按一次退出</string>
 
 
@@ -35,6 +36,11 @@
         <item>可使用</item>
         <item>已使用</item>
         <item>已过期</item>
+    </string-array>
+
+    <string-array name="tab_entity_titles">
+        <item>黄金产品</item>
+        <item>钻石产品</item>
     </string-array>
 
     <!--login page-->
@@ -152,6 +158,9 @@
     <string name="recharge_wechat_pay">微信支付</string>
     <string name="recharge_wechat_pay_tip">进入微信完成支付</string>
     <string name="recharge_sure">确认充值</string>
+    <string name="withdraw_amount">提现金额</string>
+    <string name="withdraw_amount_input_hint">请输入提现金额</string>
+    <string name="withdraw_sure">确认提现</string>
 
     <!--my invitation page-->
     <string name="invite_record">邀请记录</string>
@@ -200,6 +209,16 @@
     <string name="msg_notice_item_title">新消息提醒</string>
     <string name="msg_notice_item_content">感觉身体被掏空？打开"发现"进入活动，掏空满载奖品等你来拿，体验金等你来拿，
     快来看看！【小额贷】</string>
+
+    <!--realname auth page-->
+    <string name="text_realname_auth_top_tip">为保障资金交易安全，投资前须验证实名，请务必填写您本人真实信息</string>
+    <string name="text_realname_auth_hint_user_name">请输入真实姓名</string>
+    <string name="text_realname_auth_hint_id_card">请输入身份证号码</string>
+    <string name="text_realname_auth_sure">确认</string>
+
+    <!-- webview -->
+    <string name="webview_refresh">刷新</string>
+    <string name="webview_open_with_browser">在浏览器中打开</string>
 
      <string name="large_text">
          从供应链业务起家，第一款主打产品便是海尔体系内的供应链金融，\n

@@ -9,11 +9,12 @@ import android.widget.TextView;
 
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.ItemViewBinder;
+import com.yixun.pettyloan.model.bean.Notice;
 
 /**
  * Created by zongkaili on 17-8-11.
  */
-public class MessageItemViewBinder extends ItemViewBinder<Message, MessageItemViewBinder.ViewHolder> {
+public class MessageItemViewBinder extends ItemViewBinder<Notice, MessageItemViewBinder.ViewHolder> {
 
     @NonNull
     @Override
@@ -25,10 +26,10 @@ public class MessageItemViewBinder extends ItemViewBinder<Message, MessageItemVi
 
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Message mode) {
-        holder.title.setText(mode.title);
-        holder.content.setText(mode.content);
-        holder.time.setText(mode.time);
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Notice mode) {
+        holder.title.setText(mode.getNoticeTitle());
+        holder.content.setText(mode.getNoticeContent());
+        holder.time.setText(mode.getNoticeTime());
     }
 
 

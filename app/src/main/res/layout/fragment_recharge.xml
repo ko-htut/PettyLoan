@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -18,81 +19,80 @@
             android:layout_marginTop="5dp"
             app:contentInsetLeft="0dp"
             app:contentInsetStart="0dp"
-            app:layout_collapseMode="pin"
             app:navigationIcon="@drawable/icon_back_gray"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="充值"
             app:titleTextAppearance="@style/TextAppearance.AppCompat"
-            app:titleTextColor="@color/text_black"/>
+            app:titleTextColor="@color/text_black" />
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray_medium"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/bg_gray_medium"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/detail_margin_horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="@dimen/detail_margin_horizontal">
+                android:text="@string/recharge_available_balance"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/detail_text_size_large" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="@string/recharge_available_balance"
-                    android:textColor="@color/text_black"
-                    android:textSize="@dimen/detail_text_size_large"/>
-
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/detail_margin_horizontal"
-                    android:gravity="center_vertical"
-                    android:maxEms="10"
-                    android:maxLines="1"
-                    android:text="0.00元"
-                    android:textColor="@color/text_black"
-                    android:textSize="@dimen/detail_text_size_large"/>
-            </LinearLayout>
-
-            <include layout="@layout/line_h_separate"/>
-
-            <include layout="@layout/item_recharge_amount"/>
-
-            <include layout="@layout/line_h_separate"/>
-
-            <include layout="@layout/item_recharge_select_way"/>
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/tv_sure_pay"
-                android:layout_width="250dp"
+                android:id="@+id/tv_available_amount"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/bg_btn_selecter_gray_solid"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:text="@string/recharge_sure"
-                android:textColor="@color/white"
-                android:textSize="@dimen/detail_text_size_large"/>
-
+                android:layout_marginRight="@dimen/detail_margin_horizontal"
+                android:gravity="center_vertical"
+                android:maxEms="10"
+                android:maxLines="1"
+                android:text="0.00元"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/detail_text_size_large" />
         </LinearLayout>
-    </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+        <include layout="@layout/line_h_separate" />
+
+        <include layout="@layout/item_recharge_amount" />
+
+        <include layout="@layout/line_h_separate" />
+
+        <include layout="@layout/item_recharge_select_way" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_sure_pay"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/bg_btn_selecter_gray_solid"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/recharge_sure"
+            android:textColor="@color/white"
+            android:textSize="@dimen/detail_text_size_large" />
+
+    </LinearLayout>
+</LinearLayout>

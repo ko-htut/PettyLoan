@@ -40,12 +40,11 @@ public class SplashActivity extends BaseSupportActivity {
                         mHandler.sendEmptyMessageDelayed(UPDATE_COUNTDOWN, 1000);
                         break;
                     }
-                    if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false)) {
+//                    if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false)) {
                         startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    }
-                    else {
-                        startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
-                    }
+//                    } else {
+//                        startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
+//                    }
                     mHandler.removeMessages(UPDATE_COUNTDOWN);
                     finish();
                 default:
@@ -83,16 +82,18 @@ public class SplashActivity extends BaseSupportActivity {
     protected void onStop() {
         super.onStop();
         mHandler.removeMessages(UPDATE_COUNTDOWN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
     }
 
     @OnClick(R.id.rl_splash_start)
     public void start() {
-        if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false)) {
+//        if (PreferenceUtil.getBoolean(AppConfig.PREFERENCE_SHOW_SPLASH, false)) {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
-        }
-        else {
-            startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
-        }
+//        }
+//        else {
+//            startActivity(new Intent(SplashActivity.this, GuidePictureActivity.class));
+//        }
         mHandler.removeMessages(UPDATE_COUNTDOWN);
         finish();
     }

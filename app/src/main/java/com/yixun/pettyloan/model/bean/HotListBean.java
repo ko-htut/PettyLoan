@@ -3,7 +3,7 @@ package com.yixun.pettyloan.model.bean;
 import java.util.List;
 
 /**
- * Created by codeest on 16/8/21.
+ * Created by zongkaili on 2017/8/29.
  */
 
 public class HotListBean {

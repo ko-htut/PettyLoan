@@ -13,9 +13,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.yixun.pettyloan.AppConfig;
 import com.yixun.pettyloan.R;
-import com.yixun.pettyloan.ui.LoginActivity;
-import com.yixun.pettyloan.ui.base.BaseSupportFragment;
+import com.yixun.pettyloan.model.bean.BaseJson;
+import com.yixun.pettyloan.model.bean.CustomerBean;
+import com.yixun.pettyloan.presenter.LoginPresenter;
+import com.yixun.pettyloan.rx.base.contract.LoginContract;
+import com.yixun.pettyloan.ui.base.MvpBaseFragment;
+import com.yixun.pettyloan.utils.PreferenceUtil;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -23,14 +31,14 @@ import butterknife.OnClick;
 /**
  * Created by zongkaili on 17-8-9.
  */
-public class LoginFragment extends BaseSupportFragment {
+public class LoginFragment extends MvpBaseFragment<LoginPresenter> implements LoginContract.View {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.text_input_phone)
-    EditText mAccount;
-    @BindView(R.id.text_input_layout_password)
+    TextInputEditText mAccount;
+    @BindView(R.id.text_input_layout_authcode)
     TextInputLayout mTextInputLayoutPassword;
-    @BindView(R.id.text_input_password)
+    @BindView(R.id.text_input_authcode)
     TextInputEditText mInputEditTextPassword;
     @BindView(R.id.button)
     Button mLoginBtn;
@@ -44,6 +52,11 @@ public class LoginFragment extends BaseSupportFragment {
         LoginFragment fragment = new LoginFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    protected void initInject() {
+        getFragmentComponent().inject(this);
     }
 
     @Override
@@ -73,7 +86,6 @@ public class LoginFragment extends BaseSupportFragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((LoginActivity)getActivity()).finish();
                 pop();
             }
         });
@@ -119,6 +131,32 @@ public class LoginFragment extends BaseSupportFragment {
         mOnLoginSuccessListener = null;
     }
 
+    @Override
+    public void loginFinish(CustomerBean customerBean) {
+        if (!customerBean.isSuccess()) {
+            showErrorMsg("登录失败！");
+            return;
+        }
+        CustomerBean.Data data = customerBean.getData();
+        if(data == null)
+            return;
+        PreferenceUtil.put(AppConfig.PREFERENCE_IS_LOGGED, true);
+        PreferenceUtil.put(AppConfig.PREFERENCE_CURRENT_USERNAME, TextUtils.isEmpty(data.getUsername()) ? mAccount.getText().toString().trim() : data.getUsername());
+        PreferenceUtil.put(AppConfig.PREFERENCE_CURRENT_SEX, data.getSex());
+        PreferenceUtil.put(AppConfig.PREFERENCE_CUSTOMER_ID, data.getId());
+        PreferenceUtil.put(AppConfig.PREFERENCE_CUSTOMER_MEMBER, data.getCustomer_number());
+        PreferenceUtil.put(AppConfig.PREFERENCE_CUSTOMER_PHONE, data.getPhone());
+        PreferenceUtil.put(AppConfig.PREFERENCE_IS_REAL_NAME_AUTH, data.isIs_real_name_auth());
+        PreferenceUtil.put(AppConfig.PREFERENCE_TOTAL_ASSETS, (float) data.getTotal_assets());
+        PreferenceUtil.put(AppConfig.PREFERENCE_AVAILABLE_ASSETS, (float)data.getAvailable_assets());
+        pop();
+    }
+
+    @Override
+    public void exitFinish(BaseJson<String> bean) {
+
+    }
+
     public interface OnLoginSuccessListener {
         void onLoginSuccess(String account);
     }
@@ -130,16 +168,24 @@ public class LoginFragment extends BaseSupportFragment {
     }
 
     @OnClick(R.id.button)
-    public void login() {
-        String account = mAccount.getText().toString();
-        String password = mInputEditTextPassword.getText().toString();
-        if (TextUtils.isEmpty(password) || password.length() < 6) {
-            mTextInputLayoutPassword.setError("密码错误不能少于6个字符");
+    public void onClick() {
+        String account = mAccount.getText().toString().trim();
+        String password = mInputEditTextPassword.getText().toString().trim();
+        if (TextUtils.isEmpty(account)) {
+            mAccount.setError("帐号不能为空");
             return;
         }
-        // 登录成功
-        mOnLoginSuccessListener.onLoginSuccess(account);
-        pop();
-        getActivity().finish();
+        if (TextUtils.isEmpty(password) || password.length() < 3) {
+            mTextInputLayoutPassword.setError("密码错误不能少于3个字符");
+            return;
+        }
+        login(account, password);
+    }
+
+    private void login(String account, String pwd) {
+        Map<String, Object> map = new HashMap<>();
+        map.put(CustomerBean.PHONE, account);
+        map.put(CustomerBean.PASSWORD, pwd);
+        mPresenter.login(map);
     }
 }

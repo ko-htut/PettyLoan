@@ -1,5 +1,6 @@
 package com.yixun.pettyloan.ui.fragment;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -8,18 +9,22 @@ import android.widget.TextView;
 
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.MultiTypeAdapter;
-import com.yixun.pettyloan.entity.Message;
 import com.yixun.pettyloan.entity.MessageItemViewBinder;
-import com.yixun.pettyloan.ui.base.BaseSupportFragment;
+import com.yixun.pettyloan.model.bean.Notice;
+import com.yixun.pettyloan.model.bean.NoticesListBean;
+import com.yixun.pettyloan.presenter.NoticesPresenter;
+import com.yixun.pettyloan.rx.base.contract.NoticesContract;
+import com.yixun.pettyloan.ui.base.MvpBaseFragment;
 import com.yixun.pettyloan.ui.widge.LineDecoration;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MyMessageFragment extends BaseSupportFragment {
+public class MyMessageFragment extends MvpBaseFragment<NoticesPresenter> implements NoticesContract.View {
     private String mTitle;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -31,12 +36,17 @@ public class MyMessageFragment extends BaseSupportFragment {
     RecyclerView mFeedsRecycler;
 
     MultiTypeAdapter mFeedAdapter;
-    List<Object> items;
+    List<Notice> items;
 
     public static MyMessageFragment getInstance(String title) {
         MyMessageFragment sf = new MyMessageFragment();
         sf.mTitle = title;
         return sf;
+    }
+
+    @Override
+    protected void initInject() {
+        getFragmentComponent().inject(this);
     }
 
     @Override
@@ -52,33 +62,30 @@ public class MyMessageFragment extends BaseSupportFragment {
     @Override
     protected void initView() {
         initToolbar();
-        bindContent();
+        initFeed();
     }
 
     @Override
     protected void initData() {
         configRefresh();
+        Map<String, Object> map = new HashMap<>();
+        map.put(NoticesListBean.PAGE_SIZE, 10);
+        mPresenter.getNoticesList(map);
     }
 
     private void initToolbar() {
         mTvTitle.setText(mTitle);
     }
 
-    private void bindContent() {
+    private void initFeed() {
         mFeedAdapter = new MultiTypeAdapter();
-        mFeedAdapter.register(Message.class, new MessageItemViewBinder());
+        mFeedAdapter.register(Notice.class, new MessageItemViewBinder());
         mFeedsRecycler.addItemDecoration(new LineDecoration((int) getResources().getDimension(R.dimen.line_height)));
         mFeedsRecycler.setAdapter(mFeedAdapter);
-        items = new ArrayList<>();
-        items.add(new Message(getResources().getString(R.string.msg_notice_item_title),getResources().getString(R.string.msg_notice_item_content),"2017年1月30日"));
-        items.add(new Message(getResources().getString(R.string.msg_notice_item_title),getResources().getString(R.string.msg_notice_item_content),"2017年2月30日"));
-        items.add(new Message(getResources().getString(R.string.msg_notice_item_title),getResources().getString(R.string.msg_notice_item_content),"2017年3月30日"));
-        mFeedAdapter.setItems(items);
-        mFeedAdapter.notifyDataSetChanged();
     }
 
     private void configRefresh() {
-        mRefresh.setColorSchemeColors(getResources().getColor(R.color.blue_dark));
+        mRefresh.setColorSchemeColors(ContextCompat.getColor(context, R.color.blue_dark));
         mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -88,21 +95,9 @@ public class MyMessageFragment extends BaseSupportFragment {
     }
 
     public void updateRefreshStatus() {
-//        Observable.create(new Observable.OnSubscribe<String>() {
-//
-//            @Override
-//            public void call(Subscriber<? super String> subscriber) {
-//                SystemClock.sleep(1000);
-//                subscriber.onNext("refresh");
-//            }
-//        }).subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Action1<String>() {
-//                    @Override
-//                    public void call(String s) {
-//                        mRefresh.setRefreshing(false);
-//                    }
-//                });
+        Map<String, Object> map = new HashMap<>();
+        map.put(NoticesListBean.PAGE_SIZE, 10);
+        mPresenter.getNoticesList(map);
     }
 
     @OnClick({R.id.iv_back})
@@ -115,4 +110,27 @@ public class MyMessageFragment extends BaseSupportFragment {
                 break;
         }
     }
+
+    @Override
+    public void showContent(NoticesListBean bean) {
+        if (mRefresh.isRefreshing())
+            mRefresh.setRefreshing(false);
+        if (!bean.isSuccess()) {
+            showErrorMsg(bean.getMsg());
+            return;
+        }
+
+        bindContent(bean.getData());
+    }
+
+    private void bindContent(NoticesListBean.Data data) {
+        items = data.getNoticeList();
+        if (items.isEmpty()) {
+            showErrorMsg("数据为空");
+            return;
+        }
+        mFeedAdapter.setItems(items);
+        mFeedAdapter.notifyDataSetChanged();
+    }
+
 }

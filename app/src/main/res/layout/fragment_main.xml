@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,23 +10,30 @@
     <com.yixun.tablayout.CommonTabLayout
         android:id="@+id/home_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:background="#ffffff"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        tl:tl_iconHeight="23dp"
-        tl:tl_iconWidth="23dp"
+        android:background="@color/white"
+        tl:tl_iconHeight="20dp"
+        tl:tl_iconWidth="20dp"
         tl:tl_indicator_color="#2C97DE"
         tl:tl_indicator_height="0dp"
         tl:tl_textSelectColor="#2C97DE"
         tl:tl_textUnselectColor="#66000000"
         tl:tl_textsize="12sp"
         tl:tl_underline_color="#DDDDDD"
-        tl:tl_underline_height="1dp"/>
+        tl:tl_underline_height="1dp" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_above="@id/home_tablayout"
+        android:background="@color/colorPrimaryDark" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/home_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/home_tablayout"/>
+        android:layout_above="@id/line" />
 
 </RelativeLayout>

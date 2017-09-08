@@ -1,7 +1,9 @@
 package com.yixun.pettyloan.ui.fragment;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+
 import com.yixun.pettyloan.R;
 import com.yixun.pettyloan.adapter.multitype.MultiTypeAdapter;
 import com.yixun.pettyloan.entity.ManageTeam;
@@ -69,7 +71,7 @@ public class ManagementTeamFragment extends BaseSupportFragment {
     }
 
     private void configRefresh() {
-        mRefresh.setColorSchemeColors(getResources().getColor(R.color.blue_dark));
+        mRefresh.setColorSchemeColors(ContextCompat.getColor(context, R.color.blue_dark));
         mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -79,20 +81,6 @@ public class ManagementTeamFragment extends BaseSupportFragment {
     }
 
     public void updateRefreshStatus() {
-//        Observable.create(new Observable.OnSubscribe<String>() {
-//
-//            @Override
-//            public void call(Subscriber<? super String> subscriber) {
-//                SystemClock.sleep(1000);
-//                subscriber.onNext("refresh");
-//            }
-//        }).subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Action1<String>() {
-//                    @Override
-//                    public void call(String s) {
-//                        mRefresh.setRefreshing(false);
-//                    }
-//                });
+        mRefresh.setRefreshing(false);
     }
 }

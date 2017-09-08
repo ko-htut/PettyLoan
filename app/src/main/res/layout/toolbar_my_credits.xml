@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
+    android:layout_marginTop="5dp"
     android:contentInsetLeft="0dp"
     android:contentInsetStart="0dp"
     app:titleTextAppearance="@style/Toolbar_TextAppearance_White">

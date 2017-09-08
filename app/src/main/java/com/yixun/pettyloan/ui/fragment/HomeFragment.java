@@ -1,8 +1,10 @@
 package com.yixun.pettyloan.ui.fragment;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -25,18 +27,25 @@ import com.yixun.pettyloan.entity.FeatureOneItemViewBinder;
 import com.yixun.pettyloan.entity.FeatureTwo;
 import com.yixun.pettyloan.entity.FeatureTwoItemViewBinder;
 import com.yixun.pettyloan.entity.ProductItemViewBinder;
-import com.yixun.pettyloan.entity.Product;
-import com.yixun.pettyloan.ui.base.BaseSupportFragment;
+import com.yixun.pettyloan.model.bean.BannerBean;
+import com.yixun.pettyloan.model.bean.ProductDetailBean;
+import com.yixun.pettyloan.model.bean.ProductsListBean;
+import com.yixun.pettyloan.model.http.api.Apis;
+import com.yixun.pettyloan.presenter.ProductsPresenter;
+import com.yixun.pettyloan.rx.base.contract.ProductsContract;
+import com.yixun.pettyloan.ui.base.MvpBaseFragment;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoaderInterface;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 
-public class HomeFragment extends BaseSupportFragment {
+public class HomeFragment extends MvpBaseFragment<ProductsPresenter> implements ProductsContract.View {
     private String mTitle;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -48,6 +57,7 @@ public class HomeFragment extends BaseSupportFragment {
     SwipeRefreshLayout mRefresh;
 
     MultiTypeAdapter mFeedAdapter;
+    List<ProductDetailBean.Data> products;
     List<Object> items;
 
     public static HomeFragment getInstance(String title) {
@@ -57,8 +67,8 @@ public class HomeFragment extends BaseSupportFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initInject() {
+        getFragmentComponent().inject(this);
     }
 
     @Override
@@ -68,49 +78,37 @@ public class HomeFragment extends BaseSupportFragment {
 
     @Override
     public void initPresenter() {
-
     }
 
     @Override
     protected void initView() {
         TranslucentBarManager translucentBarManager = new TranslucentBarManager(this);
         translucentBarManager.translucent(this, rootView, R.color.blue_medium);
-        bindBanner();
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        initBanner();
         configRefresh();
     }
 
     @Override
     protected void initData() {
         bindFeeds();
+        Map<String, Integer> map = new HashMap<>();
+//        map.put(ProductsListBean.PAGE_SIZE,0);
+        map.put(ProductsListBean.QUERY_TYPE, 1);
+        mPresenter.getProductsData(map);
+        mPresenter.getBannerData(0);
     }
 
     private void bindFeeds() {
         mFeedAdapter = new MultiTypeAdapter();
         mFeedAdapter.register(Category.class, new CategoryItemViewBinder());
-        mFeedAdapter.register(Product.class, new ProductItemViewBinder(this));
+        mFeedAdapter.register(ProductDetailBean.Data.class, new ProductItemViewBinder(this));
         mFeedAdapter.register(FeatureOne.class, new FeatureOneItemViewBinder());
         mFeedAdapter.register(FeatureTwo.class, new FeatureTwoItemViewBinder(context));
         mFeedAdapter.register(Advertisement.class, new AdvertisementItemViewBinder());
         mFeedAdapter.register(BannerFeed.class, new BannerItemViewBinder());
         mFeedRecycler.setAdapter(mFeedAdapter);
         items = new ArrayList<>();
-        items.add(new Category("投资理财"));
-        items.add(new Product("产品１", "10", "% + 0.32%"));
-        items.add(new Product("产品2", "20", "% + 0.32%"));
-        items.add(new Product("产品3", "20", "% + 0.32%"));
-        items.add(new Category("实物理财"));
-        items.add(new Product("产品１", "30", "% + 0.32%"));
-        items.add(new Product("产品2", "40", "% + 0.32%"));
-        items.add(new Product("产品3", "50", "% + 0.32%"));
-        items.add(new FeatureOne("黄金商城", R.drawable.icon_gold,
-                "珠宝商城", R.drawable.icon_jewelry));
-        items.add(new Advertisement("小额贷并购幻视信贷工厂"));
-        List<Object> urlList = new ArrayList<>();
-        urlList.add(R.drawable.pic_banner1);
-        urlList.add(R.drawable.pic_banner2);
-        items.add(new BannerFeed(urlList));
-        items.add(new FeatureTwo("关于小额贷", "了解历史及最新动态", R.drawable.icon_loan,
-                "多重保障", "全方位安全保障", R.drawable.icon_safeguard));
         mFeedAdapter.setItems(items);
         mFeedAdapter.notifyDataSetChanged();
     }
@@ -126,10 +124,7 @@ public class HomeFragment extends BaseSupportFragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
     }
 
-    private void bindBanner() {
-        final List<Object> urlList = new ArrayList<>();
-        urlList.add(R.drawable.pic_banner1);
-        urlList.add(R.drawable.pic_banner2);
+    private void initBanner() {
         mTopBanner.setImageLoader(new ImageLoaderInterface() {
             @Override
             public void displayImage(Context context, Object path, View imageView) {
@@ -143,16 +138,17 @@ public class HomeFragment extends BaseSupportFragment {
             @Override
             public View createImageView(Context context) {
                 ImageView imageView = new ImageView(context);
-                imageView.setTransitionName(getString(R.string.transition_banner));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    imageView.setTransitionName(getString(R.string.transition_banner));
+                }
                 return imageView;
             }
         });
-        mTopBanner.setImages(urlList).start();
         mTopBanner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
 //                Intent intent = new Intent(getActivity(), DetailActivity.class);
-//                intent.putExtra("img", String.valueOf(urlList.get(position)));
+//                intent.putExtra("img", String.valueOf(feedBannerList.get(position)));
 //                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
 //                        mTopBanner, getString(R.string.transition_banner));
 //                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
@@ -161,7 +157,7 @@ public class HomeFragment extends BaseSupportFragment {
     }
 
     private void configRefresh() {
-        mRefresh.setColorSchemeColors(getResources().getColor(R.color.blue_dark));
+        mRefresh.setColorSchemeColors(ContextCompat.getColor(context, R.color.blue_dark));
         mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -171,20 +167,77 @@ public class HomeFragment extends BaseSupportFragment {
     }
 
     public void updateRefreshStatus() {
-//        Observable.create(new Observable.OnSubscribe<String>() {
-//
-//            @Override
-//            public void call(Subscriber<? super String> subscriber) {
-//                SystemClock.sleep(1000);
-//                subscriber.onNext("refresh");
-//            }
-//        }).subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Action1<String>() {
-//                    @Override
-//                    public void call(String s) {
-//                        mRefresh.setRefreshing(false);
-//                    }
-//                });
+        items.clear();
+        Map<String, Integer> map = new HashMap<>();
+//        map.put(ProductsListBean.PAGE_SIZE,0);
+        map.put(ProductsListBean.QUERY_TYPE, 1);
+        mPresenter.getProductsData(map);
+        mPresenter.getBannerData(0);
+    }
+
+    @Override
+    public void stateError(Throwable e) {
+        super.stateError(e);
+        if (mRefresh.isRefreshing()) {
+            mRefresh.setRefreshing(false);
+        }
+    }
+
+    @Override
+    public void showContent(ProductsListBean productsListBean) {
+        if (mRefresh.isRefreshing()) {
+            mRefresh.setRefreshing(false);
+        }
+        stateMain();
+        products = productsListBean.getData().getProductsList();
+        List<ProductDetailBean.Data> investProducts = new ArrayList<>();
+        List<ProductDetailBean.Data> entityProducts = new ArrayList<>();
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getPro_type() == 1) {
+                investProducts.add(products.get(i));
+            } else if (products.get(i).getPro_type() == 0) {
+                entityProducts.add(products.get(i));
+            }
+        }
+
+        items.add(new Category("投资理财"));
+        for (int i = 0; i < investProducts.size(); i++) {
+            items.add(investProducts.get(i));
+        }
+        items.add(new Category("实物理财"));
+        for (int i = 0; i < investProducts.size(); i++) {
+            items.add(entityProducts.get(i));
+        }
+        items.add(new FeatureOne("黄金商城", R.drawable.icon_gold,
+                "珠宝商城", R.drawable.icon_jewelry));
+        items.add(new Advertisement("小额贷并购幻视信贷工厂"));
+        items.add(new FeatureTwo("关于小额贷", "了解历史及最新动态", R.drawable.icon_loan,
+                "多重保障", "全方位安|全保障", R.drawable.icon_safeguard));
+
+        mFeedAdapter.notifyDataSetChanged();
+        mPresenter.getBannerData(1);
+    }
+
+    @Override
+    public void showTopBannerContent(BannerBean bannerBean) {
+        List<BannerBean.Data.Banner> banner = bannerBean.getData().getBannerList();
+        List<Object> topBannerList = new ArrayList<>();
+        for (int i = 0; i < banner.size(); i++) {
+            topBannerList.add(Apis.HOST + banner.get(i).getBannerUrl());
+        }
+        mTopBanner.setImages(topBannerList).start();
+    }
+
+    @Override
+    public void showFeedBannerContent(BannerBean bannerBean) {
+        List<BannerBean.Data.Banner> banner = bannerBean.getData().getBannerList();
+        List<Object> feedBannerList = new ArrayList<>();
+        for (int i = 0; i < banner.size(); i++) {
+            feedBannerList.add(Apis.HOST + banner.get(i).getBannerUrl());
+        }
+        if (products == null)
+            return;
+        items.add(products.size() + 4, new BannerFeed(feedBannerList));
+        mFeedAdapter.notifyDataSetChanged();
     }
 }

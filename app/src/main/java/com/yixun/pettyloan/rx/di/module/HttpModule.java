@@ -1,14 +1,22 @@
 package com.yixun.pettyloan.rx.di.module;
 
-import com.yixun.pettyloan.AppConfig;
+import android.content.Context;
+
+import com.franmontiel.persistentcookiejar.ClearableCookieJar;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.yixun.pettyloan.BuildConfig;
 import com.yixun.pettyloan.Constants;
+import com.yixun.pettyloan.model.http.api.Apis;
+import com.yixun.pettyloan.model.http.api.Url;
 import com.yixun.pettyloan.model.http.api.ZhihuApis;
 import com.yixun.pettyloan.model.http.api.ZhihuUrl;
 import com.yixun.pettyloan.utils.SystemUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
@@ -17,6 +25,7 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
+import okhttp3.Cookie;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -26,12 +35,13 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by codeest on 2017/2/26.
- */
-
 @Module
 public class HttpModule {
+    private Context context;
+
+    public HttpModule(Context context) {
+        this.context = context;
+    }
 
     @Singleton
     @Provides
@@ -55,7 +65,14 @@ public class HttpModule {
 
     @Singleton
     @Provides
-    OkHttpClient provideClient(OkHttpClient.Builder builder) {
+    @Url
+    Retrofit provideRetrofit(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, Apis.HOST);
+    }
+
+    @Singleton
+    @Provides
+    OkHttpClient provideClient(final OkHttpClient.Builder builder) {
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
@@ -91,18 +108,23 @@ public class HttpModule {
                 return response;
             }
         };
-//        Interceptor apikey = new Interceptor() {
-//            @Override
-//            public Response intercept(Chain chain) throws IOException {
-//                Request request = chain.request();
-//                request = request.newBuilder()
+        final SharedPrefsCookiePersistor persistor = new SharedPrefsCookiePersistor(context);
+        ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), persistor);
+        builder.cookieJar(cookieJar);
+        List<Cookie> cookies = persistor.loadAll();
+        Interceptor apikey = new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request();
+                request = request.newBuilder()
+                        .addHeader("Cookie", persistor.loadAll().toString())
 //                        .addHeader("apikey",Constants.KEY_API)
-//                        .build();
-//                return chain.proceed(request);
-//            }
-//        }
+                        .build();
+                return chain.proceed(request);
+            }
+        };
 //        设置统一的请求头部参数
-//        builder.addInterceptor(apikey);
+        builder.addInterceptor(apikey);
         //设置缓存
         builder.addNetworkInterceptor(cacheInterceptor);
         builder.addInterceptor(cacheInterceptor);
@@ -120,6 +142,12 @@ public class HttpModule {
     @Provides
     ZhihuApis provideZhihuService(@ZhihuUrl Retrofit retrofit) {
         return retrofit.create(ZhihuApis.class);
+    }
+
+    @Singleton
+    @Provides
+    Apis provideService(@Url Retrofit retrofit) {
+        return retrofit.create(Apis.class);
     }
 
     private Retrofit createRetrofit(Retrofit.Builder builder, OkHttpClient client, String url) {

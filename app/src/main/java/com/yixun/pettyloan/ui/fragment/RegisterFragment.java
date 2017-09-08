@@ -4,8 +4,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Spannable;
@@ -13,7 +16,6 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +28,14 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.kelly.captcha.SwipeCaptchaView;
 import com.yixun.pettyloan.R;
-import com.yixun.pettyloan.ui.base.BaseSupportFragment;
+import com.yixun.pettyloan.model.bean.BaseJson;
+import com.yixun.pettyloan.model.bean.RegisterBean;
+import com.yixun.pettyloan.presenter.RegisterPresenter;
+import com.yixun.pettyloan.rx.base.contract.RegisterContract;
+import com.yixun.pettyloan.ui.base.MvpBaseFragment;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -34,27 +43,68 @@ import butterknife.OnClick;
 /**
  * Created by zongkaili on 17-8-9.
  */
-public class RegisterFragment extends BaseSupportFragment {
+public class RegisterFragment extends MvpBaseFragment<RegisterPresenter> implements RegisterContract.View {
+    private static final int UPDATE_COUNTDOWN = 0;
+    private static final int TIME_COUNTDOWN = 30;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+    @BindView(R.id.text_input_layout_phone)
+    TextInputLayout mTILPhone;
     @BindView(R.id.text_input_phone)
     EditText mEtAccount;
-    @BindView(R.id.text_input_layout_password)
-    TextInputLayout mTextInputLayoutPassword;
-    @BindView(R.id.text_input_password)
-    TextInputEditText mInputEditTextPassword;
+    @BindView(R.id.text_input_layout_authcode)
+    TextInputLayout mTILAuthcode;
+    @BindView(R.id.text_input_authcode)
+    TextInputEditText mETAuthcode;
+    @BindView(R.id.text_input_layout_pwd)
+    TextInputLayout mTILPwd;
+    @BindView(R.id.text_input_pwd)
+    TextInputEditText mETPwd;
+    @BindView(R.id.text_input_layout_invite_code)
+    TextInputLayout mTILInviteCode;
+    @BindView(R.id.text_input_invite_code)
+    EditText mETInviteCode;
+    @BindView(R.id.btn_get_auth_code)
+    Button mBtnGetAuthCode;
     @BindView(R.id.tv_sign_tip)
     TextView mTip;
     @BindView(R.id.button)
     Button mFinishBtn;
-
+    private int time = TIME_COUNTDOWN;
     private LoginFragment.OnLoginSuccessListener mOnLoginSuccessListener;
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case UPDATE_COUNTDOWN:
+                    time--;
+                    mBtnGetAuthCode.setText(time + " 秒");
+                    if (time > 0) {
+                        mHandler.sendEmptyMessageDelayed(UPDATE_COUNTDOWN, 1000);
+                        break;
+                    }
+                    mHandler.removeMessages(UPDATE_COUNTDOWN);
+                    mBtnGetAuthCode.setText(getResources().getString(R.string.text_sign_get_auth_code));
+                    mBtnGetAuthCode.setClickable(true);
+                    time = TIME_COUNTDOWN;
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     public static RegisterFragment newInstance() {
         Bundle args = new Bundle();
         RegisterFragment fragment = new RegisterFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    protected void initInject() {
+        getFragmentComponent().inject(this);
     }
 
     @Override
@@ -80,7 +130,7 @@ public class RegisterFragment extends BaseSupportFragment {
 
     @Override
     protected void initView() {
-        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(getResources().getColor(R.color.text_blue));
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(ContextCompat.getColor(context, R.color.text_blue));
         SpannableString spannableString = new SpannableString(getResources().getString(R.string.text_sign_tip));
         spannableString.setSpan(foregroundColorSpan, 15, spannableString.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         mTip.setText(spannableString);
@@ -92,7 +142,7 @@ public class RegisterFragment extends BaseSupportFragment {
             }
         });
 
-        mInputEditTextPassword.addTextChangedListener(new TextWatcher() {
+        mETAuthcode.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -100,7 +150,7 @@ public class RegisterFragment extends BaseSupportFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mTextInputLayoutPassword.setErrorEnabled(false);
+                mTILAuthcode.setErrorEnabled(false);
             }
 
             @Override
@@ -141,13 +191,14 @@ public class RegisterFragment extends BaseSupportFragment {
                 //swipeCaptcha.createCaptcha();
                 mSeekBar.setEnabled(false);
 
-                start(RegisterSuccessFragment.newInstance());
+                register();
+
                 dialog.dismiss();
+
             }
 
             @Override
             public void matchFailed(SwipeCaptchaView swipeCaptchaView) {
-                Log.d("zxt", "matchFailed() called with: swipeCaptchaView = [" + swipeCaptchaView + "]");
                 Toast.makeText(getActivity(), "验证失败", Toast.LENGTH_SHORT).show();
                 swipeCaptchaView.resetCaptcha();
                 mSeekBar.setProgress(0);
@@ -167,7 +218,6 @@ public class RegisterFragment extends BaseSupportFragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Log.d("zxt", "onStopTrackingTouch() called with: seekBar = [" + seekBar + "]");
                 mSwipeCaptchaView.matchCaptcha();
             }
         });
@@ -197,18 +247,90 @@ public class RegisterFragment extends BaseSupportFragment {
         mOnLoginSuccessListener = null;
     }
 
-    @OnClick(R.id.button)
-    public void register(){
-        String account = mEtAccount.getText().toString();
-        String password = mInputEditTextPassword.getText().toString();
-        if (TextUtils.isEmpty(password) || password.length() < 6) {
-            mTextInputLayoutPassword.setError("密码错误不能少于6个字符");
+    @Override
+    public void onStop() {
+        super.onStop();
+        mHandler.removeMessages(UPDATE_COUNTDOWN);
+        mBtnGetAuthCode.setText(getResources().getString(R.string.text_sign_get_auth_code));
+        mBtnGetAuthCode.setClickable(true);
+        time = TIME_COUNTDOWN;
+    }
+
+    @Override
+    public boolean onBackPressedSupport() {
+        mHandler.removeMessages(UPDATE_COUNTDOWN);
+        mBtnGetAuthCode.setText(getResources().getString(R.string.text_sign_get_auth_code));
+        mBtnGetAuthCode.setClickable(true);
+        time = TIME_COUNTDOWN;
+        return super.onBackPressedSupport();
+    }
+
+    @OnClick({R.id.btn_get_auth_code, R.id.btn_get_invite_code, R.id.button})
+    public void OnClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_get_auth_code:
+                getAuthCode(mEtAccount.getText().toString().trim());
+                break;
+            case R.id.btn_get_invite_code:
+                break;
+            case R.id.button:
+                String account = mEtAccount.getText().toString().trim();
+                String authcode = mETAuthcode.getText().toString().trim();
+                String password = mETPwd.getText().toString().trim();
+                if (TextUtils.isEmpty(account) || account.length() < 11) {
+                    mTILPhone.setError("手机号码不能少于11位");
+                    return;
+                }
+                if (TextUtils.isEmpty(authcode) || authcode.length() < 4) {
+                    mTILAuthcode.setError("验证码不能少于4个字符");
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    mTILPwd.setError("密码不能为空");
+                    return;
+                }
+
+                //滑动解锁验证
+                showCaptchaDialog();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void getAuthCode(String account) {
+        if (TextUtils.isEmpty(account) || account.length() < 11) {
+            mTILPhone.setError("手机号码不能少于11位");
             return;
         }
-        //滑动解锁验证
-        showCaptchaDialog();
-//                // 注册成功
-        mOnLoginSuccessListener.onLoginSuccess(account);
-//                start(RegisterSuccessFragment.newInstance());
+        mTILPhone.setErrorEnabled(false);
+        mPresenter.getAuthCode(account);
+        mBtnGetAuthCode.setText(time + " 秒");
+        mBtnGetAuthCode.setClickable(false);
+        mHandler.sendEmptyMessageDelayed(UPDATE_COUNTDOWN, 1000);
     }
+
+    private void register() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(RegisterBean.PHONE, mEtAccount.getText().toString().trim());
+        map.put(RegisterBean.PASSWORD, mETPwd.getText().toString().trim());
+        map.put(RegisterBean.SECURITY_CODE, mETAuthcode.getText().toString().trim());
+        map.put(RegisterBean.INVITATION_CODE, mETInviteCode.getText().toString().trim());
+        mPresenter.register(map);
+    }
+
+    @Override
+    public void showContent(BaseJson<String> bean) {
+        if(!bean.isSuccess()){
+            showErrorMsg(bean.getMsg());
+            return;
+        }
+        Toast.makeText(context,bean.getData(),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void registerFinish(RegisterBean registerBean) {
+        startWithPop(RegisterSuccessFragment.newInstance());
+    }
+
 }

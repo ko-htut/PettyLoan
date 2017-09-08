@@ -1,5 +1,6 @@
 package com.yixun.pettyloan.ui.fragment;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -62,8 +63,8 @@ public class TotalAssetsFragment extends BaseSupportFragment {
 //        });
     }
 
-    private void configRefresh(){
-        mRefresh.setColorSchemeColors(getResources().getColor(R.color.blue_dark));
+    private void configRefresh() {
+        mRefresh.setColorSchemeColors(ContextCompat.getColor(context, R.color.blue_dark));
         mRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -72,27 +73,13 @@ public class TotalAssetsFragment extends BaseSupportFragment {
         });
     }
 
-    public void updateRefreshStatus(){
-//        Observable.create(new Observable.OnSubscribe<String>(){
-//
-//            @Override
-//            public void call(Subscriber<? super String> subscriber) {
-//                SystemClock.sleep(1000);
-//                subscriber.onNext("refresh");
-//            }
-//        }).subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new Action1<String>() {
-//                    @Override
-//                    public void call(String s) {
-//                        mRefresh.setRefreshing(false);
-//                    }
-//                });
+    public void updateRefreshStatus() {
+        mRefresh.setRefreshing(false);
     }
 
     @OnClick({R.id.iv_back})
-    public void onClick(View view){
-        switch (view.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.iv_back:
                 pop();
                 break;

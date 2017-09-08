@@ -4,10 +4,7 @@ import android.app.Activity;
 
 import com.yixun.pettyloan.rx.di.module.ActivityModule;
 import com.yixun.pettyloan.rx.di.scope.ActivityScope;
-import com.yixun.pettyloan.ui.GuidePictureActivity;
-import com.yixun.pettyloan.ui.LoginActivity;
 import com.yixun.pettyloan.ui.MainActivity;
-import com.yixun.pettyloan.ui.SplashActivity;
 
 import dagger.Component;
 

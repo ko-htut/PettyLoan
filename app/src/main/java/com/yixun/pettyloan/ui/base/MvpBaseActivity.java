@@ -66,8 +66,7 @@ public abstract class MvpBaseActivity<T extends BasePresenter> extends BaseSuppo
     }
 
     @Override
-    public void stateError() {
-
+    public void stateError(Throwable e) {
     }
 
     @Override

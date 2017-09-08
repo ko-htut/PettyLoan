@@ -31,12 +31,6 @@ public class RegisterSuccessFragment extends BaseSupportFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        if (context instanceof OnLoginSuccessListener) {
-//            mOnLoginSuccessListener = (OnLoginSuccessListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnLoginSuccessListener");
-//        }
     }
 
     @Override

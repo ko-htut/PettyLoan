@@ -2,7 +2,7 @@ ext {
 
     android = [
             compileSdkVersion : 25,
-            buildToolsVersion : '25.0.2',
+            buildToolsVersion : '25.0.1',
             applicationId     : "com.yixun.pettyloan",
             minSdkVersion     : 21,
             targetSdkVersion  : 25,

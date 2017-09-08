@@ -74,10 +74,10 @@ public class MainFragment extends BaseSupportFragment {
     }
 
     private void initFragment() {
-        mFragments.add(HomeFragment.getInstance("ViewPager " + mTitles[0]));
-        mFragments.add(InvestFragment.getInstance("ViewPager " + mTitles[1]));
-        mFragments.add(EntityFragment.getInstance("ViewPager " + mTitles[2]));
-        mFragments.add(MineFragment.getInstance("ViewPager " + mTitles[3]));
+        mFragments.add(HomeFragment.getInstance(mTitles[0]));
+        mFragments.add(InvestFragment.getInstance(mTitles[1]));
+        mFragments.add(EntityFragment.getInstance(mTitles[2]));
+        mFragments.add(MineFragment.getInstance(mTitles[3]));
     }
 
     public void initWidge() {
