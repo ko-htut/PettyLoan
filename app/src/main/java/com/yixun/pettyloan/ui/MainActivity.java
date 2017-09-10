@@ -1,7 +1,5 @@
 package com.yixun.pettyloan.ui;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
 import com.yixun.pettyloan.R;
@@ -9,9 +7,6 @@ import com.yixun.pettyloan.presenter.MainPresenter;
 import com.yixun.pettyloan.rx.base.contract.MainContract;
 import com.yixun.pettyloan.ui.base.BaseSupportFragment;
 import com.yixun.pettyloan.ui.base.MvpBaseActivity;
-import com.yixun.pettyloan.ui.fragment.HomeFragment;
-import com.yixun.pettyloan.ui.fragment.ImageOverBarFragment;
-import com.yixun.pettyloan.ui.fragment.InvestFragment;
 import com.yixun.pettyloan.ui.fragment.LoginFragment;
 import com.yixun.pettyloan.ui.fragment.MainFragment;
 

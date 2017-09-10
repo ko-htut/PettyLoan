@@ -14,6 +14,7 @@ import retrofit2.http.Query;
 import retrofit2.http.Url;
 
 /**
+ * zhihu提供的开源api,供测试用
  * Created by zongkaili on 2017/8/29.
  */
 public interface ZhihuApis {
