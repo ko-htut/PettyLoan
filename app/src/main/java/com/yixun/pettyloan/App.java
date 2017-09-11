@@ -16,6 +16,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.PowerManager;
 
+import com.facebook.stetho.Stetho;
 import com.yixun.pettyloan.rx.di.component.AppComponent;
 import com.yixun.pettyloan.rx.di.component.DaggerAppComponent;
 import com.yixun.pettyloan.rx.di.module.AppModule;
@@ -38,6 +39,8 @@ public class App extends Application {
         mWakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Idealsee_AR");
         //初始化数据库
         Realm.init(getApplicationContext());
+
+        Stetho.initializeWithDefaults(this);
     }
 
     @Override

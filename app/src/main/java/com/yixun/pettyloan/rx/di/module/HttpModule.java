@@ -2,6 +2,7 @@ package com.yixun.pettyloan.rx.di.module;
 
 import android.content.Context;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
@@ -127,6 +128,7 @@ public class HttpModule {
         builder.addInterceptor(apikey);
         //设置缓存
         builder.addNetworkInterceptor(cacheInterceptor);
+        builder.addNetworkInterceptor(new StethoInterceptor());
         builder.addInterceptor(cacheInterceptor);
         builder.cache(cache);
         //设置超时
