@@ -13,7 +13,8 @@
 ### 效果图
 登录模块
 -----
-![login](https://cloud.githubusercontent.com/assets/8949716/17483429/8f5ab3aa-5db8-11e6-808c-6033f5d5c4ec.gif)
+![login](https://github.com/zongkaili/PettyLoan/blob/master/screenshot/screen_login.jpg?raw=true)
+![register](https://github.com/zongkaili/PettyLoan/blob/master/screenshot/screen_register.jpg?raw=true)
 
 ### [点击下载 Apk](http://fir.im/BGABadgeViewDemo) 或扫描下方二维码安装体验
 ![Demo](http://7xk9dj.com1.z0.glb.clouddn.com/badge/BGABadgeViewDemoQRCode.png)
